@@ -54,7 +54,6 @@ WORKDIR ..
 ADD . X86-64-semantics
 WORKDIR X86-64-semantics
 USER 0:0
-RUN chown -R 0 .
 RUN chmod -R 777 .
 USER $USER_ID:$GROUP_ID
 ENV PATH="${PATH}:/home/user/k/k-distribution/target/release/k/bin"
