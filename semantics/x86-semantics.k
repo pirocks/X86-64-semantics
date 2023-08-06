@@ -11,6 +11,1479 @@ require "common/common.k"
 require "x86-builtin.k"
 require "x86-c-library.k"
 
+require "immediateInstructions/xorw_ax_imm16.k"
+require "immediateInstructions/shufps_xmm_xmm_imm8.k"
+require "immediateInstructions/psllw_xmm_imm8.k"
+require "immediateInstructions/vpalignr_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/shldl_r32_r32_imm8.k"
+require "immediateInstructions/sbbw_ax_imm16.k"
+require "immediateInstructions/btcw_r16_imm8.k"
+require "immediateInstructions/addq_r64_label.k"
+require "immediateInstructions/shrdq_r64_r64_imm8.k"
+require "immediateInstructions/adcl_r32_imm32.k"
+require "immediateInstructions/btl_r32_imm8.k"
+require "immediateInstructions/salb_r8_imm8.k"
+require "immediateInstructions/subw_r16_imm16.k"
+require "immediateInstructions/orw_r16_imm8.k"
+require "immediateInstructions/andq_r64_imm32.k"
+require "immediateInstructions/salb_rh_imm8.k"
+require "immediateInstructions/adcw_ax_imm16.k"
+require "immediateInstructions/orb_r8_imm8.k"
+require "immediateInstructions/vpinsrb_xmm_xmm_r32_imm8.k"
+require "immediateInstructions/sbbl_eax_imm32.k"
+require "immediateInstructions/rclq_r64_imm8.k"
+require "immediateInstructions/movb_rh_imm8.k"
+require "immediateInstructions/andb_r8_imm8.k"
+require "immediateInstructions/vpsraw_xmm_xmm_imm8.k"
+require "immediateInstructions/movq_r64_imm32.k"
+require "immediateInstructions/vpsllw_xmm_xmm_imm8.k"
+require "immediateInstructions/addb_al_imm8.k"
+require "immediateInstructions/addq_r64_imm8.k"
+require "immediateInstructions/vroundsd_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/vcvtps2ph_xmm_ymm_imm8.k"
+require "immediateInstructions/sbbb_r8_imm8.k"
+require "immediateInstructions/movq_r64_label.k"
+require "immediateInstructions/andw_ax_imm16.k"
+require "immediateInstructions/adcl_eax_imm32.k"
+require "immediateInstructions/vpsllq_ymm_ymm_imm8.k"
+require "immediateInstructions/cmpw_ax_imm16.k"
+require "immediateInstructions/pextrw_r64_xmm_imm8.k"
+require "immediateInstructions/testb_al_imm8.k"
+require "immediateInstructions/vpshufd_ymm_ymm_imm8.k"
+require "immediateInstructions/vpshufhw_xmm_xmm_imm8.k"
+require "immediateInstructions/orw_r16_imm16.k"
+require "immediateInstructions/pshufhw_xmm_xmm_imm8.k"
+require "immediateInstructions/sbbl_r32_imm32.k"
+require "immediateInstructions/andq_r64_imm8.k"
+require "immediateInstructions/btcl_r32_imm8.k"
+require "immediateInstructions/pinsrq_xmm_r64_imm8.k"
+require "immediateInstructions/vpshuflw_ymm_ymm_imm8.k"
+require "immediateInstructions/rolb_rh_imm8.k"
+require "immediateInstructions/cmpss_xmm_xmm_imm8.k"
+require "immediateInstructions/adcb_al_imm8.k"
+require "immediateInstructions/vdpps_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/shufpd_xmm_xmm_imm8.k"
+require "immediateInstructions/rcrl_r32_imm8.k"
+require "immediateInstructions/vcmppd_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/btsq_r64_imm8.k"
+require "immediateInstructions/pextrb_r64_xmm_imm8.k"
+require "immediateInstructions/addw_r16_imm8.k"
+require "immediateInstructions/roundpd_xmm_xmm_imm8.k"
+require "immediateInstructions/rorxq_r64_r64_imm8.k"
+require "immediateInstructions/rcrb_r8_imm8.k"
+require "immediateInstructions/vpermilpd_ymm_ymm_imm8.k"
+require "immediateInstructions/vpextrb_r64_xmm_imm8.k"
+require "immediateInstructions/pshuflw_xmm_xmm_imm8.k"
+require "immediateInstructions/roll_r32_imm8.k"
+require "immediateInstructions/shlq_r64_imm8.k"
+require "immediateInstructions/cmpb_rh_imm8.k"
+require "immediateInstructions/adcb_rh_imm8.k"
+require "immediateInstructions/movw_r16_imm16.k"
+require "immediateInstructions/rclb_r8_imm8.k"
+require "immediateInstructions/rolb_r8_imm8.k"
+require "immediateInstructions/orq_r64_imm32.k"
+require "immediateInstructions/vblendps_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/movl_r32_imm32.k"
+require "immediateInstructions/vmpsadbw_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/vpsrld_xmm_xmm_imm8.k"
+require "immediateInstructions/vpinsrw_xmm_xmm_r32_imm8.k"
+require "immediateInstructions/sarb_rh_imm8.k"
+require "immediateInstructions/btrq_r64_imm8.k"
+require "immediateInstructions/blendpd_xmm_xmm_imm8.k"
+require "immediateInstructions/xorl_r32_imm8.k"
+require "immediateInstructions/rorw_r16_imm8.k"
+require "immediateInstructions/vcmpps_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/addl_r32_imm8.k"
+require "immediateInstructions/vroundps_xmm_xmm_imm8.k"
+require "immediateInstructions/btsw_r16_imm8.k"
+require "immediateInstructions/btrw_r16_imm8.k"
+require "immediateInstructions/sarw_r16_imm8.k"
+require "immediateInstructions/vshufpd_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/andw_r16_imm16.k"
+require "immediateInstructions/vinsertps_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/cmpq_rax_imm32.k"
+require "immediateInstructions/psrad_xmm_imm8.k"
+require "immediateInstructions/rorb_r8_imm8.k"
+require "immediateInstructions/subl_eax_imm32.k"
+require "immediateInstructions/addq_r64_imm32.k"
+require "immediateInstructions/movq_r64_imm64.k"
+require "immediateInstructions/adcq_rax_imm32.k"
+require "immediateInstructions/subb_rh_imm8.k"
+require "immediateInstructions/psrlq_xmm_imm8.k"
+require "immediateInstructions/orq_rax_imm32.k"
+require "immediateInstructions/sbbq_r64_imm32.k"
+require "immediateInstructions/subl_r32_imm32.k"
+require "immediateInstructions/vroundss_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/shldw_r16_r16_imm8.k"
+require "immediateInstructions/cmpl_r32_imm8.k"
+require "immediateInstructions/sbbq_rax_imm32.k"
+require "immediateInstructions/testw_r16_imm16.k"
+require "immediateInstructions/cmpw_r16_imm8.k"
+require "immediateInstructions/pextrq_r64_xmm_imm8.k"
+require "immediateInstructions/blendps_xmm_xmm_imm8.k"
+require "immediateInstructions/orl_r32_imm8.k"
+require "immediateInstructions/testb_rh_imm8.k"
+require "immediateInstructions/imulq_r64_r64_imm32.k"
+require "immediateInstructions/orq_r64_imm8.k"
+require "immediateInstructions/dppd_xmm_xmm_imm8.k"
+require "immediateInstructions/orl_eax_imm32.k"
+require "immediateInstructions/vpblendd_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/imull_r32_r32_imm32.k"
+require "immediateInstructions/vextractps_r32_xmm_imm8.k"
+require "immediateInstructions/extractps_r64_xmm_imm8.k"
+require "immediateInstructions/shlw_r16_imm8.k"
+require "immediateInstructions/vpslld_ymm_ymm_imm8.k"
+require "immediateInstructions/addw_ax_imm16.k"
+require "immediateInstructions/cmpq_r64_imm32.k"
+require "immediateInstructions/shrq_r64_imm8.k"
+require "immediateInstructions/vcmpsd_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/vpextrb_r32_xmm_imm8.k"
+require "immediateInstructions/orw_ax_imm16.k"
+require "immediateInstructions/pcmpistri_xmm_xmm_imm8.k"
+require "immediateInstructions/vshufps_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/vperm2f128_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/vpslld_xmm_xmm_imm8.k"
+require "immediateInstructions/cmpw_r16_imm16.k"
+require "immediateInstructions/andb_al_imm8.k"
+require "immediateInstructions/subq_rax_imm32.k"
+require "immediateInstructions/sall_r32_imm8.k"
+require "immediateInstructions/vpsllq_xmm_xmm_imm8.k"
+require "immediateInstructions/sbbw_r16_imm8.k"
+require "immediateInstructions/xorw_r16_imm8.k"
+require "immediateInstructions/vblendps_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/testb_r8_imm8.k"
+require "immediateInstructions/movb_r8_imm8.k"
+require "immediateInstructions/pextrd_r32_xmm_imm8.k"
+require "immediateInstructions/cmpl_r32_imm32.k"
+require "immediateInstructions/vpermilps_ymm_ymm_imm8.k"
+require "immediateInstructions/vmpsadbw_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/testl_r32_imm32.k"
+require "immediateInstructions/dpps_xmm_xmm_imm8.k"
+require "immediateInstructions/rolw_r16_imm8.k"
+require "immediateInstructions/btcq_r64_imm8.k"
+require "immediateInstructions/subb_r8_imm8.k"
+require "immediateInstructions/vpshufhw_ymm_ymm_imm8.k"
+require "immediateInstructions/vshufpd_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/adcw_r16_imm8.k"
+require "immediateInstructions/xorq_rax_imm32.k"
+require "immediateInstructions/pcmpestrm_xmm_xmm_imm8.k"
+require "immediateInstructions/vpsraw_ymm_ymm_imm8.k"
+require "immediateInstructions/vpextrq_r64_xmm_imm8.k"
+require "immediateInstructions/subq_r64_imm32.k"
+require "immediateInstructions/psrlw_xmm_imm8.k"
+require "immediateInstructions/vpblendw_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/sarq_r64_imm8.k"
+require "immediateInstructions/adcb_r8_imm8.k"
+require "immediateInstructions/orl_r32_imm32.k"
+require "immediateInstructions/vpcmpestrm_xmm_xmm_imm8.k"
+require "immediateInstructions/insertps_xmm_xmm_imm8.k"
+require "immediateInstructions/rcrb_rh_imm8.k"
+require "immediateInstructions/xorb_rh_imm8.k"
+require "immediateInstructions/mpsadbw_xmm_xmm_imm8.k"
+require "immediateInstructions/vcmpps_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/addb_rh_imm8.k"
+require "immediateInstructions/sarl_r32_imm8.k"
+require "immediateInstructions/xorb_r8_imm8.k"
+require "immediateInstructions/vpsrldq_xmm_xmm_imm8.k"
+require "immediateInstructions/pushq_imm16.k"
+require "immediateInstructions/vshufps_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/subw_ax_imm16.k"
+require "immediateInstructions/vpsrad_ymm_ymm_imm8.k"
+require "immediateInstructions/vpshuflw_xmm_xmm_imm8.k"
+require "immediateInstructions/roundss_xmm_xmm_imm8.k"
+require "immediateInstructions/palignr_xmm_xmm_imm8.k"
+require "immediateInstructions/roundsd_xmm_xmm_imm8.k"
+require "immediateInstructions/shrb_r8_imm8.k"
+require "immediateInstructions/vpblendw_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/testq_rax_imm32.k"
+require "immediateInstructions/vroundpd_xmm_xmm_imm8.k"
+require "immediateInstructions/subq_r64_imm8.k"
+require "immediateInstructions/cmpl_eax_imm32.k"
+require "immediateInstructions/vextracti128_xmm_ymm_imm8.k"
+require "immediateInstructions/pshufd_xmm_xmm_imm8.k"
+require "immediateInstructions/sbbb_rh_imm8.k"
+require "immediateInstructions/pinsrw_xmm_r32_imm8.k"
+require "immediateInstructions/addl_r32_imm32.k"
+require "immediateInstructions/cmpq_r64_label.k"
+require "immediateInstructions/xorq_r64_imm32.k"
+require "immediateInstructions/vblendpd_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/vcmpss_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/andl_r32_imm32.k"
+require "immediateInstructions/shrl_r32_imm8.k"
+require "immediateInstructions/vpcmpistri_xmm_xmm_imm8.k"
+require "immediateInstructions/vpsrlw_xmm_xmm_imm8.k"
+require "immediateInstructions/vpinsrd_xmm_xmm_r32_imm8.k"
+require "immediateInstructions/sbbq_r64_imm8.k"
+require "immediateInstructions/vpsrad_xmm_xmm_imm8.k"
+require "immediateInstructions/orb_al_imm8.k"
+require "immediateInstructions/vpsllw_ymm_ymm_imm8.k"
+require "immediateInstructions/vinsertf128_ymm_ymm_xmm_imm8.k"
+require "immediateInstructions/psrld_xmm_imm8.k"
+require "immediateInstructions/pextrw_r32_xmm_imm8.k"
+require "immediateInstructions/vdpps_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/shlb_r8_imm8.k"
+require "immediateInstructions/pslldq_xmm_imm8.k"
+require "immediateInstructions/pinsrd_xmm_r32_imm8.k"
+require "immediateInstructions/pcmpistrm_xmm_xmm_imm8.k"
+require "immediateInstructions/roundps_xmm_xmm_imm8.k"
+require "immediateInstructions/sbbb_al_imm8.k"
+require "immediateInstructions/imulq_r64_r64_imm8.k"
+require "immediateInstructions/btw_r16_imm8.k"
+require "immediateInstructions/adcl_r32_imm8.k"
+require "immediateInstructions/addb_r8_imm8.k"
+require "immediateInstructions/shlb_rh_imm8.k"
+require "immediateInstructions/vcmppd_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/testq_r64_imm32.k"
+require "immediateInstructions/addq_rax_imm32.k"
+require "immediateInstructions/vextractf128_xmm_ymm_imm8.k"
+require "immediateInstructions/cmpsd_xmm_xmm_imm8.k"
+require "immediateInstructions/andw_r16_imm8.k"
+require "immediateInstructions/vpermilps_xmm_xmm_imm8.k"
+require "immediateInstructions/cmpb_r8_imm8.k"
+require "immediateInstructions/rclw_r16_imm8.k"
+require "immediateInstructions/xorw_r16_imm16.k"
+require "immediateInstructions/imull_r32_r32_imm8.k"
+require "immediateInstructions/vinserti128_ymm_ymm_xmm_imm8.k"
+require "immediateInstructions/rorl_r32_imm8.k"
+require "immediateInstructions/xorl_r32_imm32.k"
+require "immediateInstructions/vpermilpd_xmm_xmm_imm8.k"
+require "immediateInstructions/salw_r16_imm8.k"
+require "immediateInstructions/vblendpd_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/pushq_imm32.k"
+require "immediateInstructions/vroundps_ymm_ymm_imm8.k"
+require "immediateInstructions/vpclmulqdq_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/psraw_xmm_imm8.k"
+require "immediateInstructions/btrl_r32_imm8.k"
+require "immediateInstructions/pushq_imm8.k"
+require "immediateInstructions/subw_r16_imm8.k"
+require "immediateInstructions/vpalignr_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/rorq_r64_imm8.k"
+require "immediateInstructions/vperm2i128_ymm_ymm_ymm_imm8.k"
+require "immediateInstructions/andq_rax_imm32.k"
+require "immediateInstructions/xorq_r64_imm8.k"
+require "immediateInstructions/xorb_al_imm8.k"
+require "immediateInstructions/psrldq_xmm_imm8.k"
+require "immediateInstructions/shrb_rh_imm8.k"
+require "immediateInstructions/btq_r64_imm8.k"
+require "immediateInstructions/psllq_xmm_imm8.k"
+require "immediateInstructions/vpshufd_xmm_xmm_imm8.k"
+require "immediateInstructions/adcq_r64_imm32.k"
+require "immediateInstructions/imulw_r16_r16_imm16.k"
+require "immediateInstructions/shrw_r16_imm8.k"
+require "immediateInstructions/shldq_r64_r64_imm8.k"
+require "immediateInstructions/vpsrlq_ymm_ymm_imm8.k"
+require "immediateInstructions/subb_al_imm8.k"
+require "immediateInstructions/cmpq_r64_imm8.k"
+require "immediateInstructions/shrdw_r16_r16_imm8.k"
+require "immediateInstructions/vpcmpestri_xmm_xmm_imm8.k"
+require "immediateInstructions/rclb_rh_imm8.k"
+require "immediateInstructions/rcrq_r64_imm8.k"
+require "immediateInstructions/testl_eax_imm32.k"
+require "immediateInstructions/sbbl_r32_imm8.k"
+require "immediateInstructions/rorxl_r32_r32_imm8.k"
+require "immediateInstructions/vpslldq_xmm_xmm_imm8.k"
+require "immediateInstructions/xorl_eax_imm32.k"
+require "immediateInstructions/adcw_r16_imm16.k"
+require "immediateInstructions/cmpps_xmm_xmm_imm8.k"
+require "immediateInstructions/rorb_rh_imm8.k"
+require "immediateInstructions/vpblendd_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/pslld_xmm_imm8.k"
+require "immediateInstructions/vpsrlw_ymm_ymm_imm8.k"
+require "immediateInstructions/vpsrlq_xmm_xmm_imm8.k"
+require "immediateInstructions/shrdl_r32_r32_imm8.k"
+require "immediateInstructions/vpermq_ymm_ymm_imm8.k"
+require "immediateInstructions/vpextrw_r32_xmm_imm8.k"
+require "immediateInstructions/vpextrd_r32_xmm_imm8.k"
+require "immediateInstructions/pcmpestri_xmm_xmm_imm8.k"
+require "immediateInstructions/shll_r32_imm8.k"
+require "immediateInstructions/pinsrb_xmm_r32_imm8.k"
+require "immediateInstructions/subl_r32_imm8.k"
+require "immediateInstructions/vpsrldq_ymm_ymm_imm8.k"
+require "immediateInstructions/movl_r32_label.k"
+require "immediateInstructions/adcq_r64_imm8.k"
+require "immediateInstructions/rcll_r32_imm8.k"
+require "immediateInstructions/vpinsrq_xmm_xmm_r64_imm8.k"
+require "immediateInstructions/salq_r64_imm8.k"
+require "immediateInstructions/andl_r32_imm8.k"
+require "immediateInstructions/vpsrld_ymm_ymm_imm8.k"
+require "immediateInstructions/orb_rh_imm8.k"
+require "immediateInstructions/addl_eax_imm32.k"
+require "immediateInstructions/rolq_r64_imm8.k"
+require "immediateInstructions/pclmulqdq_xmm_xmm_imm8.k"
+require "immediateInstructions/btsl_r32_imm8.k"
+require "immediateInstructions/testw_ax_imm16.k"
+require "immediateInstructions/cmpb_al_imm8.k"
+require "immediateInstructions/vpcmpistrm_xmm_xmm_imm8.k"
+require "immediateInstructions/cmppd_xmm_xmm_imm8.k"
+require "immediateInstructions/vpermpd_ymm_ymm_imm8.k"
+require "immediateInstructions/rcrw_r16_imm8.k"
+require "immediateInstructions/vdppd_xmm_xmm_xmm_imm8.k"
+require "immediateInstructions/pextrb_r32_xmm_imm8.k"
+require "immediateInstructions/extractps_r32_xmm_imm8.k"
+require "immediateInstructions/vpextrw_r64_xmm_imm8.k"
+require "immediateInstructions/sarb_r8_imm8.k"
+require "immediateInstructions/pblendw_xmm_xmm_imm8.k"
+require "immediateInstructions/vroundpd_ymm_ymm_imm8.k"
+require "immediateInstructions/imulw_r16_r16_imm8.k"
+require "immediateInstructions/vpslldq_ymm_ymm_imm8.k"
+require "immediateInstructions/andl_eax_imm32.k"
+require "immediateInstructions/vcvtps2ph_xmm_xmm_imm8.k"
+require "immediateInstructions/addw_r16_imm16.k"
+require "immediateInstructions/andb_rh_imm8.k"
+require "immediateInstructions/sbbw_r16_imm16.k"
+
+
+
+require "registerInstructions/nop.k"
+require "registerInstructions/xchgl_r32_eax.k"
+require "registerInstructions/btcq_r64_r64.k"
+require "registerInstructions/vpsubw_ymm_ymm_ymm.k"
+require "registerInstructions/sqrtps_xmm_xmm.k"
+require "registerInstructions/por_xmm_xmm.k"
+require "registerInstructions/phsubsw_xmm_xmm.k"
+require "registerInstructions/vpmaddubsw_xmm_xmm_xmm.k"
+require "registerInstructions/vfmadd132pd_ymm_ymm_ymm.k"
+require "registerInstructions/divb_r8.k"
+require "registerInstructions/cmovpl_r32_r32.k"
+require "registerInstructions/psrld_xmm_xmm.k"
+require "registerInstructions/vfmaddsub231ps_ymm_ymm_ymm.k"
+require "registerInstructions/divss_xmm_xmm.k"
+require "registerInstructions/pmaxsb_xmm_xmm.k"
+require "registerInstructions/bzhiq_r64_r64_r64.k"
+require "registerInstructions/salq_r64_one.k"
+require "registerInstructions/nopw_r16.k"
+require "registerInstructions/movswq_r64_r16.k"
+require "registerInstructions/movq_r64_xmm.k"
+require "registerInstructions/sarw_r16_cl.k"
+require "registerInstructions/packssdw_xmm_xmm.k"
+require "registerInstructions/setl_rh.k"
+require "registerInstructions/vcvtsi2sdl_xmm_xmm_r32.k"
+require "registerInstructions/vcvttss2si_r64_xmm.k"
+require "registerInstructions/psllq_xmm_xmm.k"
+require "registerInstructions/pxor_xmm_xmm.k"
+require "registerInstructions/vmovq_r64_xmm.k"
+require "registerInstructions/paddq_xmm_xmm.k"
+require "registerInstructions/vpsrlw_xmm_xmm_xmm.k"
+require "registerInstructions/vfmadd231ss_xmm_xmm_xmm.k"
+require "registerInstructions/movhlps_xmm_xmm.k"
+require "registerInstructions/movsbl_r32_r8.k"
+require "registerInstructions/cmovsq_r64_r64.k"
+require "registerInstructions/cmovnsw_r16_r16.k"
+require "registerInstructions/vfnmadd213ps_ymm_ymm_ymm.k"
+require "registerInstructions/psubd_xmm_xmm.k"
+require "registerInstructions/rcrq_r64_one.k"
+require "registerInstructions/rclw_r16_one.k"
+require "registerInstructions/vpsadbw_xmm_xmm_xmm.k"
+require "registerInstructions/cvttss2si_r64_xmm.k"
+require "registerInstructions/vpbroadcastb_ymm_xmm.k"
+require "registerInstructions/cmovngel_r32_r32.k"
+require "registerInstructions/rcpps_xmm_xmm.k"
+require "registerInstructions/vpmaxsw_ymm_ymm_ymm.k"
+require "registerInstructions/blendvpd_xmm_xmm_xmm0.k"
+require "registerInstructions/sbbb_rh_r8.k"
+require "registerInstructions/vfnmadd213pd_xmm_xmm_xmm.k"
+require "registerInstructions/vpmaddwd_ymm_ymm_ymm.k"
+require "registerInstructions/vpunpcklwd_ymm_ymm_ymm.k"
+require "registerInstructions/xaddq_r64_r64.k"
+require "registerInstructions/addw_r16_r16.k"
+require "registerInstructions/vpermilps_xmm_xmm_xmm.k"
+require "registerInstructions/xchgl_r32_r32.k"
+require "registerInstructions/sbbw_r16_r16.k"
+require "registerInstructions/pabsd_xmm_xmm.k"
+require "registerInstructions/setz_r8.k"
+require "registerInstructions/andnps_xmm_xmm.k"
+require "registerInstructions/setnc_rh.k"
+require "registerInstructions/vpmovmskb_r64_xmm.k"
+require "registerInstructions/pcmpeqb_xmm_xmm.k"
+require "registerInstructions/vpackuswb_ymm_ymm_ymm.k"
+require "registerInstructions/vpmovzxbw_ymm_xmm.k"
+require "registerInstructions/vpackssdw_xmm_xmm_xmm.k"
+require "registerInstructions/vfmsubadd231pd_ymm_ymm_ymm.k"
+require "registerInstructions/cmoval_r32_r32.k"
+require "registerInstructions/vpsllq_ymm_ymm_xmm.k"
+require "registerInstructions/bextrq_r64_r64_r64.k"
+require "registerInstructions/mulb_rh.k"
+require "registerInstructions/pmaxud_xmm_xmm.k"
+require "registerInstructions/cvtdq2ps_xmm_xmm.k"
+require "registerInstructions/ptest_xmm_xmm.k"
+require "registerInstructions/cvtps2dq_xmm_xmm.k"
+require "registerInstructions/vfmaddsub213pd_ymm_ymm_ymm.k"
+require "registerInstructions/cvtss2si_r32_xmm.k"
+require "registerInstructions/negb_r8.k"
+require "registerInstructions/rclq_r64_cl.k"
+require "registerInstructions/shldq_r64_r64_cl.k"
+require "registerInstructions/vpmovzxbd_xmm_xmm.k"
+require "registerInstructions/salq_r64_cl.k"
+require "registerInstructions/imull_r32_r32.k"
+require "registerInstructions/vpavgb_ymm_ymm_ymm.k"
+require "registerInstructions/btrq_r64_r64.k"
+require "registerInstructions/paddusb_xmm_xmm.k"
+require "registerInstructions/vorps_ymm_ymm_ymm.k"
+require "registerInstructions/mull_r32.k"
+require "registerInstructions/cmovpoq_r64_r64.k"
+require "registerInstructions/cvtdq2pd_xmm_xmm.k"
+require "registerInstructions/cvtsd2ss_xmm_xmm.k"
+require "registerInstructions/vcvttpd2dq_xmm_xmm.k"
+require "registerInstructions/vmovdqu_xmm_xmm.k"
+require "registerInstructions/vfmsubadd213pd_ymm_ymm_ymm.k"
+require "registerInstructions/andb_rh_rh.k"
+require "registerInstructions/vpsubb_xmm_xmm_xmm.k"
+require "registerInstructions/setna_r8.k"
+require "registerInstructions/vpmulhrsw_xmm_xmm_xmm.k"
+require "registerInstructions/andb_r8_rh.k"
+require "registerInstructions/vpunpckhbw_ymm_ymm_ymm.k"
+require "registerInstructions/movmskpd_r32_xmm.k"
+require "registerInstructions/nopl_r32.k"
+require "registerInstructions/rcrw_r16_one.k"
+require "registerInstructions/cmovnsq_r64_r64.k"
+require "registerInstructions/sqrtss_xmm_xmm.k"
+require "registerInstructions/addsubpd_xmm_xmm.k"
+require "registerInstructions/setne_r8.k"
+require "registerInstructions/sarb_rh_cl.k"
+require "registerInstructions/pmulhuw_xmm_xmm.k"
+require "registerInstructions/rsqrtps_xmm_xmm.k"
+require "registerInstructions/cmovnael_r32_r32.k"
+require "registerInstructions/blsil_r32_r32.k"
+require "registerInstructions/vpmuludq_xmm_xmm_xmm.k"
+require "registerInstructions/vcvtss2si_r64_xmm.k"
+require "registerInstructions/vunpcklps_xmm_xmm_xmm.k"
+require "registerInstructions/paddb_xmm_xmm.k"
+require "registerInstructions/cmovnbl_r32_r32.k"
+require "registerInstructions/vmovmskpd_r64_xmm.k"
+require "registerInstructions/vpmullw_ymm_ymm_ymm.k"
+require "registerInstructions/psubusb_xmm_xmm.k"
+require "registerInstructions/psadbw_xmm_xmm.k"
+require "registerInstructions/decw_r16.k"
+require "registerInstructions/vpsrlvq_xmm_xmm_xmm.k"
+require "registerInstructions/phaddsw_xmm_xmm.k"
+require "registerInstructions/vunpckhpd_xmm_xmm_xmm.k"
+require "registerInstructions/vmulps_xmm_xmm_xmm.k"
+require "registerInstructions/vpor_ymm_ymm_ymm.k"
+require "registerInstructions/vfmaddsub132ps_xmm_xmm_xmm.k"
+require "registerInstructions/punpckhdq_xmm_xmm.k"
+require "registerInstructions/vpmovsxbd_xmm_xmm.k"
+require "registerInstructions/bsfq_r64_r64.k"
+require "registerInstructions/vcvttss2si_r32_xmm.k"
+require "registerInstructions/pcmpeqq_xmm_xmm.k"
+require "registerInstructions/pmovzxbq_xmm_xmm.k"
+require "registerInstructions/movmskpd_r64_xmm.k"
+require "registerInstructions/movb_r8_rh.k"
+require "registerInstructions/psrlq_xmm_xmm.k"
+require "registerInstructions/vpcmpeqw_xmm_xmm_xmm.k"
+require "registerInstructions/vfnmadd132sd_xmm_xmm_xmm.k"
+require "registerInstructions/setge_r8.k"
+require "registerInstructions/sete_r8.k"
+require "registerInstructions/addsubps_xmm_xmm.k"
+require "registerInstructions/setge_rh.k"
+require "registerInstructions/sbbq_r64_r64.k"
+require "registerInstructions/pcmpgtw_xmm_xmm.k"
+require "registerInstructions/phaddw_xmm_xmm.k"
+require "registerInstructions/xaddb_rh_r8.k"
+require "registerInstructions/vfnmadd231ps_xmm_xmm_xmm.k"
+require "registerInstructions/negw_r16.k"
+require "registerInstructions/vrsqrtps_xmm_xmm.k"
+require "registerInstructions/notw_r16.k"
+require "registerInstructions/vpaddb_xmm_xmm_xmm.k"
+require "registerInstructions/unpckhpd_xmm_xmm.k"
+require "registerInstructions/vphsubd_ymm_ymm_ymm.k"
+require "registerInstructions/vpsadbw_ymm_ymm_ymm.k"
+require "registerInstructions/vpminub_xmm_xmm_xmm.k"
+require "registerInstructions/vpblendvb_xmm_xmm_xmm_xmm.k"
+require "registerInstructions/pmaxsw_xmm_xmm.k"
+require "registerInstructions/cmovgl_r32_r32.k"
+require "registerInstructions/addl_r32_r32.k"
+require "registerInstructions/punpcklwd_xmm_xmm.k"
+require "registerInstructions/vpcmpeqb_xmm_xmm_xmm.k"
+require "registerInstructions/setna_rh.k"
+require "registerInstructions/setng_rh.k"
+require "registerInstructions/movlhps_xmm_xmm.k"
+require "registerInstructions/shrb_rh_cl.k"
+require "registerInstructions/movshdup_xmm_xmm.k"
+require "registerInstructions/xaddb_r8_rh.k"
+require "registerInstructions/pmovmskb_r32_xmm.k"
+require "registerInstructions/movss_xmm_xmm.k"
+require "registerInstructions/setns_r8.k"
+require "registerInstructions/cmovow_r16_r16.k"
+require "registerInstructions/vfmsub132ss_xmm_xmm_xmm.k"
+require "registerInstructions/rorb_rh_one.k"
+require "registerInstructions/cmpb_r8_r8.k"
+require "registerInstructions/setb_rh.k"
+require "registerInstructions/pcmpgtq_xmm_xmm.k"
+require "registerInstructions/hsubps_xmm_xmm.k"
+require "registerInstructions/vfmadd231sd_xmm_xmm_xmm.k"
+require "registerInstructions/vphsubw_xmm_xmm_xmm.k"
+require "registerInstructions/vcvttsd2si_r64_xmm.k"
+require "registerInstructions/movsbw_r16_rh.k"
+require "registerInstructions/vfnmadd213ps_xmm_xmm_xmm.k"
+require "registerInstructions/rclb_rh_one.k"
+require "registerInstructions/vpunpckhqdq_ymm_ymm_ymm.k"
+require "registerInstructions/rcll_r32_one.k"
+require "registerInstructions/vaddsubps_ymm_ymm_ymm.k"
+require "registerInstructions/subps_xmm_xmm.k"
+require "registerInstructions/vcvtpd2ps_xmm_ymm.k"
+require "registerInstructions/vpmovsxwq_xmm_xmm.k"
+require "registerInstructions/addsd_xmm_xmm.k"
+require "registerInstructions/vhaddpd_xmm_xmm_xmm.k"
+require "registerInstructions/vsubps_xmm_xmm_xmm.k"
+require "registerInstructions/cmovzq_r64_r64.k"
+require "registerInstructions/vfmsubadd132pd_ymm_ymm_ymm.k"
+require "registerInstructions/vfmaddsub231pd_xmm_xmm_xmm.k"
+require "registerInstructions/setnl_rh.k"
+require "registerInstructions/vpandn_ymm_ymm_ymm.k"
+require "registerInstructions/adcw_r16_r16.k"
+require "registerInstructions/vfnmsub231ps_ymm_ymm_ymm.k"
+require "registerInstructions/vmulps_ymm_ymm_ymm.k"
+require "registerInstructions/cmovnzq_r64_r64.k"
+require "registerInstructions/cmovpel_r32_r32.k"
+require "registerInstructions/shlxq_r64_r64_r64.k"
+require "registerInstructions/vmaxpd_xmm_xmm_xmm.k"
+require "registerInstructions/pminuw_xmm_xmm.k"
+require "registerInstructions/vfnmsub213ps_ymm_ymm_ymm.k"
+require "registerInstructions/shrxl_r32_r32_r32.k"
+require "registerInstructions/vpaddq_xmm_xmm_xmm.k"
+require "registerInstructions/popcntq_r64_r64.k"
+require "registerInstructions/vpmaxub_ymm_ymm_ymm.k"
+require "registerInstructions/shlq_r64_cl.k"
+require "registerInstructions/pmaddubsw_xmm_xmm.k"
+require "registerInstructions/pminsw_xmm_xmm.k"
+require "registerInstructions/packsswb_xmm_xmm.k"
+require "registerInstructions/vphaddw_ymm_ymm_ymm.k"
+require "registerInstructions/setnz_rh.k"
+require "registerInstructions/cmovnzw_r16_r16.k"
+require "registerInstructions/pmovmskb_r64_xmm.k"
+require "registerInstructions/vpmulld_ymm_ymm_ymm.k"
+require "registerInstructions/vdivsd_xmm_xmm_xmm.k"
+require "registerInstructions/sbbb_r8_rh.k"
+require "registerInstructions/vpmovsxbq_xmm_xmm.k"
+require "registerInstructions/vfmaddsub132ps_ymm_ymm_ymm.k"
+require "registerInstructions/maxps_xmm_xmm.k"
+require "registerInstructions/vpshufb_xmm_xmm_xmm.k"
+require "registerInstructions/vfmaddsub213ps_ymm_ymm_ymm.k"
+require "registerInstructions/cmovpol_r32_r32.k"
+require "registerInstructions/pminsb_xmm_xmm.k"
+require "registerInstructions/popcntw_r16_r16.k"
+require "registerInstructions/testq_r64_r64.k"
+require "registerInstructions/vpunpcklqdq_ymm_ymm_ymm.k"
+require "registerInstructions/haddpd_xmm_xmm.k"
+require "registerInstructions/vpsubd_xmm_xmm_xmm.k"
+require "registerInstructions/vpaddsb_ymm_ymm_ymm.k"
+require "registerInstructions/vpaddq_ymm_ymm_ymm.k"
+require "registerInstructions/vmovmskpd_r32_ymm.k"
+require "registerInstructions/pmovsxwd_xmm_xmm.k"
+require "registerInstructions/cvttsd2si_r64_xmm.k"
+require "registerInstructions/setnp_r8.k"
+require "registerInstructions/sarb_rh_one.k"
+require "registerInstructions/vsubpd_xmm_xmm_xmm.k"
+require "registerInstructions/divps_xmm_xmm.k"
+require "registerInstructions/vmovups_ymm_ymm.k"
+require "registerInstructions/vpaddsb_xmm_xmm_xmm.k"
+require "registerInstructions/cmpxchgb_r8_r8.k"
+require "registerInstructions/rorw_r16_one.k"
+require "registerInstructions/xaddw_r16_r16.k"
+require "registerInstructions/vpunpckhdq_ymm_ymm_ymm.k"
+require "registerInstructions/vfmadd231ps_ymm_ymm_ymm.k"
+require "registerInstructions/vphsubsw_ymm_ymm_ymm.k"
+require "registerInstructions/maxss_xmm_xmm.k"
+require "registerInstructions/andb_r8_r8.k"
+require "registerInstructions/vmovdqa_ymm_ymm.k"
+require "registerInstructions/setnge_rh.k"
+require "registerInstructions/cmovcl_r32_r32.k"
+require "registerInstructions/paddsb_xmm_xmm.k"
+require "registerInstructions/cmovnew_r16_r16.k"
+require "registerInstructions/vpsrlq_ymm_ymm_xmm.k"
+require "registerInstructions/cmpb_rh_rh.k"
+require "registerInstructions/vmaxps_xmm_xmm_xmm.k"
+require "registerInstructions/vfmadd213ss_xmm_xmm_xmm.k"
+require "registerInstructions/vphsubd_xmm_xmm_xmm.k"
+require "registerInstructions/addps_xmm_xmm.k"
+require "registerInstructions/xorw_r16_r16.k"
+require "registerInstructions/hsubpd_xmm_xmm.k"
+require "registerInstructions/vfmsub231pd_ymm_ymm_ymm.k"
+require "registerInstructions/setae_rh.k"
+require "registerInstructions/rcrb_rh_cl.k"
+require "registerInstructions/vpackusdw_xmm_xmm_xmm.k"
+require "registerInstructions/movq_xmm_r64.k"
+require "registerInstructions/negb_rh.k"
+require "registerInstructions/subw_r16_r16.k"
+require "registerInstructions/vfmadd132ps_xmm_xmm_xmm.k"
+require "registerInstructions/vpmovsxbw_ymm_xmm.k"
+require "registerInstructions/cwtd.k"
+require "registerInstructions/pavgb_xmm_xmm.k"
+require "registerInstructions/vcomiss_xmm_xmm.k"
+require "registerInstructions/rclb_rh_cl.k"
+require "registerInstructions/vaddpd_xmm_xmm_xmm.k"
+require "registerInstructions/xchgb_rh_r8.k"
+require "registerInstructions/vpsllvq_xmm_xmm_xmm.k"
+require "registerInstructions/vfmsubadd132ps_ymm_ymm_ymm.k"
+require "registerInstructions/psubq_xmm_xmm.k"
+require "registerInstructions/vmaxps_ymm_ymm_ymm.k"
+require "registerInstructions/setnbe_r8.k"
+require "registerInstructions/cmpxchgb_rh_rh.k"
+require "registerInstructions/pmovsxbd_xmm_xmm.k"
+require "registerInstructions/orb_r8_rh.k"
+require "registerInstructions/vhaddpd_ymm_ymm_ymm.k"
+require "registerInstructions/vmaxss_xmm_xmm_xmm.k"
+require "registerInstructions/imulw_r16.k"
+require "registerInstructions/cmovaw_r16_r16.k"
+require "registerInstructions/vucomisd_xmm_xmm.k"
+require "registerInstructions/psubusw_xmm_xmm.k"
+require "registerInstructions/vfmadd231ps_xmm_xmm_xmm.k"
+require "registerInstructions/movups_xmm_xmm.k"
+require "registerInstructions/vsubpd_ymm_ymm_ymm.k"
+require "registerInstructions/vphminposuw_xmm_xmm.k"
+require "registerInstructions/vandnps_xmm_xmm_xmm.k"
+require "registerInstructions/vorpd_ymm_ymm_ymm.k"
+require "registerInstructions/vmaxsd_xmm_xmm_xmm.k"
+require "registerInstructions/blsrq_r64_r64.k"
+require "registerInstructions/vpsubusw_xmm_xmm_xmm.k"
+require "registerInstructions/vpackuswb_xmm_xmm_xmm.k"
+require "registerInstructions/cmovlew_r16_r16.k"
+require "registerInstructions/rorl_r32_cl.k"
+require "registerInstructions/vfnmadd132ps_xmm_xmm_xmm.k"
+require "registerInstructions/sarw_r16_one.k"
+require "registerInstructions/rclb_r8_one.k"
+require "registerInstructions/pdepl_r32_r32_r32.k"
+require "registerInstructions/vpmuludq_ymm_ymm_ymm.k"
+require "registerInstructions/pabsw_xmm_xmm.k"
+require "registerInstructions/vfnmadd132ps_ymm_ymm_ymm.k"
+require "registerInstructions/setno_r8.k"
+require "registerInstructions/cmovpew_r16_r16.k"
+require "registerInstructions/vpavgb_xmm_xmm_xmm.k"
+require "registerInstructions/vfmsub231ps_ymm_ymm_ymm.k"
+require "registerInstructions/cmovnal_r32_r32.k"
+require "registerInstructions/sarl_r32_one.k"
+require "registerInstructions/btl_r32_r32.k"
+require "registerInstructions/cvttss2si_r32_xmm.k"
+require "registerInstructions/vfmsubadd132pd_xmm_xmm_xmm.k"
+require "registerInstructions/vpcmpeqq_ymm_ymm_ymm.k"
+require "registerInstructions/movzbl_r32_rh.k"
+require "registerInstructions/vaddpd_ymm_ymm_ymm.k"
+require "registerInstructions/cmovnaw_r16_r16.k"
+require "registerInstructions/cmovnlw_r16_r16.k"
+require "registerInstructions/cmovnaeq_r64_r64.k"
+require "registerInstructions/xorpd_xmm_xmm.k"
+require "registerInstructions/sarb_r8_one.k"
+require "registerInstructions/vpmovzxbq_xmm_xmm.k"
+require "registerInstructions/vfmsub213ps_ymm_ymm_ymm.k"
+require "registerInstructions/vxorpd_xmm_xmm_xmm.k"
+require "registerInstructions/vcvtps2dq_xmm_xmm.k"
+require "registerInstructions/vpmaxsd_ymm_ymm_ymm.k"
+require "registerInstructions/punpckhqdq_xmm_xmm.k"
+require "registerInstructions/cmovaeq_r64_r64.k"
+require "registerInstructions/sqrtsd_xmm_xmm.k"
+require "registerInstructions/cvttps2dq_xmm_xmm.k"
+require "registerInstructions/btrl_r32_r32.k"
+require "registerInstructions/sbbb_rh_rh.k"
+require "registerInstructions/idivq_r64.k"
+require "registerInstructions/vmovdqu_ymm_ymm.k"
+require "registerInstructions/vpcmpgtd_xmm_xmm_xmm.k"
+require "registerInstructions/setnb_rh.k"
+require "registerInstructions/adcl_r32_r32.k"
+require "registerInstructions/vpsravd_xmm_xmm_xmm.k"
+require "registerInstructions/setno_rh.k"
+require "registerInstructions/vpermilpd_xmm_xmm_xmm.k"
+require "registerInstructions/cmovnlew_r16_r16.k"
+require "registerInstructions/subb_r8_r8.k"
+require "registerInstructions/shlb_r8_one.k"
+require "registerInstructions/vfnmadd213ss_xmm_xmm_xmm.k"
+require "registerInstructions/decl_r32.k"
+require "registerInstructions/cvtps2pd_xmm_xmm.k"
+require "registerInstructions/xchgl_eax_r32.k"
+require "registerInstructions/vzeroall.k"
+require "registerInstructions/vtestpd_ymm_ymm.k"
+require "registerInstructions/pextq_r64_r64_r64.k"
+require "registerInstructions/btq_r64_r64.k"
+require "registerInstructions/vpminub_ymm_ymm_ymm.k"
+require "registerInstructions/phsubd_xmm_xmm.k"
+require "registerInstructions/vminps_ymm_ymm_ymm.k"
+require "registerInstructions/vpbroadcastw_xmm_xmm.k"
+require "registerInstructions/vblendvps_xmm_xmm_xmm_xmm.k"
+require "registerInstructions/unpcklps_xmm_xmm.k"
+require "registerInstructions/mulq_r64.k"
+require "registerInstructions/vhsubps_ymm_ymm_ymm.k"
+require "registerInstructions/rolq_r64_one.k"
+require "registerInstructions/cltq.k"
+require "registerInstructions/vfmsubadd213pd_xmm_xmm_xmm.k"
+require "registerInstructions/paddw_xmm_xmm.k"
+require "registerInstructions/sbbl_r32_r32.k"
+require "registerInstructions/vcvtsi2ssl_xmm_xmm_r32.k"
+require "registerInstructions/imulw_r16_r16.k"
+require "registerInstructions/shll_r32_one.k"
+require "registerInstructions/orps_xmm_xmm.k"
+require "registerInstructions/vfmsub231ss_xmm_xmm_xmm.k"
+require "registerInstructions/vfnmsub132pd_xmm_xmm_xmm.k"
+require "registerInstructions/andw_r16_r16.k"
+require "registerInstructions/xaddl_r32_r32.k"
+require "registerInstructions/vmovmskpd_r32_xmm.k"
+require "registerInstructions/movdqa_xmm_xmm.k"
+require "registerInstructions/shlq_r64_one.k"
+require "registerInstructions/pmulhrsw_xmm_xmm.k"
+require "registerInstructions/movzbq_r64_r8.k"
+require "registerInstructions/blendvps_xmm_xmm_xmm0.k"
+require "registerInstructions/andnq_r64_r64_r64.k"
+require "registerInstructions/cmovaq_r64_r64.k"
+require "registerInstructions/rolw_r16_cl.k"
+require "registerInstructions/testb_rh_rh.k"
+require "registerInstructions/vhaddps_ymm_ymm_ymm.k"
+require "registerInstructions/shrl_r32_one.k"
+require "registerInstructions/maskmovdqu_xmm_xmm.k"
+require "registerInstructions/vpsubusb_xmm_xmm_xmm.k"
+require "registerInstructions/shrl_r32_cl.k"
+require "registerInstructions/pmaxub_xmm_xmm.k"
+require "registerInstructions/idivb_rh.k"
+require "registerInstructions/vpunpcklwd_xmm_xmm_xmm.k"
+require "registerInstructions/vmaxpd_ymm_ymm_ymm.k"
+require "registerInstructions/vfmsub231ps_xmm_xmm_xmm.k"
+require "registerInstructions/vunpcklpd_ymm_ymm_ymm.k"
+require "registerInstructions/pblendvb_xmm_xmm_xmm0.k"
+require "registerInstructions/vhsubps_xmm_xmm_xmm.k"
+require "registerInstructions/vmovmskps_r32_ymm.k"
+require "registerInstructions/vpminuw_xmm_xmm_xmm.k"
+require "registerInstructions/vtestps_xmm_xmm.k"
+require "registerInstructions/orq_r64_r64.k"
+require "registerInstructions/blsmskl_r32_r32.k"
+require "registerInstructions/vpmovmskb_r32_xmm.k"
+require "registerInstructions/vmulpd_ymm_ymm_ymm.k"
+require "registerInstructions/incb_r8.k"
+require "registerInstructions/vrsqrtps_ymm_ymm.k"
+require "registerInstructions/cmovpeq_r64_r64.k"
+require "registerInstructions/vfnmsub132pd_ymm_ymm_ymm.k"
+require "registerInstructions/vcvtdq2pd_xmm_xmm.k"
+require "registerInstructions/vmovd_xmm_r32.k"
+require "registerInstructions/vfmsubadd231ps_xmm_xmm_xmm.k"
+require "registerInstructions/seto_r8.k"
+require "registerInstructions/vpmovsxdq_ymm_xmm.k"
+require "registerInstructions/pmuludq_xmm_xmm.k"
+require "registerInstructions/bsrq_r64_r64.k"
+require "registerInstructions/shrdq_r64_r64_cl.k"
+require "registerInstructions/vaddsubpd_ymm_ymm_ymm.k"
+require "registerInstructions/vpunpckhdq_xmm_xmm_xmm.k"
+require "registerInstructions/sarb_r8_cl.k"
+require "registerInstructions/xchgq_r64_r64.k"
+require "registerInstructions/maxpd_xmm_xmm.k"
+require "registerInstructions/vpmovzxbq_ymm_xmm.k"
+require "registerInstructions/xaddb_r8_r8.k"
+require "registerInstructions/cmovnzl_r32_r32.k"
+require "registerInstructions/cmovnlel_r32_r32.k"
+require "registerInstructions/setz_rh.k"
+require "registerInstructions/vpsllvd_xmm_xmm_xmm.k"
+require "registerInstructions/pminud_xmm_xmm.k"
+require "registerInstructions/rolq_r64_cl.k"
+require "registerInstructions/vpcmpgtd_ymm_ymm_ymm.k"
+require "registerInstructions/vpcmpgtb_xmm_xmm_xmm.k"
+require "registerInstructions/vpaddusb_xmm_xmm_xmm.k"
+require "registerInstructions/notb_r8.k"
+require "registerInstructions/cmpq_r64_r64.k"
+require "registerInstructions/roll_r32_cl.k"
+require "registerInstructions/pavgw_xmm_xmm.k"
+require "registerInstructions/pmovsxbq_xmm_xmm.k"
+require "registerInstructions/vpmaxuw_xmm_xmm_xmm.k"
+require "registerInstructions/vaddsubpd_xmm_xmm_xmm.k"
+require "registerInstructions/pcmpgtd_xmm_xmm.k"
+require "registerInstructions/vblendvps_ymm_ymm_ymm_ymm.k"
+require "registerInstructions/pmulld_xmm_xmm.k"
+require "registerInstructions/vfmadd213ps_ymm_ymm_ymm.k"
+require "registerInstructions/vfnmadd231sd_xmm_xmm_xmm.k"
+require "registerInstructions/cmovnleq_r64_r64.k"
+require "registerInstructions/vpmovsxwq_ymm_xmm.k"
+require "registerInstructions/vdivpd_xmm_xmm_xmm.k"
+require "registerInstructions/unpcklpd_xmm_xmm.k"
+require "registerInstructions/psrlw_xmm_xmm.k"
+require "registerInstructions/setc_r8.k"
+require "registerInstructions/setnz_r8.k"
+require "registerInstructions/vfnmsub132ss_xmm_xmm_xmm.k"
+require "registerInstructions/vmovmskps_r32_xmm.k"
+require "registerInstructions/tzcntl_r32_r32.k"
+require "registerInstructions/cmovnsl_r32_r32.k"
+require "registerInstructions/pminub_xmm_xmm.k"
+require "registerInstructions/vpmulld_xmm_xmm_xmm.k"
+require "registerInstructions/vfmadd132ps_ymm_ymm_ymm.k"
+require "registerInstructions/vcvtsd2si_r32_xmm.k"
+require "registerInstructions/vpor_xmm_xmm_xmm.k"
+require "registerInstructions/vpunpcklbw_ymm_ymm_ymm.k"
+require "registerInstructions/xorb_r8_r8.k"
+require "registerInstructions/rolb_r8_cl.k"
+require "registerInstructions/vfnmsub132ps_xmm_xmm_xmm.k"
+require "registerInstructions/vaddsd_xmm_xmm_xmm.k"
+require "registerInstructions/cmovlw_r16_r16.k"
+require "registerInstructions/pmullw_xmm_xmm.k"
+require "registerInstructions/movddup_xmm_xmm.k"
+require "registerInstructions/vsubsd_xmm_xmm_xmm.k"
+require "registerInstructions/vfnmadd132ss_xmm_xmm_xmm.k"
+require "registerInstructions/vpmovsxbd_ymm_xmm.k"
+require "registerInstructions/mulss_xmm_xmm.k"
+require "registerInstructions/btsw_r16_r16.k"
+require "registerInstructions/vpabsb_xmm_xmm.k"
+require "registerInstructions/vfnmsub213ps_xmm_xmm_xmm.k"
+require "registerInstructions/vcvttps2dq_xmm_xmm.k"
+require "registerInstructions/cmovnpw_r16_r16.k"
+require "registerInstructions/vfmadd132pd_xmm_xmm_xmm.k"
+require "registerInstructions/setnle_r8.k"
+require "registerInstructions/addb_r8_r8.k"
+require "registerInstructions/vpcmpeqb_ymm_ymm_ymm.k"
+require "registerInstructions/setpo_rh.k"
+require "registerInstructions/testw_r16_r16.k"
+require "registerInstructions/imull_r32.k"
+require "registerInstructions/xchgq_r64_rax.k"
+require "registerInstructions/orb_r8_r8.k"
+require "registerInstructions/movq_r64_r64.k"
+require "registerInstructions/mulpd_xmm_xmm.k"
+require "registerInstructions/sete_rh.k"
+require "registerInstructions/decb_rh.k"
+require "registerInstructions/movsbw_r16_r8.k"
+require "registerInstructions/vxorps_xmm_xmm_xmm.k"
+require "registerInstructions/xorb_rh_r8.k"
+require "registerInstructions/vpminud_ymm_ymm_ymm.k"
+require "registerInstructions/setnl_r8.k"
+require "registerInstructions/vpsrld_xmm_xmm_xmm.k"
+require "registerInstructions/lzcntq_r64_r64.k"
+require "registerInstructions/cmovnel_r32_r32.k"
+require "registerInstructions/rcll_r32_cl.k"
+require "registerInstructions/vpsraw_xmm_xmm_xmm.k"
+require "registerInstructions/vmaskmovdqu_xmm_xmm.k"
+require "registerInstructions/incw_r16.k"
+require "registerInstructions/movzwl_r32_r16.k"
+require "registerInstructions/xchgq_rax_r64.k"
+require "registerInstructions/vaddps_xmm_xmm_xmm.k"
+require "registerInstructions/incb_rh.k"
+require "registerInstructions/addss_xmm_xmm.k"
+require "registerInstructions/vmovss_xmm_xmm_xmm.k"
+require "registerInstructions/movzbl_r32_r8.k"
+require "registerInstructions/sbbb_r8_r8.k"
+require "registerInstructions/cmovngew_r16_r16.k"
+require "registerInstructions/vcvtph2ps_ymm_xmm.k"
+require "registerInstructions/negl_r32.k"
+require "registerInstructions/setp_rh.k"
+require "registerInstructions/testb_r8_rh.k"
+require "registerInstructions/vpsrlw_ymm_ymm_xmm.k"
+require "registerInstructions/xchgb_r8_rh.k"
+require "registerInstructions/divsd_xmm_xmm.k"
+require "registerInstructions/pmaxsd_xmm_xmm.k"
+require "registerInstructions/movdqu_xmm_xmm.k"
+require "registerInstructions/cvtsi2ssq_xmm_r64.k"
+require "registerInstructions/lzcntl_r32_r32.k"
+require "registerInstructions/vptest_ymm_ymm.k"
+require "registerInstructions/vmulsd_xmm_xmm_xmm.k"
+require "registerInstructions/vpmaxud_xmm_xmm_xmm.k"
+require "registerInstructions/vcvtdq2pd_ymm_ymm.k"
+require "registerInstructions/cmovnbq_r64_r64.k"
+require "registerInstructions/vfmadd213pd_ymm_ymm_ymm.k"
+require "registerInstructions/vpmovzxdq_ymm_xmm.k"
+require "registerInstructions/vphaddsw_xmm_xmm_xmm.k"
+require "registerInstructions/psignw_xmm_xmm.k"
+require "registerInstructions/cmpxchgw_r16_r16.k"
+require "registerInstructions/vpmulhrsw_ymm_ymm_ymm.k"
+require "registerInstructions/vfnmsub231sd_xmm_xmm_xmm.k"
+require "registerInstructions/cmovnaew_r16_r16.k"
+require "registerInstructions/setle_rh.k"
+require "registerInstructions/vpcmpeqq_xmm_xmm_xmm.k"
+require "registerInstructions/pextl_r32_r32_r32.k"
+require "registerInstructions/vpminsd_ymm_ymm_ymm.k"
+require "registerInstructions/orpd_xmm_xmm.k"
+require "registerInstructions/vpsrlq_xmm_xmm_xmm.k"
+require "registerInstructions/vpmovzxbw_xmm_xmm.k"
+require "registerInstructions/cmovnol_r32_r32.k"
+require "registerInstructions/vmovmskps_r64_ymm.k"
+require "registerInstructions/setnc_r8.k"
+require "registerInstructions/pcmpeqd_xmm_xmm.k"
+require "registerInstructions/movaps_xmm_xmm.k"
+require "registerInstructions/vfmadd213pd_xmm_xmm_xmm.k"
+require "registerInstructions/vpaddw_ymm_ymm_ymm.k"
+require "registerInstructions/cvttpd2dq_xmm_xmm.k"
+require "registerInstructions/setnb_r8.k"
+require "registerInstructions/vorpd_xmm_xmm_xmm.k"
+require "registerInstructions/vcvtps2pd_ymm_xmm.k"
+require "registerInstructions/rorb_rh_cl.k"
+require "registerInstructions/sall_r32_one.k"
+require "registerInstructions/vsqrtss_xmm_xmm_xmm.k"
+require "registerInstructions/vmovshdup_xmm_xmm.k"
+require "registerInstructions/imulb_r8.k"
+require "registerInstructions/rclw_r16_cl.k"
+require "registerInstructions/divw_r16.k"
+require "registerInstructions/vblendvpd_xmm_xmm_xmm_xmm.k"
+require "registerInstructions/imulb_rh.k"
+require "registerInstructions/setp_r8.k"
+require "registerInstructions/cmovll_r32_r32.k"
+require "registerInstructions/vpminsb_ymm_ymm_ymm.k"
+require "registerInstructions/cmovneq_r64_r64.k"
+require "registerInstructions/vpsllq_xmm_xmm_xmm.k"
+require "registerInstructions/cmpxchgb_r8_rh.k"
+require "registerInstructions/seto_rh.k"
+require "registerInstructions/stc.k"
+require "registerInstructions/vfmadd132ss_xmm_xmm_xmm.k"
+require "registerInstructions/vunpckhps_ymm_ymm_ymm.k"
+require "registerInstructions/shrw_r16_cl.k"
+require "registerInstructions/rolw_r16_one.k"
+require "registerInstructions/vphsubsw_xmm_xmm_xmm.k"
+require "registerInstructions/punpckldq_xmm_xmm.k"
+require "registerInstructions/vpunpckhbw_xmm_xmm_xmm.k"
+require "registerInstructions/subl_r32_r32.k"
+require "registerInstructions/movswl_r32_r16.k"
+require "registerInstructions/vpbroadcastd_xmm_xmm.k"
+require "registerInstructions/orw_r16_r16.k"
+require "registerInstructions/phaddd_xmm_xmm.k"
+require "registerInstructions/salb_rh_one.k"
+require "registerInstructions/cmovbew_r16_r16.k"
+require "registerInstructions/rorl_r32_one.k"
+require "registerInstructions/cmovnbw_r16_r16.k"
+require "registerInstructions/vandnpd_xmm_xmm_xmm.k"
+require "registerInstructions/andpd_xmm_xmm.k"
+require "registerInstructions/vpminsb_xmm_xmm_xmm.k"
+require "registerInstructions/vdivps_xmm_xmm_xmm.k"
+require "registerInstructions/vpsllvd_ymm_ymm_ymm.k"
+require "registerInstructions/packusdw_xmm_xmm.k"
+require "registerInstructions/setb_r8.k"
+require "registerInstructions/vpbroadcastq_ymm_xmm.k"
+require "registerInstructions/movsd_xmm_xmm.k"
+require "registerInstructions/testb_rh_r8.k"
+require "registerInstructions/vpmaddubsw_ymm_ymm_ymm.k"
+require "registerInstructions/setnae_rh.k"
+require "registerInstructions/pabsb_xmm_xmm.k"
+require "registerInstructions/haddps_xmm_xmm.k"
+require "registerInstructions/pslld_xmm_xmm.k"
+require "registerInstructions/vsqrtpd_ymm_ymm.k"
+require "registerInstructions/setnbe_rh.k"
+require "registerInstructions/bswap_r64.k"
+require "registerInstructions/imulq_r64.k"
+require "registerInstructions/vfnmsub231pd_ymm_ymm_ymm.k"
+require "registerInstructions/psllw_xmm_xmm.k"
+require "registerInstructions/vpmaxsb_xmm_xmm_xmm.k"
+require "registerInstructions/xaddb_rh_rh.k"
+require "registerInstructions/subq_r64_r64.k"
+require "registerInstructions/cmoveq_r64_r64.k"
+require "registerInstructions/vsqrtsd_xmm_xmm_xmm.k"
+require "registerInstructions/vucomiss_xmm_xmm.k"
+require "registerInstructions/pmuldq_xmm_xmm.k"
+require "registerInstructions/vpmovzxwd_xmm_xmm.k"
+require "registerInstructions/mulsd_xmm_xmm.k"
+require "registerInstructions/vrcpps_xmm_xmm.k"
+require "registerInstructions/cbtw.k"
+require "registerInstructions/vcvttsd2si_r32_xmm.k"
+require "registerInstructions/vpsubsb_xmm_xmm_xmm.k"
+require "registerInstructions/cmpxchgq_r64_r64.k"
+require "registerInstructions/vpcmpgtw_ymm_ymm_ymm.k"
+require "registerInstructions/cmovpw_r16_r16.k"
+require "registerInstructions/vphaddd_xmm_xmm_xmm.k"
+require "registerInstructions/movd_xmm_r32.k"
+require "registerInstructions/setnle_rh.k"
+require "registerInstructions/cmovncw_r16_r16.k"
+require "registerInstructions/vsqrtpd_xmm_xmm.k"
+require "registerInstructions/divpd_xmm_xmm.k"
+require "registerInstructions/cmovnoq_r64_r64.k"
+require "registerInstructions/shrb_r8_cl.k"
+require "registerInstructions/vfmsub132ps_xmm_xmm_xmm.k"
+require "registerInstructions/unpckhps_xmm_xmm.k"
+require "registerInstructions/cmovzw_r16_r16.k"
+require "registerInstructions/vpmovsxdq_xmm_xmm.k"
+require "registerInstructions/vxorps_ymm_ymm_ymm.k"
+require "registerInstructions/vpbroadcastw_ymm_xmm.k"
+require "registerInstructions/cvtsd2si_r64_xmm.k"
+require "registerInstructions/vpmovsxwd_xmm_xmm.k"
+require "registerInstructions/movmskps_r32_xmm.k"
+require "registerInstructions/vpand_xmm_xmm_xmm.k"
+require "registerInstructions/vmovq_xmm_r64.k"
+require "registerInstructions/cmovsl_r32_r32.k"
+require "registerInstructions/salb_r8_cl.k"
+require "registerInstructions/paddsw_xmm_xmm.k"
+require "registerInstructions/vpmulhuw_xmm_xmm_xmm.k"
+require "registerInstructions/subb_rh_rh.k"
+require "registerInstructions/vpmullw_xmm_xmm_xmm.k"
+require "registerInstructions/minps_xmm_xmm.k"
+require "registerInstructions/vcvtdq2ps_ymm_ymm.k"
+require "registerInstructions/vmulpd_xmm_xmm_xmm.k"
+require "registerInstructions/cmovgew_r16_r16.k"
+require "registerInstructions/vpbroadcastq_xmm_xmm.k"
+require "registerInstructions/cmpxchgl_r32_r32.k"
+require "registerInstructions/cvtss2si_r64_xmm.k"
+require "registerInstructions/imulq_r64_r64.k"
+require "registerInstructions/shrdw_r16_r16_cl.k"
+require "registerInstructions/btsq_r64_r64.k"
+require "registerInstructions/pmovsxdq_xmm_xmm.k"
+require "registerInstructions/cmovngl_r32_r32.k"
+require "registerInstructions/setnp_rh.k"
+require "registerInstructions/notq_r64.k"
+require "registerInstructions/vcvtsi2sdq_xmm_xmm_r64.k"
+require "registerInstructions/pand_xmm_xmm.k"
+require "registerInstructions/vpmuldq_ymm_ymm_ymm.k"
+require "registerInstructions/vsqrtps_xmm_xmm.k"
+require "registerInstructions/vpsrad_xmm_xmm_xmm.k"
+require "registerInstructions/vpslld_xmm_xmm_xmm.k"
+require "registerInstructions/vpermilps_ymm_ymm_ymm.k"
+require "registerInstructions/addq_r64_r64.k"
+require "registerInstructions/vbroadcastss_ymm_xmm.k"
+require "registerInstructions/addpd_xmm_xmm.k"
+require "registerInstructions/pmovsxwq_xmm_xmm.k"
+require "registerInstructions/vfmsubadd132ps_xmm_xmm_xmm.k"
+require "registerInstructions/psrad_xmm_xmm.k"
+require "registerInstructions/vfmaddsub213pd_xmm_xmm_xmm.k"
+require "registerInstructions/vpsubusb_ymm_ymm_ymm.k"
+require "registerInstructions/cmovleq_r64_r64.k"
+require "registerInstructions/btsl_r32_r32.k"
+require "registerInstructions/setnae_r8.k"
+require "registerInstructions/vpmovzxwq_ymm_xmm.k"
+require "registerInstructions/vpandn_xmm_xmm_xmm.k"
+require "registerInstructions/subpd_xmm_xmm.k"
+require "registerInstructions/vphaddw_xmm_xmm_xmm.k"
+require "registerInstructions/movd_r32_xmm.k"
+require "registerInstructions/vpacksswb_ymm_ymm_ymm.k"
+require "registerInstructions/vfmsub213pd_xmm_xmm_xmm.k"
+require "registerInstructions/xchgw_r16_r16.k"
+require "registerInstructions/vzeroupper.k"
+require "registerInstructions/idivl_r32.k"
+require "registerInstructions/vunpckhps_xmm_xmm_xmm.k"
+require "registerInstructions/minss_xmm_xmm.k"
+require "registerInstructions/vminss_xmm_xmm_xmm.k"
+require "registerInstructions/mulxl_r32_r32_r32.k"
+require "registerInstructions/ucomisd_xmm_xmm.k"
+require "registerInstructions/vfmaddsub231pd_ymm_ymm_ymm.k"
+require "registerInstructions/andq_r64_r64.k"
+require "registerInstructions/cmovbl_r32_r32.k"
+require "registerInstructions/vpcmpgtw_xmm_xmm_xmm.k"
+require "registerInstructions/vpcmpeqw_ymm_ymm_ymm.k"
+require "registerInstructions/rcrb_r8_one.k"
+require "registerInstructions/vfmsubadd231pd_xmm_xmm_xmm.k"
+require "registerInstructions/vpsignd_xmm_xmm_xmm.k"
+require "registerInstructions/cmovsw_r16_r16.k"
+require "registerInstructions/orl_r32_r32.k"
+require "registerInstructions/cmovnpq_r64_r64.k"
+require "registerInstructions/vpminuw_ymm_ymm_ymm.k"
+require "registerInstructions/vfmsub213ss_xmm_xmm_xmm.k"
+require "registerInstructions/vfmsubadd213ps_xmm_xmm_xmm.k"
+require "registerInstructions/vmovlhps_xmm_xmm_xmm.k"
+require "registerInstructions/rsqrtss_xmm_xmm.k"
+require "registerInstructions/vpmaxsw_xmm_xmm_xmm.k"
+require "registerInstructions/adcb_rh_r8.k"
+require "registerInstructions/vpmaxud_ymm_ymm_ymm.k"
+require "registerInstructions/vpmovzxbd_ymm_xmm.k"
+require "registerInstructions/pmovsxbw_xmm_xmm.k"
+require "registerInstructions/vpackusdw_ymm_ymm_ymm.k"
+require "registerInstructions/cvtsi2sdl_xmm_r32.k"
+require "registerInstructions/vcvtss2sd_xmm_xmm_xmm.k"
+require "registerInstructions/vpaddusw_xmm_xmm_xmm.k"
+require "registerInstructions/sarxl_r32_r32_r32.k"
+require "registerInstructions/testl_r32_r32.k"
+require "registerInstructions/cmovpq_r64_r64.k"
+require "registerInstructions/rcrb_rh_one.k"
+require "registerInstructions/vfnmsub231pd_xmm_xmm_xmm.k"
+require "registerInstructions/vaddsubps_xmm_xmm_xmm.k"
+require "registerInstructions/rolb_r8_one.k"
+require "registerInstructions/subsd_xmm_xmm.k"
+require "registerInstructions/vminps_xmm_xmm_xmm.k"
+require "registerInstructions/vpmovmskb_r32_ymm.k"
+require "registerInstructions/vpabsd_ymm_ymm.k"
+require "registerInstructions/cmovbeq_r64_r64.k"
+require "registerInstructions/cmovoq_r64_r64.k"
+require "registerInstructions/notl_r32.k"
+require "registerInstructions/btcl_r32_r32.k"
+require "registerInstructions/vcvtsd2si_r64_xmm.k"
+require "registerInstructions/vmovsldup_xmm_xmm.k"
+require "registerInstructions/mulps_xmm_xmm.k"
+require "registerInstructions/vptest_xmm_xmm.k"
+require "registerInstructions/vcvtpd2dq_xmm_ymm.k"
+require "registerInstructions/cmpb_r8_rh.k"
+require "registerInstructions/vpaddsw_xmm_xmm_xmm.k"
+require "registerInstructions/vpsrlvd_ymm_ymm_ymm.k"
+require "registerInstructions/pandn_xmm_xmm.k"
+require "registerInstructions/vmovshdup_ymm_ymm.k"
+require "registerInstructions/cvtsi2sdq_xmm_r64.k"
+require "registerInstructions/xchgb_r8_r8.k"
+require "registerInstructions/vphsubw_ymm_ymm_ymm.k"
+require "registerInstructions/orb_rh_r8.k"
+require "registerInstructions/maxsd_xmm_xmm.k"
+require "registerInstructions/subb_r8_rh.k"
+require "registerInstructions/incl_r32.k"
+require "registerInstructions/bextrl_r32_r32_r32.k"
+require "registerInstructions/negq_r64.k"
+require "registerInstructions/vpsubw_xmm_xmm_xmm.k"
+require "registerInstructions/vpsignw_xmm_xmm_xmm.k"
+require "registerInstructions/cmovgel_r32_r32.k"
+require "registerInstructions/setng_r8.k"
+require "registerInstructions/btcw_r16_r16.k"
+require "registerInstructions/vcvtps2pd_xmm_xmm.k"
+require "registerInstructions/idivb_r8.k"
+require "registerInstructions/pmaxuw_xmm_xmm.k"
+require "registerInstructions/vaddps_ymm_ymm_ymm.k"
+require "registerInstructions/cwtl.k"
+require "registerInstructions/vmovhlps_xmm_xmm_xmm.k"
+require "registerInstructions/bsrl_r32_r32.k"
+require "registerInstructions/cmovew_r16_r16.k"
+require "registerInstructions/vblendvpd_ymm_ymm_ymm_ymm.k"
+require "registerInstructions/decq_r64.k"
+require "registerInstructions/vandps_xmm_xmm_xmm.k"
+require "registerInstructions/vpmaxuw_ymm_ymm_ymm.k"
+require "registerInstructions/vfmsub132pd_xmm_xmm_xmm.k"
+require "registerInstructions/vpsubd_ymm_ymm_ymm.k"
+require "registerInstructions/roll_r32_one.k"
+require "registerInstructions/divq_r64.k"
+require "registerInstructions/vpsllw_xmm_xmm_xmm.k"
+require "registerInstructions/rorb_r8_cl.k"
+require "registerInstructions/andl_r32_r32.k"
+require "registerInstructions/vpsubq_ymm_ymm_ymm.k"
+require "registerInstructions/vhaddps_xmm_xmm_xmm.k"
+require "registerInstructions/cmovgw_r16_r16.k"
+require "registerInstructions/movmskps_r64_xmm.k"
+require "registerInstructions/minpd_xmm_xmm.k"
+require "registerInstructions/vmovups_xmm_xmm.k"
+require "registerInstructions/btw_r16_r16.k"
+require "registerInstructions/vfnmadd132pd_ymm_ymm_ymm.k"
+require "registerInstructions/psignb_xmm_xmm.k"
+require "registerInstructions/setpe_rh.k"
+require "registerInstructions/sarl_r32_cl.k"
+require "registerInstructions/vcvtpd2dq_xmm_xmm.k"
+require "registerInstructions/pmulhw_xmm_xmm.k"
+require "registerInstructions/vfmadd231pd_ymm_ymm_ymm.k"
+require "registerInstructions/movsbl_r32_rh.k"
+require "registerInstructions/vpmaddwd_xmm_xmm_xmm.k"
+require "registerInstructions/vmovsd_xmm_xmm_xmm.k"
+require "registerInstructions/xchgb_rh_rh.k"
+require "registerInstructions/vphaddsw_ymm_ymm_ymm.k"
+require "registerInstructions/pmaddwd_xmm_xmm.k"
+require "registerInstructions/rcrq_r64_cl.k"
+require "registerInstructions/pmovzxwq_xmm_xmm.k"
+require "registerInstructions/orb_rh_rh.k"
+require "registerInstructions/adcq_r64_r64.k"
+require "registerInstructions/pdepq_r64_r64_r64.k"
+require "registerInstructions/vcvttps2dq_ymm_ymm.k"
+require "registerInstructions/vfmaddsub231ps_xmm_xmm_xmm.k"
+require "registerInstructions/xorb_rh_rh.k"
+require "registerInstructions/vpunpckldq_ymm_ymm_ymm.k"
+require "registerInstructions/vrcpss_xmm_xmm_xmm.k"
+require "registerInstructions/cmovnbel_r32_r32.k"
+require "registerInstructions/cvttsd2si_r32_xmm.k"
+require "registerInstructions/comisd_xmm_xmm.k"
+require "registerInstructions/pminsd_xmm_xmm.k"
+require "registerInstructions/vfmaddsub213ps_xmm_xmm_xmm.k"
+require "registerInstructions/vunpckhpd_ymm_ymm_ymm.k"
+require "registerInstructions/sqrtpd_xmm_xmm.k"
+require "registerInstructions/shlxl_r32_r32_r32.k"
+require "registerInstructions/pcmpgtb_xmm_xmm.k"
+require "registerInstructions/cmovnaq_r64_r64.k"
+require "registerInstructions/movupd_xmm_xmm.k"
+require "registerInstructions/cmovnpl_r32_r32.k"
+require "registerInstructions/vrsqrtss_xmm_xmm_xmm.k"
+require "registerInstructions/andps_xmm_xmm.k"
+require "registerInstructions/setg_r8.k"
+require "registerInstructions/vpxor_ymm_ymm_ymm.k"
+require "registerInstructions/sarq_r64_cl.k"
+require "registerInstructions/setg_rh.k"
+require "registerInstructions/cmovncl_r32_r32.k"
+require "registerInstructions/xorl_r32_r32.k"
+require "registerInstructions/vpunpcklbw_xmm_xmm_xmm.k"
+require "registerInstructions/vpmovmskb_r64_ymm.k"
+require "registerInstructions/vpshufb_ymm_ymm_ymm.k"
+require "registerInstructions/rorq_r64_cl.k"
+require "registerInstructions/setpo_r8.k"
+require "registerInstructions/mulb_r8.k"
+require "registerInstructions/vpacksswb_xmm_xmm_xmm.k"
+require "registerInstructions/vxorpd_ymm_ymm_ymm.k"
+require "registerInstructions/cmovnbeq_r64_r64.k"
+require "registerInstructions/addb_rh_rh.k"
+require "registerInstructions/cmovnlq_r64_r64.k"
+require "registerInstructions/vfnmsub213pd_xmm_xmm_xmm.k"
+require "registerInstructions/tzcntq_r64_r64.k"
+require "registerInstructions/tzcntw_r16_r16.k"
+require "registerInstructions/vpabsd_xmm_xmm.k"
+require "registerInstructions/vdivpd_ymm_ymm_ymm.k"
+require "registerInstructions/vmovapd_xmm_xmm.k"
+require "registerInstructions/vhsubpd_xmm_xmm_xmm.k"
+require "registerInstructions/vfmadd213ps_xmm_xmm_xmm.k"
+require "registerInstructions/vfnmadd213pd_ymm_ymm_ymm.k"
+require "registerInstructions/cmovlq_r64_r64.k"
+require "registerInstructions/vphaddd_ymm_ymm_ymm.k"
+require "registerInstructions/vmovddup_xmm_xmm.k"
+require "registerInstructions/vpblendvb_ymm_ymm_ymm_ymm.k"
+require "registerInstructions/adcb_r8_rh.k"
+require "registerInstructions/cmovpow_r16_r16.k"
+require "registerInstructions/vpaddsw_ymm_ymm_ymm.k"
+require "registerInstructions/cmovzl_r32_r32.k"
+require "registerInstructions/vfnmadd213sd_xmm_xmm_xmm.k"
+require "registerInstructions/vsubps_ymm_ymm_ymm.k"
+require "registerInstructions/psubb_xmm_xmm.k"
+require "registerInstructions/vfmadd231pd_xmm_xmm_xmm.k"
+require "registerInstructions/vpmovsxbw_xmm_xmm.k"
+require "registerInstructions/sets_r8.k"
+require "registerInstructions/andnpd_xmm_xmm.k"
+require "registerInstructions/vfnmsub213pd_ymm_ymm_ymm.k"
+require "registerInstructions/vpackssdw_ymm_ymm_ymm.k"
+require "registerInstructions/punpcklbw_xmm_xmm.k"
+require "registerInstructions/cqto.k"
+require "registerInstructions/psubsw_xmm_xmm.k"
+require "registerInstructions/vpslld_ymm_ymm_xmm.k"
+require "registerInstructions/cmpw_r16_r16.k"
+require "registerInstructions/seta_rh.k"
+require "registerInstructions/xorb_r8_rh.k"
+require "registerInstructions/ucomiss_xmm_xmm.k"
+require "registerInstructions/vpmuldq_xmm_xmm_xmm.k"
+require "registerInstructions/vpmulhw_ymm_ymm_ymm.k"
+require "registerInstructions/vpsubsb_ymm_ymm_ymm.k"
+require "registerInstructions/cmovnow_r16_r16.k"
+require "registerInstructions/xchgw_ax_r16.k"
+require "registerInstructions/movb_rh_rh.k"
+require "registerInstructions/vunpcklps_ymm_ymm_ymm.k"
+require "registerInstructions/notb_rh.k"
+require "registerInstructions/sarq_r64_one.k"
+require "registerInstructions/bzhil_r32_r32_r32.k"
+require "registerInstructions/vmovdqa_xmm_xmm.k"
+require "registerInstructions/rorq_r64_one.k"
+require "registerInstructions/setle_r8.k"
+require "registerInstructions/vfmsub132ps_ymm_ymm_ymm.k"
+require "registerInstructions/vcomisd_xmm_xmm.k"
+require "registerInstructions/vandnpd_ymm_ymm_ymm.k"
+require "registerInstructions/cmovngq_r64_r64.k"
+require "registerInstructions/shlb_rh_one.k"
+require "registerInstructions/cvtss2sd_xmm_xmm.k"
+require "registerInstructions/vfnmadd231ss_xmm_xmm_xmm.k"
+require "registerInstructions/cmovncq_r64_r64.k"
+require "registerInstructions/vmovupd_ymm_ymm.k"
+require "registerInstructions/sarxq_r64_r64_r64.k"
+require "registerInstructions/subb_rh_r8.k"
+require "registerInstructions/vmovapd_ymm_ymm.k"
+require "registerInstructions/vpcmpgtq_xmm_xmm_xmm.k"
+require "registerInstructions/vpbroadcastb_xmm_xmm.k"
+require "registerInstructions/vfnmsub213ss_xmm_xmm_xmm.k"
+require "registerInstructions/setbe_r8.k"
+require "registerInstructions/movzbw_r16_rh.k"
+require "registerInstructions/vrcpps_ymm_ymm.k"
+require "registerInstructions/vbroadcastsd_ymm_xmm.k"
+require "registerInstructions/shlb_r8_cl.k"
+require "registerInstructions/shldl_r32_r32_cl.k"
+require "registerInstructions/vmovsldup_ymm_ymm.k"
+require "registerInstructions/vcvtss2si_r32_xmm.k"
+require "registerInstructions/rcpss_xmm_xmm.k"
+require "registerInstructions/vpbroadcastd_ymm_xmm.k"
+require "registerInstructions/punpcklqdq_xmm_xmm.k"
+require "registerInstructions/cmovbw_r16_r16.k"
+require "registerInstructions/cmovnbew_r16_r16.k"
+require "registerInstructions/bswap_r32.k"
+require "registerInstructions/vfnmsub231ps_xmm_xmm_xmm.k"
+require "registerInstructions/cmovnll_r32_r32.k"
+require "registerInstructions/shlw_r16_one.k"
+require "registerInstructions/andnl_r32_r32_r32.k"
+require "registerInstructions/vpunpckhwd_ymm_ymm_ymm.k"
+require "registerInstructions/vpabsw_xmm_xmm.k"
+require "registerInstructions/vpand_ymm_ymm_ymm.k"
+require "registerInstructions/xorps_xmm_xmm.k"
+require "registerInstructions/paddusw_xmm_xmm.k"
+require "registerInstructions/vfnmsub213sd_xmm_xmm_xmm.k"
+require "registerInstructions/addb_rh_r8.k"
+require "registerInstructions/vfnmadd231pd_xmm_xmm_xmm.k"
+require "registerInstructions/cltd.k"
+require "registerInstructions/rcrl_r32_cl.k"
+require "registerInstructions/vpsubb_ymm_ymm_ymm.k"
+require "registerInstructions/vpminsw_xmm_xmm_xmm.k"
+require "registerInstructions/vpsrlvd_xmm_xmm_xmm.k"
+require "registerInstructions/shrb_rh_one.k"
+require "registerInstructions/vcvtsd2ss_xmm_xmm_xmm.k"
+require "registerInstructions/movslq_r64_r32.k"
+require "registerInstructions/vpsllvq_ymm_ymm_ymm.k"
+require "registerInstructions/vpmovzxwq_xmm_xmm.k"
+require "registerInstructions/vpaddd_ymm_ymm_ymm.k"
+require "registerInstructions/vpsrld_ymm_ymm_xmm.k"
+require "registerInstructions/vpsubq_xmm_xmm_xmm.k"
+require "registerInstructions/paddd_xmm_xmm.k"
+require "registerInstructions/vpmaxsb_ymm_ymm_ymm.k"
+require "registerInstructions/vpcmpeqd_xmm_xmm_xmm.k"
+require "registerInstructions/vdivss_xmm_xmm_xmm.k"
+require "registerInstructions/vpunpckldq_xmm_xmm_xmm.k"
+require "registerInstructions/cmovlel_r32_r32.k"
+require "registerInstructions/psubsb_xmm_xmm.k"
+require "registerInstructions/shrq_r64_one.k"
+require "registerInstructions/bsfl_r32_r32.k"
+require "registerInstructions/mulxq_r64_r64_r64.k"
+require "registerInstructions/movb_rh_r8.k"
+require "registerInstructions/setne_rh.k"
+require "registerInstructions/movl_r32_r32.k"
+require "registerInstructions/blsiq_r64_r64.k"
+require "registerInstructions/setbe_rh.k"
+require "registerInstructions/psubw_xmm_xmm.k"
+require "registerInstructions/vpmovzxdq_xmm_xmm.k"
+require "registerInstructions/cmovngeq_r64_r64.k"
+require "registerInstructions/vpmovzxwd_ymm_xmm.k"
+require "registerInstructions/vpabsb_ymm_ymm.k"
+require "registerInstructions/shrq_r64_cl.k"
+require "registerInstructions/vfnmadd231ps_ymm_ymm_ymm.k"
+require "registerInstructions/phminposuw_xmm_xmm.k"
+require "registerInstructions/vfmsubadd231ps_ymm_ymm_ymm.k"
+require "registerInstructions/cvtpd2dq_xmm_xmm.k"
+require "registerInstructions/subss_xmm_xmm.k"
+require "registerInstructions/pcmpeqw_xmm_xmm.k"
+require "registerInstructions/vpaddb_ymm_ymm_ymm.k"
+require "registerInstructions/vmovd_r32_xmm.k"
+require "registerInstructions/cmovcw_r16_r16.k"
+require "registerInstructions/sall_r32_cl.k"
+require "registerInstructions/vandps_ymm_ymm_ymm.k"
+require "registerInstructions/cmovbel_r32_r32.k"
+require "registerInstructions/shrw_r16_one.k"
+require "registerInstructions/vsqrtps_ymm_ymm.k"
+require "registerInstructions/vfnmadd231pd_ymm_ymm_ymm.k"
+require "registerInstructions/vmulss_xmm_xmm_xmm.k"
+require "registerInstructions/cmovaew_r16_r16.k"
+require "registerInstructions/bsfw_r16_r16.k"
+require "registerInstructions/vpermps_ymm_ymm_ymm.k"
+require "registerInstructions/vpminud_xmm_xmm_xmm.k"
+require "registerInstructions/pmovzxbw_xmm_xmm.k"
+require "registerInstructions/cmovael_r32_r32.k"
+require "registerInstructions/vdivps_ymm_ymm_ymm.k"
+require "registerInstructions/shrxq_r64_r64_r64.k"
+require "registerInstructions/vpsubsw_xmm_xmm_xmm.k"
+require "registerInstructions/adcb_rh_rh.k"
+require "registerInstructions/salb_r8_one.k"
+require "registerInstructions/vfmaddsub132pd_ymm_ymm_ymm.k"
+require "registerInstructions/vpunpckhqdq_xmm_xmm_xmm.k"
+require "registerInstructions/vcvtpd2ps_xmm_xmm.k"
+require "registerInstructions/mulw_r16.k"
+require "registerInstructions/vpavgw_ymm_ymm_ymm.k"
+require "registerInstructions/testb_r8_r8.k"
+require "registerInstructions/vpermd_ymm_ymm_ymm.k"
+require "registerInstructions/vpsraw_ymm_ymm_xmm.k"
+require "registerInstructions/vmovmskpd_r64_ymm.k"
+require "registerInstructions/cvtsi2ssl_xmm_r32.k"
+require "registerInstructions/vmovaps_ymm_ymm.k"
+require "registerInstructions/movw_r16_r16.k"
+require "registerInstructions/comiss_xmm_xmm.k"
+require "registerInstructions/cvtpd2ps_xmm_xmm.k"
+require "registerInstructions/rolb_rh_one.k"
+require "registerInstructions/vpmaxsd_xmm_xmm_xmm.k"
+require "registerInstructions/shrb_r8_one.k"
+require "registerInstructions/vcvttpd2dq_xmm_ymm.k"
+require "registerInstructions/pmovzxwd_xmm_xmm.k"
+require "registerInstructions/cmovgq_r64_r64.k"
+require "registerInstructions/vandpd_ymm_ymm_ymm.k"
+require "registerInstructions/cmpl_r32_r32.k"
+require "registerInstructions/shll_r32_cl.k"
+require "registerInstructions/vpsravd_ymm_ymm_ymm.k"
+require "registerInstructions/movsbq_r64_r8.k"
+require "registerInstructions/xchgw_r16_ax.k"
+require "registerInstructions/vpxor_xmm_xmm_xmm.k"
+require "registerInstructions/pshufb_xmm_xmm.k"
+require "registerInstructions/rcrl_r32_one.k"
+require "registerInstructions/punpckhbw_xmm_xmm.k"
+require "registerInstructions/vpaddw_xmm_xmm_xmm.k"
+require "registerInstructions/movzbw_r16_r8.k"
+require "registerInstructions/seta_r8.k"
+require "registerInstructions/vfmsub213sd_xmm_xmm_xmm.k"
+require "registerInstructions/addb_r8_rh.k"
+require "registerInstructions/vpabsw_ymm_ymm.k"
+require "registerInstructions/vpmovsxwd_ymm_xmm.k"
+require "registerInstructions/rorw_r16_cl.k"
+require "registerInstructions/vfmsub213ps_xmm_xmm_xmm.k"
+require "registerInstructions/pmovzxdq_xmm_xmm.k"
+require "registerInstructions/vfmadd132sd_xmm_xmm_xmm.k"
+require "registerInstructions/vcvtdq2ps_xmm_xmm.k"
+require "registerInstructions/rolb_rh_cl.k"
+require "registerInstructions/vfmsub231sd_xmm_xmm_xmm.k"
+require "registerInstructions/movapd_xmm_xmm.k"
+require "registerInstructions/rcrb_r8_cl.k"
+require "registerInstructions/vfmsubadd213ps_ymm_ymm_ymm.k"
+require "registerInstructions/vpmulhw_xmm_xmm_xmm.k"
+require "registerInstructions/vpsubusw_ymm_ymm_ymm.k"
+require "registerInstructions/vaddss_xmm_xmm_xmm.k"
+require "registerInstructions/salb_rh_cl.k"
+require "registerInstructions/vfmsub213pd_ymm_ymm_ymm.k"
+require "registerInstructions/vfmaddsub132pd_xmm_xmm_xmm.k"
+require "registerInstructions/shlb_rh_cl.k"
+require "registerInstructions/vpsrlvq_ymm_ymm_ymm.k"
+require "registerInstructions/shlw_r16_cl.k"
+require "registerInstructions/packuswb_xmm_xmm.k"
+require "registerInstructions/sets_rh.k"
+require "registerInstructions/movq_xmm_xmm.k"
+require "registerInstructions/rorb_r8_one.k"
+require "registerInstructions/vmovddup_ymm_ymm.k"
+require "registerInstructions/movsldup_xmm_xmm.k"
+require "registerInstructions/vfnmadd132pd_xmm_xmm_xmm.k"
+require "registerInstructions/vcvtph2ps_xmm_xmm.k"
+require "registerInstructions/cmc.k"
+require "registerInstructions/vorps_xmm_xmm_xmm.k"
+require "registerInstructions/cmovbq_r64_r64.k"
+require "registerInstructions/vpsignb_xmm_xmm_xmm.k"
+require "registerInstructions/vtestpd_xmm_xmm.k"
+require "registerInstructions/minsd_xmm_xmm.k"
+require "registerInstructions/psignd_xmm_xmm.k"
+require "registerInstructions/vsubss_xmm_xmm_xmm.k"
+require "registerInstructions/vfmsub132pd_ymm_ymm_ymm.k"
+require "registerInstructions/divl_r32.k"
+require "registerInstructions/vpmovsxbq_ymm_xmm.k"
+require "registerInstructions/vbroadcastss_xmm_xmm.k"
+require "registerInstructions/vpminsd_xmm_xmm_xmm.k"
+require "registerInstructions/cmpxchgb_rh_r8.k"
+require "registerInstructions/vpaddd_xmm_xmm_xmm.k"
+require "registerInstructions/xorq_r64_r64.k"
+require "registerInstructions/rclq_r64_one.k"
+require "registerInstructions/vpaddusw_ymm_ymm_ymm.k"
+require "registerInstructions/setns_rh.k"
+require "registerInstructions/vhsubpd_ymm_ymm_ymm.k"
+require "registerInstructions/vcvtps2dq_ymm_ymm.k"
+require "registerInstructions/blsrl_r32_r32.k"
+require "registerInstructions/idivw_r16.k"
+require "registerInstructions/vfmsub132sd_xmm_xmm_xmm.k"
+require "registerInstructions/rclb_r8_cl.k"
+require "registerInstructions/shldw_r16_r16_cl.k"
+require "registerInstructions/setc_rh.k"
+require "registerInstructions/divb_rh.k"
+require "registerInstructions/vminpd_xmm_xmm_xmm.k"
+require "registerInstructions/vpmaxub_xmm_xmm_xmm.k"
+require "registerInstructions/vfnmsub132ps_ymm_ymm_ymm.k"
+require "registerInstructions/vpaddusb_ymm_ymm_ymm.k"
+require "registerInstructions/vfnmsub231ss_xmm_xmm_xmm.k"
+require "registerInstructions/cmpb_rh_r8.k"
+require "registerInstructions/vpcmpgtb_ymm_ymm_ymm.k"
+require "registerInstructions/popcntl_r32_r32.k"
+require "registerInstructions/andb_rh_r8.k"
+require "registerInstructions/salw_r16_one.k"
+require "registerInstructions/movb_r8_r8.k"
+require "registerInstructions/vminsd_xmm_xmm_xmm.k"
+require "registerInstructions/vfnmsub132sd_xmm_xmm_xmm.k"
+require "registerInstructions/vpunpcklqdq_xmm_xmm_xmm.k"
+require "registerInstructions/rcrw_r16_cl.k"
+require "registerInstructions/lzcntw_r16_r16.k"
+require "registerInstructions/vminpd_ymm_ymm_ymm.k"
+require "registerInstructions/vmovq_xmm_xmm.k"
+require "registerInstructions/setnge_r8.k"
+require "registerInstructions/vcvtsi2ssq_xmm_xmm_r64.k"
+require "registerInstructions/cmovcq_r64_r64.k"
+require "registerInstructions/punpckhwd_xmm_xmm.k"
+require "registerInstructions/vmovmskps_r64_xmm.k"
+require "registerInstructions/vunpcklpd_xmm_xmm_xmm.k"
+require "registerInstructions/setae_r8.k"
+require "registerInstructions/vpsrad_ymm_ymm_xmm.k"
+require "registerInstructions/bsrw_r16_r16.k"
+require "registerInstructions/psraw_xmm_xmm.k"
+require "registerInstructions/vpsubsw_ymm_ymm_ymm.k"
+require "registerInstructions/setpe_r8.k"
+require "registerInstructions/vtestps_ymm_ymm.k"
+require "registerInstructions/incq_r64.k"
+require "registerInstructions/vpavgw_xmm_xmm_xmm.k"
+require "registerInstructions/decb_r8.k"
+require "registerInstructions/pmovzxbd_xmm_xmm.k"
+require "registerInstructions/vmovaps_xmm_xmm.k"
+require "registerInstructions/setl_r8.k"
+require "registerInstructions/vpunpckhwd_xmm_xmm_xmm.k"
+require "registerInstructions/vpsllw_ymm_ymm_xmm.k"
+require "registerInstructions/btrw_r16_r16.k"
+require "registerInstructions/vfmadd213sd_xmm_xmm_xmm.k"
+require "registerInstructions/cmovel_r32_r32.k"
+require "registerInstructions/vpcmpgtq_ymm_ymm_ymm.k"
+require "registerInstructions/salw_r16_cl.k"
+require "registerInstructions/blsmskq_r64_r64.k"
+require "registerInstructions/vmovupd_xmm_xmm.k"
+require "registerInstructions/cmovol_r32_r32.k"
+require "registerInstructions/cmovgeq_r64_r64.k"
+require "registerInstructions/vpmulhuw_ymm_ymm_ymm.k"
+require "registerInstructions/vfmsub231pd_xmm_xmm_xmm.k"
+require "registerInstructions/adcb_r8_r8.k"
+require "registerInstructions/vandnps_ymm_ymm_ymm.k"
+require "registerInstructions/cmovngw_r16_r16.k"
+require "registerInstructions/clc.k"
+require "registerInstructions/vpermilpd_ymm_ymm_ymm.k"
+require "registerInstructions/cvtsd2si_r32_xmm.k"
+require "registerInstructions/vpcmpeqd_ymm_ymm_ymm.k"
+require "registerInstructions/vandpd_xmm_xmm_xmm.k"
+require "registerInstructions/movzwq_r64_r16.k"
+require "registerInstructions/shrdl_r32_r32_cl.k"
+require "registerInstructions/phsubw_xmm_xmm.k"
+
+
+
 module X86-SEMANTICS
   imports X86-LOADER
   imports X86-INIT
@@ -24,4 +1497,2565 @@ module X86-SEMANTICS
   imports COMMON
   imports X86-BUILTIN
   imports X86-C-LIBRARY
+  imports X86-FLAG-CHECKS
+  imports XORW-AX-IMM16-SEMANTICS
+  imports SHLQ-R64-IMM8-SEMANTICS
+  imports VPSHUFHW-YMM-YMM-IMM8-SEMANTICS
+  imports PINSRD-XMM-R32-IMM8-SEMANTICS
+  imports TESTQ-R64-IMM32-SEMANTICS
+  imports SALW-R16-IMM8-SEMANTICS
+  imports RORB-RH-IMM8-SEMANTICS
+  imports RCLL-R32-IMM8-SEMANTICS
+  imports ANDB-RH-IMM8-SEMANTICS
+  imports ADDW-R16-IMM16-SEMANTICS
+  imports VCVTPS2PH-XMM-XMM-IMM8-SEMANTICS
+  imports ANDL-EAX-IMM32-SEMANTICS
+  imports VPSLLDQ-YMM-YMM-IMM8-SEMANTICS
+  imports IMULW-R16-R16-IMM8-SEMANTICS
+  imports SBBW-R16-IMM16-SEMANTICS
+  imports VROUNDPD-YMM-YMM-IMM8-SEMANTICS
+  imports PBLENDW-XMM-XMM-IMM8-SEMANTICS
+  imports SARB-R8-IMM8-SEMANTICS
+  imports EXTRACTPS-R32-XMM-IMM8-SEMANTICS
+  imports PEXTRB-R32-XMM-IMM8-SEMANTICS
+  imports VPEXTRW-R64-XMM-IMM8-SEMANTICS
+  imports VDPPD-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports RCRW-R16-IMM8-SEMANTICS
+  imports VPERMPD-YMM-YMM-IMM8-SEMANTICS
+  imports CMPPD-XMM-XMM-IMM8-SEMANTICS
+  imports CMPB-AL-IMM8-SEMANTICS
+  imports TESTW-AX-IMM16-SEMANTICS
+  imports PCLMULQDQ-XMM-XMM-IMM8-SEMANTICS
+  imports BTSL-R32-IMM8-SEMANTICS
+  imports ADDL-EAX-IMM32-SEMANTICS
+  imports ROLQ-R64-IMM8-SEMANTICS
+  imports ORB-RH-IMM8-SEMANTICS
+  imports VPSRLD-YMM-YMM-IMM8-SEMANTICS
+  imports ANDL-R32-IMM8-SEMANTICS
+  imports VPINSRQ-XMM-XMM-R64-IMM8-SEMANTICS
+  imports SALQ-R64-IMM8-SEMANTICS
+  imports ADCQ-R64-IMM8-SEMANTICS
+  imports VPSRLDQ-YMM-YMM-IMM8-SEMANTICS
+  imports PINSRB-XMM-R32-IMM8-SEMANTICS
+  imports SUBL-R32-IMM8-SEMANTICS
+  imports VPEXTRD-R32-XMM-IMM8-SEMANTICS
+  imports SHLL-R32-IMM8-SEMANTICS
+  imports VPERMQ-YMM-YMM-IMM8-SEMANTICS
+  imports VPSRLQ-XMM-XMM-IMM8-SEMANTICS
+  imports VPEXTRW-R32-XMM-IMM8-SEMANTICS
+  imports VPSRLW-YMM-YMM-IMM8-SEMANTICS
+  imports PSLLD-XMM-IMM8-SEMANTICS
+  imports CMPPS-XMM-XMM-IMM8-SEMANTICS
+  imports VPBLENDD-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports ADCW-R16-IMM16-SEMANTICS
+  imports XORL-EAX-IMM32-SEMANTICS
+  imports VPSLLDQ-XMM-XMM-IMM8-SEMANTICS
+  imports TESTL-EAX-IMM32-SEMANTICS
+  imports RCRQ-R64-IMM8-SEMANTICS
+  imports RORXL-R32-R32-IMM8-SEMANTICS
+  imports RCLB-RH-IMM8-SEMANTICS
+  imports SUBB-AL-IMM8-SEMANTICS
+  imports CMPQ-R64-IMM8-SEMANTICS
+  imports SBBL-R32-IMM8-SEMANTICS
+  imports VPSRLQ-YMM-YMM-IMM8-SEMANTICS
+  imports SHRW-R16-IMM8-SEMANTICS
+  imports ADCQ-R64-IMM32-SEMANTICS
+  imports VPSHUFD-XMM-XMM-IMM8-SEMANTICS
+  imports PSLLQ-XMM-IMM8-SEMANTICS
+  imports SHRB-RH-IMM8-SEMANTICS
+  imports BTQ-R64-IMM8-SEMANTICS
+  imports IMULW-R16-R16-IMM16-SEMANTICS
+  imports PSRLDQ-XMM-IMM8-SEMANTICS
+  imports XORQ-R64-IMM8-SEMANTICS
+  imports ANDQ-RAX-IMM32-SEMANTICS
+  imports XORB-AL-IMM8-SEMANTICS
+  imports VPALIGNR-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports SUBW-R16-IMM8-SEMANTICS
+  imports VPERM2I128-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports BTRL-R32-IMM8-SEMANTICS
+  imports PSRAW-XMM-IMM8-SEMANTICS
+  imports RORQ-R64-IMM8-SEMANTICS
+  imports VPCLMULQDQ-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports VROUNDPS-YMM-YMM-IMM8-SEMANTICS
+  imports VPERMILPD-XMM-XMM-IMM8-SEMANTICS
+  imports XORL-R32-IMM32-SEMANTICS
+  imports VBLENDPD-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports RORL-R32-IMM8-SEMANTICS
+  imports VINSERTI128-YMM-YMM-XMM-IMM8-SEMANTICS
+  imports XORW-R16-IMM16-SEMANTICS
+  imports IMULL-R32-R32-IMM8-SEMANTICS
+  imports RCLW-R16-IMM8-SEMANTICS
+  imports VPERMILPS-XMM-XMM-IMM8-SEMANTICS
+  imports CMPB-R8-IMM8-SEMANTICS
+  imports ANDW-R16-IMM8-SEMANTICS
+  imports CMPSD-XMM-XMM-IMM8-SEMANTICS
+  imports VEXTRACTF128-XMM-YMM-IMM8-SEMANTICS
+  imports ADDQ-RAX-IMM32-SEMANTICS
+  imports VCMPPD-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports SHLB-RH-IMM8-SEMANTICS
+  imports ADDB-R8-IMM8-SEMANTICS
+  imports BTW-R16-IMM8-SEMANTICS
+  imports ADCL-R32-IMM8-SEMANTICS
+  imports IMULQ-R64-R64-IMM8-SEMANTICS
+  imports SBBB-AL-IMM8-SEMANTICS
+  imports ROUNDPS-XMM-XMM-IMM8-SEMANTICS
+  imports PSLLDQ-XMM-IMM8-SEMANTICS
+  imports SHLB-R8-IMM8-SEMANTICS
+  imports PEXTRW-R32-XMM-IMM8-SEMANTICS
+  imports PSRLD-XMM-IMM8-SEMANTICS
+  imports ORB-AL-IMM8-SEMANTICS
+  imports VDPPS-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports VPSRAD-XMM-XMM-IMM8-SEMANTICS
+  imports SBBQ-R64-IMM8-SEMANTICS
+  imports VINSERTF128-YMM-YMM-XMM-IMM8-SEMANTICS
+  imports VPINSRD-XMM-XMM-R32-IMM8-SEMANTICS
+  imports VPSLLW-YMM-YMM-IMM8-SEMANTICS
+  imports ANDL-R32-IMM32-SEMANTICS
+  imports VCMPSS-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports VPSRLW-XMM-XMM-IMM8-SEMANTICS
+  imports ADDL-R32-IMM32-SEMANTICS
+  imports PINSRW-XMM-R32-IMM8-SEMANTICS
+  imports SHRL-R32-IMM8-SEMANTICS
+  imports VBLENDPD-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports PSHUFD-XMM-XMM-IMM8-SEMANTICS
+  imports VEXTRACTI128-XMM-YMM-IMM8-SEMANTICS
+  imports SBBB-RH-IMM8-SEMANTICS
+  imports XORQ-R64-IMM32-SEMANTICS
+  imports VROUNDPD-XMM-XMM-IMM8-SEMANTICS
+  imports CMPL-EAX-IMM32-SEMANTICS
+  imports SUBQ-R64-IMM8-SEMANTICS
+  imports VPBLENDW-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports SHRB-R8-IMM8-SEMANTICS
+  imports TESTQ-RAX-IMM32-SEMANTICS
+  imports ROUNDSD-XMM-XMM-IMM8-SEMANTICS
+  imports PALIGNR-XMM-XMM-IMM8-SEMANTICS
+  imports ROUNDSS-XMM-XMM-IMM8-SEMANTICS
+  imports VPSRAD-YMM-YMM-IMM8-SEMANTICS
+  imports SUBW-AX-IMM16-SEMANTICS
+  imports VPSHUFLW-XMM-XMM-IMM8-SEMANTICS
+  imports VSHUFPS-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports VPSRLDQ-XMM-XMM-IMM8-SEMANTICS
+  imports XORB-R8-IMM8-SEMANTICS
+  imports ADDB-RH-IMM8-SEMANTICS
+  imports VCMPPS-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports MPSADBW-XMM-XMM-IMM8-SEMANTICS
+  imports SARL-R32-IMM8-SEMANTICS
+  imports XORB-RH-IMM8-SEMANTICS
+  imports RCRB-RH-IMM8-SEMANTICS
+  imports INSERTPS-XMM-XMM-IMM8-SEMANTICS
+  imports ORL-R32-IMM32-SEMANTICS
+  imports ADCB-R8-IMM8-SEMANTICS
+  imports SARQ-R64-IMM8-SEMANTICS
+  imports VPBLENDW-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports PSRLW-XMM-IMM8-SEMANTICS
+  imports VPEXTRQ-R64-XMM-IMM8-SEMANTICS
+  imports SUBQ-R64-IMM32-SEMANTICS
+  imports VPSRAW-YMM-YMM-IMM8-SEMANTICS
+  imports XORQ-RAX-IMM32-SEMANTICS
+  imports ADCW-R16-IMM8-SEMANTICS
+  imports VSHUFPD-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports BTCQ-R64-IMM8-SEMANTICS
+  imports ROLW-R16-IMM8-SEMANTICS
+  imports SUBB-R8-IMM8-SEMANTICS
+  imports TESTL-R32-IMM32-SEMANTICS
+  imports DPPS-XMM-XMM-IMM8-SEMANTICS
+  imports VPERMILPS-YMM-YMM-IMM8-SEMANTICS
+  imports CMPL-R32-IMM32-SEMANTICS
+  imports VMPSADBW-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports MOVB-R8-IMM8-SEMANTICS
+  imports PEXTRD-R32-XMM-IMM8-SEMANTICS
+  imports TESTB-R8-IMM8-SEMANTICS
+  imports XORW-R16-IMM8-SEMANTICS
+  imports VPSLLQ-XMM-XMM-IMM8-SEMANTICS
+  imports SBBW-R16-IMM8-SEMANTICS
+  imports VBLENDPS-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports SUBQ-RAX-IMM32-SEMANTICS
+  imports ANDB-AL-IMM8-SEMANTICS
+  imports VPSLLD-XMM-XMM-IMM8-SEMANTICS
+  imports CMPW-R16-IMM16-SEMANTICS
+  imports VPERM2F128-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports VSHUFPS-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports VPEXTRB-R32-XMM-IMM8-SEMANTICS
+  imports VCMPSD-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports ORW-AX-IMM16-SEMANTICS
+  imports CMPQ-R64-IMM32-SEMANTICS
+  imports SALL-R32-IMM8-SEMANTICS
+  imports ADDW-AX-IMM16-SEMANTICS
+  imports SHLW-R16-IMM8-SEMANTICS
+  imports VEXTRACTPS-R32-XMM-IMM8-SEMANTICS
+  imports VPSLLD-YMM-YMM-IMM8-SEMANTICS
+  imports EXTRACTPS-R64-XMM-IMM8-SEMANTICS
+  imports VPBLENDD-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports SHRQ-R64-IMM8-SEMANTICS
+  imports DPPD-XMM-XMM-IMM8-SEMANTICS
+  imports ORL-EAX-IMM32-SEMANTICS
+  imports IMULL-R32-R32-IMM32-SEMANTICS
+  imports ORQ-R64-IMM8-SEMANTICS
+  imports IMULQ-R64-R64-IMM32-SEMANTICS
+  imports TESTB-RH-IMM8-SEMANTICS
+  imports ORL-R32-IMM8-SEMANTICS
+  imports TESTW-R16-IMM16-SEMANTICS
+  imports PEXTRQ-R64-XMM-IMM8-SEMANTICS
+  imports BLENDPS-XMM-XMM-IMM8-SEMANTICS
+  imports SBBQ-RAX-IMM32-SEMANTICS
+  imports CMPL-R32-IMM8-SEMANTICS
+  imports VROUNDSS-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports ORQ-RAX-IMM32-SEMANTICS
+  imports PSRLQ-XMM-IMM8-SEMANTICS
+  imports CMPW-R16-IMM8-SEMANTICS
+  imports ADCQ-RAX-IMM32-SEMANTICS
+  imports MOVQ-R64-IMM64-SEMANTICS
+  imports ADDQ-R64-IMM32-SEMANTICS
+  imports SBBQ-R64-IMM32-SEMANTICS
+  imports RORB-R8-IMM8-SEMANTICS
+  imports PSRAD-XMM-IMM8-SEMANTICS
+  imports SUBL-R32-IMM32-SEMANTICS
+  imports SUBB-RH-IMM8-SEMANTICS
+  imports ANDW-R16-IMM16-SEMANTICS
+  imports VSHUFPD-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports SUBL-EAX-IMM32-SEMANTICS
+  imports BTRW-R16-IMM8-SEMANTICS
+  imports SARW-R16-IMM8-SEMANTICS
+  imports VINSERTPS-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports VROUNDPS-XMM-XMM-IMM8-SEMANTICS
+  imports CMPQ-RAX-IMM32-SEMANTICS
+  imports BTSW-R16-IMM8-SEMANTICS
+  imports VCMPPS-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports XORL-R32-IMM8-SEMANTICS
+  imports BTRQ-R64-IMM8-SEMANTICS
+  imports RORW-R16-IMM8-SEMANTICS
+  imports SARB-RH-IMM8-SEMANTICS
+  imports BLENDPD-XMM-XMM-IMM8-SEMANTICS
+  imports VPINSRW-XMM-XMM-R32-IMM8-SEMANTICS
+  imports ADDL-R32-IMM8-SEMANTICS
+  imports VBLENDPS-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports VMPSADBW-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports MOVL-R32-IMM32-SEMANTICS
+  imports VPSRLD-XMM-XMM-IMM8-SEMANTICS
+  imports RCLB-R8-IMM8-SEMANTICS
+  imports ROLB-R8-IMM8-SEMANTICS
+  imports ROLL-R32-IMM8-SEMANTICS
+  imports ORQ-R64-IMM32-SEMANTICS
+  imports PSHUFLW-XMM-XMM-IMM8-SEMANTICS
+  imports MOVW-R16-IMM16-SEMANTICS
+  imports VPEXTRB-R64-XMM-IMM8-SEMANTICS
+  imports RCRB-R8-IMM8-SEMANTICS
+  imports RORXQ-R64-R64-IMM8-SEMANTICS
+  imports CMPB-RH-IMM8-SEMANTICS
+  imports ROUNDPD-XMM-XMM-IMM8-SEMANTICS
+  imports ADCB-RH-IMM8-SEMANTICS
+  imports VPERMILPD-YMM-YMM-IMM8-SEMANTICS
+  imports PEXTRB-R64-XMM-IMM8-SEMANTICS
+  imports BTSQ-R64-IMM8-SEMANTICS
+  imports VCMPPD-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports ADDW-R16-IMM8-SEMANTICS
+  imports RCRL-R32-IMM8-SEMANTICS
+  imports SHUFPD-XMM-XMM-IMM8-SEMANTICS
+  imports ROLB-RH-IMM8-SEMANTICS
+  imports ANDQ-R64-IMM8-SEMANTICS
+  imports BTCL-R32-IMM8-SEMANTICS
+  imports SBBL-R32-IMM32-SEMANTICS
+  imports ADCB-AL-IMM8-SEMANTICS
+  imports VPSHUFLW-YMM-YMM-IMM8-SEMANTICS
+  imports PSHUFHW-XMM-XMM-IMM8-SEMANTICS
+  imports VPSHUFHW-XMM-XMM-IMM8-SEMANTICS
+  imports TESTB-AL-IMM8-SEMANTICS
+  imports PEXTRW-R64-XMM-IMM8-SEMANTICS
+  imports VDPPS-YMM-YMM-YMM-IMM8-SEMANTICS
+  imports CMPSS-XMM-XMM-IMM8-SEMANTICS
+  imports ORW-R16-IMM16-SEMANTICS
+  imports CMPW-AX-IMM16-SEMANTICS
+  imports ANDW-AX-IMM16-SEMANTICS
+  imports VPSLLQ-YMM-YMM-IMM8-SEMANTICS
+  imports VPSHUFD-YMM-YMM-IMM8-SEMANTICS
+  imports ADDB-AL-IMM8-SEMANTICS
+  imports ADDQ-R64-IMM8-SEMANTICS
+  imports VPSLLW-XMM-XMM-IMM8-SEMANTICS
+  imports MOVQ-R64-IMM32-SEMANTICS
+  imports VROUNDSD-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports VPSRAW-XMM-XMM-IMM8-SEMANTICS
+  imports SBBL-EAX-IMM32-SEMANTICS
+  imports ANDB-R8-IMM8-SEMANTICS
+  imports MOVB-RH-IMM8-SEMANTICS
+  imports SBBB-R8-IMM8-SEMANTICS
+  imports VPINSRB-XMM-XMM-R32-IMM8-SEMANTICS
+  imports ORB-R8-IMM8-SEMANTICS
+  imports ADCW-AX-IMM16-SEMANTICS
+  imports SALB-RH-IMM8-SEMANTICS
+  imports ANDQ-R64-IMM32-SEMANTICS
+  imports VCVTPS2PH-XMM-YMM-IMM8-SEMANTICS
+  imports SALB-R8-IMM8-SEMANTICS
+  imports RCLQ-R64-IMM8-SEMANTICS
+  imports ORW-R16-IMM8-SEMANTICS
+  imports BTL-R32-IMM8-SEMANTICS
+  imports SUBW-R16-IMM16-SEMANTICS
+  imports SBBW-AX-IMM16-SEMANTICS
+  imports PSLLW-XMM-IMM8-SEMANTICS
+  imports BTCW-R16-IMM8-SEMANTICS
+  imports SHUFPS-XMM-XMM-IMM8-SEMANTICS
+  imports XORW-AX-IMM16-SEMANTICS
+  imports VPALIGNR-XMM-XMM-XMM-IMM8-SEMANTICS
+  imports ADCL-R32-IMM32-SEMANTICS
+  imports ADCL-EAX-IMM32-SEMANTICS
+
+  imports BTRQ-R64-R64-SEMANTICS
+  imports PSRLQ-XMM-XMM-SEMANTICS
+  imports VFNMADD231PS-XMM-XMM-XMM-SEMANTICS
+  imports PMAXSW-XMM-XMM-SEMANTICS
+  imports MOVSS-XMM-XMM-SEMANTICS
+  imports PCMPGTQ-XMM-XMM-SEMANTICS
+  imports RCLB-RH-ONE-SEMANTICS
+  imports VPMOVSXWQ-XMM-XMM-SEMANTICS
+  imports SETNL-RH-SEMANTICS
+  imports SHLXQ-R64-R64-R64-SEMANTICS
+  imports VPMAXUB-YMM-YMM-YMM-SEMANTICS
+  imports VPMOVSXBQ-XMM-XMM-SEMANTICS
+  imports VFMADDSUB213PS-YMM-YMM-YMM-SEMANTICS
+  imports VDIVSD-XMM-XMM-XMM-SEMANTICS
+  imports VPSUBD-XMM-XMM-XMM-SEMANTICS
+  imports PMOVSXWD-XMM-XMM-SEMANTICS
+  imports SARB-RH-ONE-SEMANTICS
+  imports RORW-R16-ONE-SEMANTICS
+  imports CMPXCHGB-R8-R8-SEMANTICS
+  imports ANDB-R8-R8-SEMANTICS
+  imports CMOVCL-R32-R32-SEMANTICS
+  imports CMPB-RH-RH-SEMANTICS
+  imports VFMADD213SS-XMM-XMM-XMM-SEMANTICS
+  imports HSUBPD-XMM-XMM-SEMANTICS
+  imports RCRB-RH-CL-SEMANTICS
+  imports MOVQ-XMM-R64-SEMANTICS
+  imports VPMOVSXBW-YMM-XMM-SEMANTICS
+  imports CWTD-SEMANTICS
+  imports VADDPD-XMM-XMM-XMM-SEMANTICS
+  imports VPSLLVQ-XMM-XMM-XMM-SEMANTICS
+  imports SETNBE-R8-SEMANTICS
+  imports PMOVSXBD-XMM-XMM-SEMANTICS
+  imports CMOVAW-R16-R16-SEMANTICS
+  imports PSUBUSW-XMM-XMM-SEMANTICS
+  imports MOVUPS-XMM-XMM-SEMANTICS
+  imports VPSUBUSW-XMM-XMM-XMM-SEMANTICS
+  imports VPACKUSWB-XMM-XMM-XMM-SEMANTICS
+  imports SETNO-R8-SEMANTICS
+  imports VFNMADD132PS-YMM-YMM-YMM-SEMANTICS
+  imports VMAXSS-XMM-XMM-XMM-SEMANTICS
+  imports BTL-R32-R32-SEMANTICS
+  imports CVTTSS2SI-R32-XMM-SEMANTICS
+  imports MOVZBL-R32-RH-SEMANTICS
+  imports VADDPD-YMM-YMM-YMM-SEMANTICS
+  imports VPCMPEQQ-YMM-YMM-YMM-SEMANTICS
+  imports VXORPD-XMM-XMM-XMM-SEMANTICS
+  imports VCVTPS2DQ-XMM-XMM-SEMANTICS
+  imports PUNPCKHQDQ-XMM-XMM-SEMANTICS
+  imports IDIVQ-R64-SEMANTICS
+  imports VMOVDQU-YMM-YMM-SEMANTICS
+  imports DECL-R32-SEMANTICS
+  imports SUBB-R8-R8-SEMANTICS
+  imports XCHGL-EAX-R32-SEMANTICS
+  imports VPMINUB-YMM-YMM-YMM-SEMANTICS
+  imports PHSUBD-XMM-XMM-SEMANTICS
+  imports VPBROADCASTW-XMM-XMM-SEMANTICS
+  imports CLTQ-SEMANTICS
+  imports PMULHRSW-XMM-XMM-SEMANTICS
+  imports PADDW-XMM-XMM-SEMANTICS
+  imports ROLW-R16-CL-SEMANTICS
+  imports CMOVAQ-R64-R64-SEMANTICS
+  imports IDIVB-RH-SEMANTICS
+  imports PMAXUB-XMM-XMM-SEMANTICS
+  imports VUNPCKLPD-YMM-YMM-YMM-SEMANTICS
+  imports VHSUBPS-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVMSKB-R32-XMM-SEMANTICS
+  imports VRSQRTPS-YMM-YMM-SEMANTICS
+  imports VMOVD-XMM-R32-SEMANTICS
+  imports VADDSUBPD-YMM-YMM-YMM-SEMANTICS
+  imports XCHGQ-R64-R64-SEMANTICS
+  imports VPMOVZXBQ-YMM-XMM-SEMANTICS
+  imports PMINUD-XMM-XMM-SEMANTICS
+  imports VPSLLVD-XMM-XMM-XMM-SEMANTICS
+  imports SETZ-RH-SEMANTICS
+  imports PMOVSXBQ-XMM-XMM-SEMANTICS
+  imports VPMAXUW-XMM-XMM-XMM-SEMANTICS
+  imports MAXPD-XMM-XMM-SEMANTICS
+  imports PAVGW-XMM-XMM-SEMANTICS
+  imports VBLENDVPS-YMM-YMM-YMM-YMM-SEMANTICS
+  imports PMULLD-XMM-XMM-SEMANTICS
+  imports VPMOVSXWQ-YMM-XMM-SEMANTICS
+  imports SETNZ-R8-SEMANTICS
+  imports UNPCKLPD-XMM-XMM-SEMANTICS
+  imports VMOVMSKPS-R32-XMM-SEMANTICS
+  imports VCVTSD2SI-R32-XMM-SEMANTICS
+  imports VFMADD132PS-YMM-YMM-YMM-SEMANTICS
+  imports VPOR-XMM-XMM-XMM-SEMANTICS
+  imports VFNMSUB132PS-XMM-XMM-XMM-SEMANTICS
+  imports CMOVLW-R16-R16-SEMANTICS
+  imports ROLB-R8-CL-SEMANTICS
+  imports VPABSB-XMM-XMM-SEMANTICS
+  imports VFNMSUB213PS-XMM-XMM-XMM-SEMANTICS
+  imports BTSW-R16-R16-SEMANTICS
+  imports ADDB-R8-R8-SEMANTICS
+  imports ORB-R8-R8-SEMANTICS
+  imports MOVQ-R64-R64-SEMANTICS
+  imports DECB-RH-SEMANTICS
+  imports MOVSBW-R16-R8-SEMANTICS
+  imports SETE-RH-SEMANTICS
+  imports SETNL-R8-SEMANTICS
+  imports VPSRLD-XMM-XMM-XMM-SEMANTICS
+  imports LZCNTQ-R64-R64-SEMANTICS
+  imports ADDSS-XMM-XMM-SEMANTICS
+  imports CMOVNEL-R32-R32-SEMANTICS
+  imports VMOVSS-XMM-XMM-XMM-SEMANTICS
+  imports VCVTPH2PS-YMM-XMM-SEMANTICS
+  imports NEGL-R32-SEMANTICS
+  imports VPSRLW-YMM-YMM-XMM-SEMANTICS
+  imports DIVSD-XMM-XMM-SEMANTICS
+  imports MOVDQU-XMM-XMM-SEMANTICS
+  imports CVTSI2SSQ-XMM-R64-SEMANTICS
+  imports VPMAXUD-XMM-XMM-XMM-SEMANTICS
+  imports VPSRLQ-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNOL-R32-R32-SEMANTICS
+  imports VFMADD213PD-YMM-YMM-YMM-SEMANTICS
+  imports SETNC-R8-SEMANTICS
+  imports VFMADD213PD-XMM-XMM-XMM-SEMANTICS
+  imports VMOVMSKPS-R64-YMM-SEMANTICS
+  imports VPMINSD-YMM-YMM-YMM-SEMANTICS
+  imports VORPD-XMM-XMM-XMM-SEMANTICS
+  imports SALL-R32-ONE-SEMANTICS
+  imports VCVTPS2PD-YMM-XMM-SEMANTICS
+  imports RORB-RH-CL-SEMANTICS
+  imports SETP-R8-SEMANTICS
+  imports VBLENDVPD-XMM-XMM-XMM-XMM-SEMANTICS
+  imports CMOVLL-R32-R32-SEMANTICS
+  imports DIVW-R16-SEMANTICS
+  imports STC-SEMANTICS
+  imports VFMADD132SS-XMM-XMM-XMM-SEMANTICS
+  imports SHRW-R16-CL-SEMANTICS
+  imports SETO-RH-SEMANTICS
+  imports MOVSWL-R32-R16-SEMANTICS
+  imports PUNPCKLDQ-XMM-XMM-SEMANTICS
+  imports PHADDD-XMM-XMM-SEMANTICS
+  imports VPBROADCASTD-XMM-XMM-SEMANTICS
+  imports ORW-R16-R16-SEMANTICS
+  imports SALB-RH-ONE-SEMANTICS
+  imports CMOVBEW-R16-R16-SEMANTICS
+  imports VPMINSB-XMM-XMM-XMM-SEMANTICS
+  imports VPSLLVD-YMM-YMM-YMM-SEMANTICS
+  imports VDIVPS-XMM-XMM-XMM-SEMANTICS
+  imports ANDPD-XMM-XMM-SEMANTICS
+  imports VPBROADCASTQ-YMM-XMM-SEMANTICS
+  imports PACKUSDW-XMM-XMM-SEMANTICS
+  imports TESTB-RH-R8-SEMANTICS
+  imports SETNAE-RH-SEMANTICS
+  imports PABSB-XMM-XMM-SEMANTICS
+  imports HADDPS-XMM-XMM-SEMANTICS
+  imports VPMADDUBSW-YMM-YMM-YMM-SEMANTICS
+  imports SETNBE-RH-SEMANTICS
+  imports SUBQ-R64-R64-SEMANTICS
+  imports VSQRTSD-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVZXWD-XMM-XMM-SEMANTICS
+  imports VRCPPS-XMM-XMM-SEMANTICS
+  imports MULSD-XMM-XMM-SEMANTICS
+  imports CBTW-SEMANTICS
+  imports VFNMSUB231PD-YMM-YMM-YMM-SEMANTICS
+  imports CMOVPW-R16-R16-SEMANTICS
+  imports VPCMPGTW-YMM-YMM-YMM-SEMANTICS
+  imports CMPXCHGQ-R64-R64-SEMANTICS
+  imports VPSUBSB-XMM-XMM-XMM-SEMANTICS
+  imports VSQRTPD-XMM-XMM-SEMANTICS
+  imports SETNLE-RH-SEMANTICS
+  imports UNPCKHPS-XMM-XMM-SEMANTICS
+  imports CMOVNCW-R16-R16-SEMANTICS
+  imports MOVD-XMM-R32-SEMANTICS
+  imports MOVMSKPS-R32-XMM-SEMANTICS
+  imports VPAND-XMM-XMM-XMM-SEMANTICS
+  imports SHRB-R8-CL-SEMANTICS
+  imports SALB-R8-CL-SEMANTICS
+  imports MINPS-XMM-XMM-SEMANTICS
+  imports VPMULLW-XMM-XMM-XMM-SEMANTICS
+  imports VPBROADCASTQ-XMM-XMM-SEMANTICS
+  imports CMPXCHGL-R32-R32-SEMANTICS
+  imports CVTSS2SI-R64-XMM-SEMANTICS
+  imports IMULQ-R64-R64-SEMANTICS
+  imports VPMOVSXWD-XMM-XMM-SEMANTICS
+  imports BTSQ-R64-R64-SEMANTICS
+  imports PMOVSXDQ-XMM-XMM-SEMANTICS
+  imports SETNP-RH-SEMANTICS
+  imports CMOVNGL-R32-R32-SEMANTICS
+  imports VPSRAD-XMM-XMM-XMM-SEMANTICS
+  imports VSQRTPS-XMM-XMM-SEMANTICS
+  imports VPERMILPS-YMM-YMM-YMM-SEMANTICS
+  imports VPMOVZXWQ-YMM-XMM-SEMANTICS
+  imports VBROADCASTSS-YMM-XMM-SEMANTICS
+  imports PAND-XMM-XMM-SEMANTICS
+  imports IDIVL-R32-SEMANTICS
+  imports MINSS-XMM-XMM-SEMANTICS
+  imports VFMADDSUB213PD-XMM-XMM-XMM-SEMANTICS
+  imports PMOVSXWQ-XMM-XMM-SEMANTICS
+  imports UCOMISD-XMM-XMM-SEMANTICS
+  imports RCRB-R8-ONE-SEMANTICS
+  imports CMOVSW-R16-R16-SEMANTICS
+  imports VPMINUW-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNPQ-R64-R64-SEMANTICS
+  imports VFMSUBADD213PS-XMM-XMM-XMM-SEMANTICS
+  imports RSQRTSS-XMM-XMM-SEMANTICS
+  imports VPMAXUD-YMM-YMM-YMM-SEMANTICS
+  imports VPMAXSW-XMM-XMM-XMM-SEMANTICS
+  imports VMOVLHPS-XMM-XMM-XMM-SEMANTICS
+  imports CVTSI2SDL-XMM-R32-SEMANTICS
+  imports VCVTSS2SD-XMM-XMM-XMM-SEMANTICS
+  imports VFMSUB213SS-XMM-XMM-XMM-SEMANTICS
+  imports VPACKUSDW-YMM-YMM-YMM-SEMANTICS
+  imports VPMOVZXBD-YMM-XMM-SEMANTICS
+  imports VADDSUBPS-XMM-XMM-XMM-SEMANTICS
+  imports ROLB-R8-ONE-SEMANTICS
+  imports PMOVSXBW-XMM-XMM-SEMANTICS
+  imports VMINPS-XMM-XMM-XMM-SEMANTICS
+  imports ADCB-RH-R8-SEMANTICS
+  imports SUBSD-XMM-XMM-SEMANTICS
+  imports VPMOVMSKB-R32-YMM-SEMANTICS
+  imports BTCL-R32-R32-SEMANTICS
+  imports NOTL-R32-SEMANTICS
+  imports VCVTSD2SI-R64-XMM-SEMANTICS
+  imports VPABSD-YMM-YMM-SEMANTICS
+  imports PANDN-XMM-XMM-SEMANTICS
+  imports CMOVBEQ-R64-R64-SEMANTICS
+  imports ORB-RH-R8-SEMANTICS
+  imports INCL-R32-SEMANTICS
+  imports VMOVSLDUP-XMM-XMM-SEMANTICS
+  imports BEXTRL-R32-R32-R32-SEMANTICS
+  imports VPSIGNW-XMM-XMM-XMM-SEMANTICS
+  imports VCVTPS2PD-XMM-XMM-SEMANTICS
+  imports CVTSI2SDQ-XMM-R64-SEMANTICS
+  imports VADDPS-YMM-YMM-YMM-SEMANTICS
+  imports VPSRLVD-YMM-YMM-YMM-SEMANTICS
+  imports VANDPS-XMM-XMM-XMM-SEMANTICS
+  imports VPSUBW-XMM-XMM-XMM-SEMANTICS
+  imports ROLL-R32-ONE-SEMANTICS
+  imports VFMSUB132PD-XMM-XMM-XMM-SEMANTICS
+  imports ANDL-R32-R32-SEMANTICS
+  imports VPSUBQ-YMM-YMM-YMM-SEMANTICS
+  imports VPSUBD-YMM-YMM-YMM-SEMANTICS
+  imports BTCW-R16-R16-SEMANTICS
+  imports BTW-R16-R16-SEMANTICS
+  imports VMOVUPS-XMM-XMM-SEMANTICS
+  imports MOVMSKPS-R64-XMM-SEMANTICS
+  imports XCHGB-RH-RH-SEMANTICS
+  imports PSIGNB-XMM-XMM-SEMANTICS
+  imports VPMADDWD-XMM-XMM-XMM-SEMANTICS
+  imports PMULHW-XMM-XMM-SEMANTICS
+  imports VFMADD231PD-YMM-YMM-YMM-SEMANTICS
+  imports VCVTPD2DQ-XMM-XMM-SEMANTICS
+  imports VFNMADD132PD-YMM-YMM-YMM-SEMANTICS
+  imports SARL-R32-CL-SEMANTICS
+  imports SETPE-RH-SEMANTICS
+  imports VMOVSD-XMM-XMM-XMM-SEMANTICS
+  imports MOVSBL-R32-RH-SEMANTICS
+  imports RORB-R8-CL-SEMANTICS
+  imports VPSLLW-XMM-XMM-XMM-SEMANTICS
+  imports CMOVGW-R16-R16-SEMANTICS
+  imports VHADDPS-XMM-XMM-XMM-SEMANTICS
+  imports MINPD-XMM-XMM-SEMANTICS
+  imports DIVQ-R64-SEMANTICS
+  imports CMOVEW-R16-R16-SEMANTICS
+  imports VPMAXUW-YMM-YMM-YMM-SEMANTICS
+  imports DECQ-R64-SEMANTICS
+  imports CWTL-SEMANTICS
+  imports VBLENDVPD-YMM-YMM-YMM-YMM-SEMANTICS
+  imports IDIVB-R8-SEMANTICS
+  imports PMAXUW-XMM-XMM-SEMANTICS
+  imports SETNG-R8-SEMANTICS
+  imports VMOVHLPS-XMM-XMM-XMM-SEMANTICS
+  imports SUBB-R8-RH-SEMANTICS
+  imports CMOVGEL-R32-R32-SEMANTICS
+  imports VMOVSHDUP-YMM-YMM-SEMANTICS
+  imports NEGQ-R64-SEMANTICS
+  imports MAXSD-XMM-XMM-SEMANTICS
+  imports CMPB-R8-RH-SEMANTICS
+  imports VCVTPD2DQ-XMM-YMM-SEMANTICS
+  imports VPADDSW-XMM-XMM-XMM-SEMANTICS
+  imports VPTEST-XMM-XMM-SEMANTICS
+  imports VCVTTPS2DQ-YMM-YMM-SEMANTICS
+  imports XCHGB-R8-R8-SEMANTICS
+  imports VRCPSS-XMM-XMM-XMM-SEMANTICS
+  imports VPUNPCKLDQ-YMM-YMM-YMM-SEMANTICS
+  imports CVTTSD2SI-R32-XMM-SEMANTICS
+  imports MULPS-XMM-XMM-SEMANTICS
+  imports VPHSUBW-YMM-YMM-YMM-SEMANTICS
+  imports PMINSD-XMM-XMM-SEMANTICS
+  imports VFMADDSUB213PS-XMM-XMM-XMM-SEMANTICS
+  imports SHLXL-R32-R32-R32-SEMANTICS
+  imports VUNPCKHPD-YMM-YMM-YMM-SEMANTICS
+  imports SQRTPD-XMM-XMM-SEMANTICS
+  imports PCMPGTB-XMM-XMM-SEMANTICS
+  imports CMOVNAQ-R64-R64-SEMANTICS
+  imports MOVUPD-XMM-XMM-SEMANTICS
+  imports CMOVNPL-R32-R32-SEMANTICS
+  imports ANDPS-XMM-XMM-SEMANTICS
+  imports SETG-R8-SEMANTICS
+  imports SARQ-R64-CL-SEMANTICS
+  imports VFMADDSUB231PS-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVMSKB-R64-YMM-SEMANTICS
+  imports SETG-RH-SEMANTICS
+  imports VPUNPCKLBW-XMM-XMM-XMM-SEMANTICS
+  imports VPXOR-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNBEQ-R64-R64-SEMANTICS
+  imports RORQ-R64-CL-SEMANTICS
+  imports VFNMSUB213PD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNLQ-R64-R64-SEMANTICS
+  imports TZCNTW-R16-R16-SEMANTICS
+  imports VPABSD-XMM-XMM-SEMANTICS
+  imports VXORPD-YMM-YMM-YMM-SEMANTICS
+  imports VHSUBPD-XMM-XMM-XMM-SEMANTICS
+  imports VPHADDD-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD213PD-YMM-YMM-YMM-SEMANTICS
+  imports VFMADD213PS-XMM-XMM-XMM-SEMANTICS
+  imports CMOVPOW-R16-R16-SEMANTICS
+  imports CMOVLQ-R64-R64-SEMANTICS
+  imports VFMADD231PD-XMM-XMM-XMM-SEMANTICS
+  imports SETS-R8-SEMANTICS
+  imports VPBLENDVB-YMM-YMM-YMM-YMM-SEMANTICS
+  imports VPACKSSDW-YMM-YMM-YMM-SEMANTICS
+  imports VFNMSUB213PD-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD213SD-XMM-XMM-XMM-SEMANTICS
+  imports PSUBSW-XMM-XMM-SEMANTICS
+  imports VSUBPS-YMM-YMM-YMM-SEMANTICS
+  imports XORB-R8-RH-SEMANTICS
+  imports CMPW-R16-R16-SEMANTICS
+  imports XCHGW-AX-R16-SEMANTICS
+  imports MOVB-RH-RH-SEMANTICS
+  imports SETA-RH-SEMANTICS
+  imports VPMULHW-YMM-YMM-YMM-SEMANTICS
+  imports VPMULDQ-XMM-XMM-XMM-SEMANTICS
+  imports VMOVUPD-YMM-YMM-SEMANTICS
+  imports VMOVDQA-XMM-XMM-SEMANTICS
+  imports BZHIL-R32-R32-R32-SEMANTICS
+  imports VPBROADCASTB-XMM-XMM-SEMANTICS
+  imports VPCMPGTQ-XMM-XMM-XMM-SEMANTICS
+  imports VFNMSUB213SS-XMM-XMM-XMM-SEMANTICS
+  imports SETLE-R8-SEMANTICS
+  imports VMOVAPD-YMM-YMM-SEMANTICS
+  imports SUBB-RH-R8-SEMANTICS
+  imports MOVZBW-R16-RH-SEMANTICS
+  imports CMOVNGQ-R64-R64-SEMANTICS
+  imports VRCPPS-YMM-YMM-SEMANTICS
+  imports VMOVSLDUP-YMM-YMM-SEMANTICS
+  imports SETBE-R8-SEMANTICS
+  imports SARXQ-R64-R64-R64-SEMANTICS
+  imports RCPSS-XMM-XMM-SEMANTICS
+  imports VPBROADCASTD-YMM-XMM-SEMANTICS
+  imports VCVTSS2SI-R32-XMM-SEMANTICS
+  imports PUNPCKLQDQ-XMM-XMM-SEMANTICS
+  imports VFNMSUB231PS-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNBEW-R16-R16-SEMANTICS
+  imports BSWAP-R32-SEMANTICS
+  imports CMOVNLL-R32-R32-SEMANTICS
+  imports VPSHUFB-YMM-YMM-YMM-SEMANTICS
+  imports VPAND-YMM-YMM-YMM-SEMANTICS
+  imports SHLW-R16-ONE-SEMANTICS
+  imports XORPS-XMM-XMM-SEMANTICS
+  imports VPUNPCKHWD-YMM-YMM-YMM-SEMANTICS
+  imports VPABSW-XMM-XMM-SEMANTICS
+  imports ANDNL-R32-R32-R32-SEMANTICS
+  imports VPMINSW-XMM-XMM-XMM-SEMANTICS
+  imports VPSUBB-YMM-YMM-YMM-SEMANTICS
+  imports VPSRLVD-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVZXWQ-XMM-XMM-SEMANTICS
+  imports VFNMADD231PD-XMM-XMM-XMM-SEMANTICS
+  imports VPCMPEQD-XMM-XMM-XMM-SEMANTICS
+  imports VPMAXSB-YMM-YMM-YMM-SEMANTICS
+  imports CLTD-SEMANTICS
+  imports VDIVSS-XMM-XMM-XMM-SEMANTICS
+  imports PADDD-XMM-XMM-SEMANTICS
+  imports RCRL-R32-CL-SEMANTICS
+  imports PSUBSB-XMM-XMM-SEMANTICS
+  imports MULXQ-R64-R64-R64-SEMANTICS
+  imports MOVB-RH-R8-SEMANTICS
+  imports SHRQ-R64-ONE-SEMANTICS
+  imports CMOVNGEQ-R64-R64-SEMANTICS
+  imports SETBE-RH-SEMANTICS
+  imports PSUBW-XMM-XMM-SEMANTICS
+  imports MOVL-R32-R32-SEMANTICS
+  imports VPABSB-YMM-YMM-SEMANTICS
+  imports VPMOVZXDQ-XMM-XMM-SEMANTICS
+  imports VFNMADD231PS-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUBADD231PS-YMM-YMM-YMM-SEMANTICS
+  imports VSQRTPS-YMM-YMM-SEMANTICS
+  imports PHMINPOSUW-XMM-XMM-SEMANTICS
+  imports CMOVBEL-R32-R32-SEMANTICS
+  imports PMOVZXBW-XMM-XMM-SEMANTICS
+  imports VPMINUD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVAEL-R32-R32-SEMANTICS
+  imports SHRXQ-R64-R64-R64-SEMANTICS
+  imports VMULSS-XMM-XMM-XMM-SEMANTICS
+  imports VFMADDSUB132PD-YMM-YMM-YMM-SEMANTICS
+  imports CMOVCW-R16-R16-SEMANTICS
+  imports VCVTPD2PS-XMM-XMM-SEMANTICS
+  imports MULW-R16-SEMANTICS
+  imports TESTB-R8-R8-SEMANTICS
+  imports VPUNPCKHQDQ-XMM-XMM-XMM-SEMANTICS
+  imports ADCB-RH-RH-SEMANTICS
+  imports VPERMD-YMM-YMM-YMM-SEMANTICS
+  imports SALB-R8-ONE-SEMANTICS
+  imports CVTSI2SSL-XMM-R32-SEMANTICS
+  imports VPSRAW-YMM-YMM-XMM-SEMANTICS
+  imports VMOVMSKPD-R64-YMM-SEMANTICS
+  imports ROLB-RH-ONE-SEMANTICS
+  imports VMOVAPS-YMM-YMM-SEMANTICS
+  imports VPMAXSD-XMM-XMM-XMM-SEMANTICS
+  imports MOVW-R16-R16-SEMANTICS
+  imports CMPL-R32-R32-SEMANTICS
+  imports CVTPD2PS-XMM-XMM-SEMANTICS
+  imports VPADDW-XMM-XMM-XMM-SEMANTICS
+  imports VPXOR-XMM-XMM-XMM-SEMANTICS
+  imports MOVSBQ-R64-R8-SEMANTICS
+  imports VFMSUB213SD-XMM-XMM-XMM-SEMANTICS
+  imports RORW-R16-CL-SEMANTICS
+  imports VFMSUB213PS-XMM-XMM-XMM-SEMANTICS
+  imports VPABSW-YMM-YMM-SEMANTICS
+  imports PSHUFB-XMM-XMM-SEMANTICS
+  imports XCHGW-R16-AX-SEMANTICS
+  imports RCRB-R8-CL-SEMANTICS
+  imports VCVTDQ2PS-XMM-XMM-SEMANTICS
+  imports MOVAPD-XMM-XMM-SEMANTICS
+  imports VFMADD132SD-XMM-XMM-XMM-SEMANTICS
+  imports VFMSUB213PD-YMM-YMM-YMM-SEMANTICS
+  imports VFMADDSUB132PD-XMM-XMM-XMM-SEMANTICS
+  imports VPMULHW-XMM-XMM-XMM-SEMANTICS
+  imports SALB-RH-CL-SEMANTICS
+  imports SHLB-RH-CL-SEMANTICS
+  imports VPSRLVQ-YMM-YMM-YMM-SEMANTICS
+  imports VMOVDDUP-YMM-YMM-SEMANTICS
+  imports PACKUSWB-XMM-XMM-SEMANTICS
+  imports MOVSLDUP-XMM-XMM-SEMANTICS
+  imports RORB-R8-ONE-SEMANTICS
+  imports CMOVBQ-R64-R64-SEMANTICS
+  imports VORPS-XMM-XMM-XMM-SEMANTICS
+  imports VPSIGNB-XMM-XMM-XMM-SEMANTICS
+  imports MOVQ-XMM-XMM-SEMANTICS
+  imports PSIGND-XMM-XMM-SEMANTICS
+  imports MINSD-XMM-XMM-SEMANTICS
+  imports CMC-SEMANTICS
+  imports VTESTPD-XMM-XMM-SEMANTICS
+  imports SETS-RH-SEMANTICS
+  imports VBROADCASTSS-XMM-XMM-SEMANTICS
+  imports VPMINSD-XMM-XMM-XMM-SEMANTICS
+  imports VFMSUB132PD-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD132PD-XMM-XMM-XMM-SEMANTICS
+  imports VPADDD-XMM-XMM-XMM-SEMANTICS
+  imports VHSUBPD-YMM-YMM-YMM-SEMANTICS
+  imports IDIVW-R16-SEMANTICS
+  imports VPMOVSXBQ-YMM-XMM-SEMANTICS
+  imports DIVB-RH-SEMANTICS
+  imports VCVTPS2DQ-YMM-YMM-SEMANTICS
+  imports VPMAXUB-XMM-XMM-XMM-SEMANTICS
+  imports DIVL-R32-SEMANTICS
+  imports VFNMSUB231SS-XMM-XMM-XMM-SEMANTICS
+  imports SETNS-RH-SEMANTICS
+  imports VFNMSUB132SD-XMM-XMM-XMM-SEMANTICS
+  imports RCLB-R8-CL-SEMANTICS
+  imports SETNGE-R8-SEMANTICS
+  imports LZCNTW-R16-R16-SEMANTICS
+  imports VCVTSI2SSQ-XMM-XMM-R64-SEMANTICS
+  imports SALW-R16-ONE-SEMANTICS
+  imports POPCNTL-R32-R32-SEMANTICS
+  imports VPSRAD-YMM-YMM-XMM-SEMANTICS
+  imports ANDB-RH-R8-SEMANTICS
+  imports VPSUBSW-YMM-YMM-YMM-SEMANTICS
+  imports VMOVAPS-XMM-XMM-SEMANTICS
+  imports INCQ-R64-SEMANTICS
+  imports VPSLLW-YMM-YMM-XMM-SEMANTICS
+  imports SETL-R8-SEMANTICS
+  imports CMOVEL-R32-R32-SEMANTICS
+  imports VMOVUPD-XMM-XMM-SEMANTICS
+  imports PMOVZXBD-XMM-XMM-SEMANTICS
+  imports VPMULHUW-YMM-YMM-YMM-SEMANTICS
+  imports CMOVOL-R32-R32-SEMANTICS
+  imports VFMSUB231PD-XMM-XMM-XMM-SEMANTICS
+  imports VFMADD213SD-XMM-XMM-XMM-SEMANTICS
+  imports VPUNPCKHWD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVGEQ-R64-R64-SEMANTICS
+  imports VPERMILPD-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNGW-R16-R16-SEMANTICS
+  imports MOVZWQ-R64-R16-SEMANTICS
+  imports CVTSD2SI-R32-XMM-SEMANTICS
+  imports VTESTPS-YMM-YMM-SEMANTICS
+  imports BLSMSKQ-R64-R64-SEMANTICS
+  imports PHSUBW-XMM-XMM-SEMANTICS
+  imports BTRW-R16-R16-SEMANTICS
+  imports CLC-SEMANTICS
+  imports DECB-R8-SEMANTICS
+  imports VPAVGW-XMM-XMM-XMM-SEMANTICS
+  imports VANDPD-XMM-XMM-XMM-SEMANTICS
+  imports SETPE-R8-SEMANTICS
+  imports VPCMPEQD-YMM-YMM-YMM-SEMANTICS
+  imports SETAE-R8-SEMANTICS
+  imports ADCB-R8-R8-SEMANTICS
+  imports PUNPCKHWD-XMM-XMM-SEMANTICS
+  imports CMOVCQ-R64-R64-SEMANTICS
+  imports VANDNPS-YMM-YMM-YMM-SEMANTICS
+  imports VMOVQ-XMM-XMM-SEMANTICS
+  imports VMINPD-YMM-YMM-YMM-SEMANTICS
+  imports VPCMPGTQ-YMM-YMM-YMM-SEMANTICS
+  imports RCRW-R16-CL-SEMANTICS
+  imports VMINSD-XMM-XMM-XMM-SEMANTICS
+  imports SALW-R16-CL-SEMANTICS
+  imports VPCMPGTB-YMM-YMM-YMM-SEMANTICS
+  imports VPUNPCKLQDQ-XMM-XMM-XMM-SEMANTICS
+  imports PSRAW-XMM-XMM-SEMANTICS
+  imports VPADDUSB-YMM-YMM-YMM-SEMANTICS
+  imports VFNMSUB132PS-YMM-YMM-YMM-SEMANTICS
+  imports SETC-RH-SEMANTICS
+  imports VFMSUB132SD-XMM-XMM-XMM-SEMANTICS
+  imports VUNPCKLPD-XMM-XMM-XMM-SEMANTICS
+  imports CMPB-RH-R8-SEMANTICS
+  imports CMPXCHGB-RH-R8-SEMANTICS
+  imports VSUBSS-XMM-XMM-XMM-SEMANTICS
+  imports VCVTPH2PS-XMM-XMM-SEMANTICS
+  imports SHLW-R16-CL-SEMANTICS
+  imports VMINPD-XMM-XMM-XMM-SEMANTICS
+  imports BLSRL-R32-R32-SEMANTICS
+  imports VPSUBUSW-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUBADD213PS-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUB231SD-XMM-XMM-XMM-SEMANTICS
+  imports MOVB-R8-R8-SEMANTICS
+  imports PMOVZXDQ-XMM-XMM-SEMANTICS
+  imports ROLB-RH-CL-SEMANTICS
+  imports ADDB-R8-RH-SEMANTICS
+  imports RCLQ-R64-ONE-SEMANTICS
+  imports SETA-R8-SEMANTICS
+  imports PUNPCKHBW-XMM-XMM-SEMANTICS
+  imports VPSRAVD-YMM-YMM-YMM-SEMANTICS
+  imports VMOVMSKPS-R64-XMM-SEMANTICS
+  imports CMOVGQ-R64-R64-SEMANTICS
+  imports VANDPD-YMM-YMM-YMM-SEMANTICS
+  imports SHLL-R32-CL-SEMANTICS
+  imports VADDSS-XMM-XMM-XMM-SEMANTICS
+  imports PMOVZXWD-XMM-XMM-SEMANTICS
+  imports VCVTTPD2DQ-XMM-YMM-SEMANTICS
+  imports SHRB-R8-ONE-SEMANTICS
+  imports VPMOVSXWD-YMM-XMM-SEMANTICS
+  imports COMISS-XMM-XMM-SEMANTICS
+  imports VPADDUSW-YMM-YMM-YMM-SEMANTICS
+  imports VPSUBSW-XMM-XMM-XMM-SEMANTICS
+  imports CMOVAEW-R16-R16-SEMANTICS
+  imports RCRL-R32-ONE-SEMANTICS
+  imports SHRW-R16-ONE-SEMANTICS
+  imports XORQ-R64-R64-SEMANTICS
+  imports VMOVD-R32-XMM-SEMANTICS
+  imports SALL-R32-CL-SEMANTICS
+  imports MOVZBW-R16-R8-SEMANTICS
+  imports PCMPEQW-XMM-XMM-SEMANTICS
+  imports VPADDB-YMM-YMM-YMM-SEMANTICS
+  imports CVTPD2DQ-XMM-XMM-SEMANTICS
+  imports VPAVGW-YMM-YMM-YMM-SEMANTICS
+  imports VDIVPS-YMM-YMM-YMM-SEMANTICS
+  imports SHRQ-R64-CL-SEMANTICS
+  imports BLSIQ-R64-R64-SEMANTICS
+  imports VFNMADD231PD-YMM-YMM-YMM-SEMANTICS
+  imports VPERMPS-YMM-YMM-YMM-SEMANTICS
+  imports VPUNPCKLDQ-XMM-XMM-XMM-SEMANTICS
+  imports VPSUBQ-XMM-XMM-XMM-SEMANTICS
+  imports VPSRLD-YMM-YMM-XMM-SEMANTICS
+  imports VPSLLVQ-YMM-YMM-YMM-SEMANTICS
+  imports CMOVLEL-R32-R32-SEMANTICS
+  imports SHRB-RH-ONE-SEMANTICS
+  imports SETNE-RH-SEMANTICS
+  imports ADDB-RH-R8-SEMANTICS
+  imports VPMOVZXWD-YMM-XMM-SEMANTICS
+  imports PADDUSW-XMM-XMM-SEMANTICS
+  imports CMOVBW-R16-R16-SEMANTICS
+  imports SHLB-R8-CL-SEMANTICS
+  imports CMOVNCQ-R64-R64-SEMANTICS
+  imports VFNMADD231SS-XMM-XMM-XMM-SEMANTICS
+  imports VPADDD-YMM-YMM-YMM-SEMANTICS
+  imports SHLB-RH-ONE-SEMANTICS
+  imports CVTSS2SD-XMM-XMM-SEMANTICS
+  imports VCOMISD-XMM-XMM-SEMANTICS
+  imports VANDNPD-YMM-YMM-YMM-SEMANTICS
+  imports MOVSLQ-R64-R32-SEMANTICS
+  imports VCVTSD2SS-XMM-XMM-XMM-SEMANTICS
+  imports RORQ-R64-ONE-SEMANTICS
+  imports SUBSS-XMM-XMM-SEMANTICS
+  imports NOTB-RH-SEMANTICS
+  imports VFNMSUB213SD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNOW-R16-R16-SEMANTICS
+  imports UCOMISS-XMM-XMM-SEMANTICS
+  imports CQTO-SEMANTICS
+  imports VPSLLD-YMM-YMM-XMM-SEMANTICS
+  imports VPSUBSB-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUB132PS-YMM-YMM-YMM-SEMANTICS
+  imports PUNPCKLBW-XMM-XMM-SEMANTICS
+  imports PSUBB-XMM-XMM-SEMANTICS
+  imports VPMOVSXBW-XMM-XMM-SEMANTICS
+  imports VUNPCKLPS-YMM-YMM-YMM-SEMANTICS
+  imports VMOVAPD-XMM-XMM-SEMANTICS
+  imports VMOVDDUP-XMM-XMM-SEMANTICS
+  imports SARQ-R64-ONE-SEMANTICS
+  imports ADDB-RH-RH-SEMANTICS
+  imports VANDPS-YMM-YMM-YMM-SEMANTICS
+  imports CMOVZL-R32-R32-SEMANTICS
+  imports MULB-R8-SEMANTICS
+  imports CMOVNCL-R32-R32-SEMANTICS
+  imports ANDNPD-XMM-XMM-SEMANTICS
+  imports VPADDSW-YMM-YMM-YMM-SEMANTICS
+  imports VRSQRTSS-XMM-XMM-XMM-SEMANTICS
+  imports VBROADCASTSD-YMM-XMM-SEMANTICS
+  imports ADCB-R8-RH-SEMANTICS
+  imports VDIVPD-YMM-YMM-YMM-SEMANTICS
+  imports ADCQ-R64-R64-SEMANTICS
+  imports TZCNTQ-R64-R64-SEMANTICS
+  imports SETPO-R8-SEMANTICS
+  imports VPACKSSWB-XMM-XMM-XMM-SEMANTICS
+  imports PMADDWD-XMM-XMM-SEMANTICS
+  imports RCRQ-R64-CL-SEMANTICS
+  imports XORL-R32-R32-SEMANTICS
+  imports VFNMSUB231PD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVOQ-R64-R64-SEMANTICS
+  imports ORB-RH-RH-SEMANTICS
+  imports RCRB-RH-ONE-SEMANTICS
+  imports TESTL-R32-R32-SEMANTICS
+  imports PMOVZXWQ-XMM-XMM-SEMANTICS
+  imports COMISD-XMM-XMM-SEMANTICS
+  imports VPSIGND-XMM-XMM-XMM-SEMANTICS
+  imports VFMSUBADD231PD-XMM-XMM-XMM-SEMANTICS
+  imports VPCMPGTW-XMM-XMM-XMM-SEMANTICS
+  imports CMOVBL-R32-R32-SEMANTICS
+  imports CMOVPQ-R64-R64-SEMANTICS
+  imports VFMADDSUB231PD-YMM-YMM-YMM-SEMANTICS
+  imports MULXL-R32-R32-R32-SEMANTICS
+  imports ANDQ-R64-R64-SEMANTICS
+  imports VPADDUSW-XMM-XMM-XMM-SEMANTICS
+  imports VZEROUPPER-SEMANTICS
+  imports ORL-R32-R32-SEMANTICS
+  imports VFMSUB213PD-XMM-XMM-XMM-SEMANTICS
+  imports SARXL-R32-R32-R32-SEMANTICS
+  imports MOVD-R32-XMM-SEMANTICS
+  imports VPCMPEQW-YMM-YMM-YMM-SEMANTICS
+  imports SUBPD-XMM-XMM-SEMANTICS
+  imports CMOVNBEL-R32-R32-SEMANTICS
+  imports BTSL-R32-R32-SEMANTICS
+  imports VPHADDSW-YMM-YMM-YMM-SEMANTICS
+  imports CMOVLEQ-R64-R64-SEMANTICS
+  imports XORB-RH-RH-SEMANTICS
+  imports VFMSUBADD132PS-XMM-XMM-XMM-SEMANTICS
+  imports ADDPD-XMM-XMM-SEMANTICS
+  imports VPSUBUSB-YMM-YMM-YMM-SEMANTICS
+  imports VMINSS-XMM-XMM-XMM-SEMANTICS
+  imports VPMULDQ-YMM-YMM-YMM-SEMANTICS
+  imports VCVTSI2SDQ-XMM-XMM-R64-SEMANTICS
+  imports VUNPCKHPS-XMM-XMM-XMM-SEMANTICS
+  imports NOTQ-R64-SEMANTICS
+  imports XCHGW-R16-R16-SEMANTICS
+  imports VMULPD-XMM-XMM-XMM-SEMANTICS
+  imports VPACKSSWB-YMM-YMM-YMM-SEMANTICS
+  imports VPMULHUW-XMM-XMM-XMM-SEMANTICS
+  imports VPHADDW-XMM-XMM-XMM-SEMANTICS
+  imports SUBB-RH-RH-SEMANTICS
+  imports SETNAE-R8-SEMANTICS
+  imports VPANDN-XMM-XMM-XMM-SEMANTICS
+  imports VPBROADCASTW-YMM-XMM-SEMANTICS
+  imports CVTSD2SI-R64-XMM-SEMANTICS
+  imports PSRAD-XMM-XMM-SEMANTICS
+  imports VPSLLD-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVSXDQ-XMM-XMM-SEMANTICS
+  imports CMOVZW-R16-R16-SEMANTICS
+  imports VXORPS-YMM-YMM-YMM-SEMANTICS
+  imports DIVPD-XMM-XMM-SEMANTICS
+  imports CMOVGEW-R16-R16-SEMANTICS
+  imports VPHADDD-XMM-XMM-XMM-SEMANTICS
+  imports VCVTTSD2SI-R32-XMM-SEMANTICS
+  imports PMULDQ-XMM-XMM-SEMANTICS
+  imports VUCOMISS-XMM-XMM-SEMANTICS
+  imports PADDSW-XMM-XMM-SEMANTICS
+  imports VPMAXSB-XMM-XMM-XMM-SEMANTICS
+  imports CMOVSL-R32-R32-SEMANTICS
+  imports IMULQ-R64-SEMANTICS
+  imports PSLLW-XMM-XMM-SEMANTICS
+  imports VMOVQ-XMM-R64-SEMANTICS
+  imports BSWAP-R64-SEMANTICS
+  imports PSLLD-XMM-XMM-SEMANTICS
+  imports ADDQ-R64-R64-SEMANTICS
+  imports MOVSD-XMM-XMM-SEMANTICS
+  imports SETB-R8-SEMANTICS
+  imports VFMSUB132PS-XMM-XMM-XMM-SEMANTICS
+  imports VANDNPD-XMM-XMM-XMM-SEMANTICS
+  imports SUBL-R32-R32-SEMANTICS
+  imports VPHSUBSW-XMM-XMM-XMM-SEMANTICS
+  imports RORL-R32-ONE-SEMANTICS
+  imports VCVTDQ2PS-YMM-YMM-SEMANTICS
+  imports VPSLLQ-XMM-XMM-XMM-SEMANTICS
+  imports CMOVEQ-R64-R64-SEMANTICS
+  imports VPMINSB-YMM-YMM-YMM-SEMANTICS
+  imports XADDB-RH-RH-SEMANTICS
+  imports RCLW-R16-CL-SEMANTICS
+  imports VSQRTPD-YMM-YMM-SEMANTICS
+  imports IMULB-R8-SEMANTICS
+  imports CMOVNOQ-R64-R64-SEMANTICS
+  imports SETNB-R8-SEMANTICS
+  imports CMOVNBW-R16-R16-SEMANTICS
+  imports CVTTPD2DQ-XMM-XMM-SEMANTICS
+  imports VPUNPCKHBW-XMM-XMM-XMM-SEMANTICS
+  imports PCMPEQD-XMM-XMM-SEMANTICS
+  imports ROLW-R16-ONE-SEMANTICS
+  imports ORPD-XMM-XMM-SEMANTICS
+  imports VPCMPEQQ-XMM-XMM-XMM-SEMANTICS
+  imports VUNPCKHPS-YMM-YMM-YMM-SEMANTICS
+  imports SETLE-RH-SEMANTICS
+  imports CMOVNAEW-R16-R16-SEMANTICS
+  imports VFNMSUB231SD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNEQ-R64-R64-SEMANTICS
+  imports CMPXCHGW-R16-R16-SEMANTICS
+  imports VPHADDSW-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVZXDQ-YMM-XMM-SEMANTICS
+  imports VMOVSHDUP-XMM-XMM-SEMANTICS
+  imports CMOVNBQ-R64-R64-SEMANTICS
+  imports VCVTDQ2PD-YMM-YMM-SEMANTICS
+  imports VPADDW-YMM-YMM-YMM-SEMANTICS
+  imports VMULSD-XMM-XMM-XMM-SEMANTICS
+  imports VPTEST-YMM-YMM-SEMANTICS
+  imports MOVAPS-XMM-XMM-SEMANTICS
+  imports PMAXSD-XMM-XMM-SEMANTICS
+  imports LZCNTL-R32-R32-SEMANTICS
+  imports VPMOVZXBW-XMM-XMM-SEMANTICS
+  imports CMOVNGEW-R16-R16-SEMANTICS
+  imports SBBB-R8-R8-SEMANTICS
+  imports CMPXCHGB-R8-RH-SEMANTICS
+  imports MOVZBL-R32-R8-SEMANTICS
+  imports INCB-RH-SEMANTICS
+  imports VPMULHRSW-YMM-YMM-YMM-SEMANTICS
+  imports MOVZWL-R32-R16-SEMANTICS
+  imports IMULB-RH-SEMANTICS
+  imports PSIGNW-XMM-XMM-SEMANTICS
+  imports RCLL-R32-CL-SEMANTICS
+  imports VPSRAW-XMM-XMM-XMM-SEMANTICS
+  imports VSQRTSS-XMM-XMM-XMM-SEMANTICS
+  imports XORB-RH-R8-SEMANTICS
+  imports MULPD-XMM-XMM-SEMANTICS
+  imports XCHGQ-R64-RAX-SEMANTICS
+  imports SETP-RH-SEMANTICS
+  imports TESTW-R16-R16-SEMANTICS
+  imports VADDPS-XMM-XMM-XMM-SEMANTICS
+  imports VPCMPEQB-YMM-YMM-YMM-SEMANTICS
+  imports SETNLE-R8-SEMANTICS
+  imports XCHGQ-RAX-R64-SEMANTICS
+  imports VFMADD132PD-XMM-XMM-XMM-SEMANTICS
+  imports INCW-R16-SEMANTICS
+  imports MULSS-XMM-XMM-SEMANTICS
+  imports VPMOVSXBD-YMM-XMM-SEMANTICS
+  imports VPMINUD-YMM-YMM-YMM-SEMANTICS
+  imports VSUBSD-XMM-XMM-XMM-SEMANTICS
+  imports VXORPS-XMM-XMM-XMM-SEMANTICS
+  imports XCHGB-R8-RH-SEMANTICS
+  imports XORB-R8-R8-SEMANTICS
+  imports VPUNPCKLBW-YMM-YMM-YMM-SEMANTICS
+  imports VPMULLD-XMM-XMM-XMM-SEMANTICS
+  imports TESTB-R8-RH-SEMANTICS
+  imports PMINUB-XMM-XMM-SEMANTICS
+  imports CMOVNSL-R32-R32-SEMANTICS
+  imports TZCNTL-R32-R32-SEMANTICS
+  imports CMOVNPW-R16-R16-SEMANTICS
+  imports SETC-R8-SEMANTICS
+  imports VCVTTPS2DQ-XMM-XMM-SEMANTICS
+  imports CMOVNLEQ-R64-R64-SEMANTICS
+  imports VFNMADD132SS-XMM-XMM-XMM-SEMANTICS
+  imports VFNMADD231SD-XMM-XMM-XMM-SEMANTICS
+  imports PCMPGTD-XMM-XMM-SEMANTICS
+  imports MOVDDUP-XMM-XMM-SEMANTICS
+  imports PMULLW-XMM-XMM-SEMANTICS
+  imports VADDSD-XMM-XMM-XMM-SEMANTICS
+  imports CMPQ-R64-R64-SEMANTICS
+  imports NOTB-R8-SEMANTICS
+  imports VPADDUSB-XMM-XMM-XMM-SEMANTICS
+  imports SETPO-RH-SEMANTICS
+  imports VPCMPGTB-XMM-XMM-XMM-SEMANTICS
+  imports VPCMPGTD-YMM-YMM-YMM-SEMANTICS
+  imports ROLQ-R64-CL-SEMANTICS
+  imports VFNMSUB132SS-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNLEL-R32-R32-SEMANTICS
+  imports VDIVPD-XMM-XMM-XMM-SEMANTICS
+  imports XADDB-R8-R8-SEMANTICS
+  imports VPUNPCKHDQ-XMM-XMM-XMM-SEMANTICS
+  imports PSRLW-XMM-XMM-SEMANTICS
+  imports VFMADD213PS-YMM-YMM-YMM-SEMANTICS
+  imports VPMOVSXDQ-YMM-XMM-SEMANTICS
+  imports VFMSUBADD231PS-XMM-XMM-XMM-SEMANTICS
+  imports VCVTDQ2PD-XMM-XMM-SEMANTICS
+  imports PMULUDQ-XMM-XMM-SEMANTICS
+  imports VADDSUBPD-XMM-XMM-XMM-SEMANTICS
+  imports INCB-R8-SEMANTICS
+  imports VMULPD-YMM-YMM-YMM-SEMANTICS
+  imports CMOVPEQ-R64-R64-SEMANTICS
+  imports ROLL-R32-CL-SEMANTICS
+  imports IMULL-R32-SEMANTICS
+  imports ORQ-R64-R64-SEMANTICS
+  imports VTESTPS-XMM-XMM-SEMANTICS
+  imports VMOVMSKPS-R32-YMM-SEMANTICS
+  imports PBLENDVB-XMM-XMM-XMM0-SEMANTICS
+  imports CMOVNZL-R32-R32-SEMANTICS
+  imports VPUNPCKLWD-XMM-XMM-XMM-SEMANTICS
+  imports SHRL-R32-CL-SEMANTICS
+  imports SARB-R8-CL-SEMANTICS
+  imports VPSUBUSB-XMM-XMM-XMM-SEMANTICS
+  imports SHRL-R32-ONE-SEMANTICS
+  imports SETO-R8-SEMANTICS
+  imports VFNMSUB132PD-YMM-YMM-YMM-SEMANTICS
+  imports BLSMSKL-R32-R32-SEMANTICS
+  imports VPMINUW-XMM-XMM-XMM-SEMANTICS
+  imports MOVZBQ-R64-R8-SEMANTICS
+  imports BLENDVPS-XMM-XMM-XMM0-SEMANTICS
+  imports MOVDQA-XMM-XMM-SEMANTICS
+  imports VMAXPD-YMM-YMM-YMM-SEMANTICS
+  imports XADDL-R32-R32-SEMANTICS
+  imports TESTB-RH-RH-SEMANTICS
+  imports VFNMSUB132PD-XMM-XMM-XMM-SEMANTICS
+  imports SHLL-R32-ONE-SEMANTICS
+  imports SHLQ-R64-ONE-SEMANTICS
+  imports IMULW-R16-R16-SEMANTICS
+  imports VCVTSI2SSL-XMM-XMM-R32-SEMANTICS
+  imports VFMSUB231PS-XMM-XMM-XMM-SEMANTICS
+  imports ROLQ-R64-ONE-SEMANTICS
+  imports ANDW-R16-R16-SEMANTICS
+  imports VHSUBPS-YMM-YMM-YMM-SEMANTICS
+  imports MULQ-R64-SEMANTICS
+  imports UNPCKLPS-XMM-XMM-SEMANTICS
+  imports VFMSUB231SS-XMM-XMM-XMM-SEMANTICS
+  imports VMINPS-YMM-YMM-YMM-SEMANTICS
+  imports VTESTPD-YMM-YMM-SEMANTICS
+  imports ANDNQ-R64-R64-R64-SEMANTICS
+  imports ORPS-XMM-XMM-SEMANTICS
+  imports SBBL-R32-R32-SEMANTICS
+  imports VFMSUBADD213PD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNLEW-R16-R16-SEMANTICS
+  imports SETNO-RH-SEMANTICS
+  imports VPSRAVD-XMM-XMM-XMM-SEMANTICS
+  imports VHADDPS-YMM-YMM-YMM-SEMANTICS
+  imports ADCL-R32-R32-SEMANTICS
+  imports BTQ-R64-R64-SEMANTICS
+  imports VZEROALL-SEMANTICS
+  imports BTRL-R32-R32-SEMANTICS
+  imports VFNMADD213SS-XMM-XMM-XMM-SEMANTICS
+  imports CVTTPS2DQ-XMM-XMM-SEMANTICS
+  imports CVTPS2PD-XMM-XMM-SEMANTICS
+  imports SQRTSD-XMM-XMM-SEMANTICS
+  imports CMOVAEQ-R64-R64-SEMANTICS
+  imports SHLB-R8-ONE-SEMANTICS
+  imports VPMOVZXBQ-XMM-XMM-SEMANTICS
+  imports VMOVMSKPD-R32-XMM-SEMANTICS
+  imports XORPD-XMM-XMM-SEMANTICS
+  imports CMOVNAEQ-R64-R64-SEMANTICS
+  imports VPERMILPD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNAW-R16-R16-SEMANTICS
+  imports CMOVNLW-R16-R16-SEMANTICS
+  imports VBLENDVPS-XMM-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNAL-R32-R32-SEMANTICS
+  imports SETNB-RH-SEMANTICS
+  imports VPAVGB-XMM-XMM-XMM-SEMANTICS
+  imports VPCMPGTD-XMM-XMM-XMM-SEMANTICS
+  imports PABSW-XMM-XMM-SEMANTICS
+  imports SBBB-RH-RH-SEMANTICS
+  imports RCLB-R8-ONE-SEMANTICS
+  imports VPMAXSD-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUB213PS-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD132PS-XMM-XMM-XMM-SEMANTICS
+  imports RORL-R32-CL-SEMANTICS
+  imports CMOVLEW-R16-R16-SEMANTICS
+  imports SARB-R8-ONE-SEMANTICS
+  imports BLSRQ-R64-R64-SEMANTICS
+  imports VORPD-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUBADD132PD-XMM-XMM-XMM-SEMANTICS
+  imports VSUBPD-YMM-YMM-YMM-SEMANTICS
+  imports VFMADD231PS-XMM-XMM-XMM-SEMANTICS
+  imports SARL-R32-ONE-SEMANTICS
+  imports VUCOMISD-XMM-XMM-SEMANTICS
+  imports VFMSUB231PS-YMM-YMM-YMM-SEMANTICS
+  imports VPHMINPOSUW-XMM-XMM-SEMANTICS
+  imports CMOVPEW-R16-R16-SEMANTICS
+  imports ORB-R8-RH-SEMANTICS
+  imports CMPXCHGB-RH-RH-SEMANTICS
+  imports VPMULUDQ-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUBADD132PS-YMM-YMM-YMM-SEMANTICS
+  imports VANDNPS-XMM-XMM-XMM-SEMANTICS
+  imports VCOMISS-XMM-XMM-SEMANTICS
+  imports VMAXSD-XMM-XMM-XMM-SEMANTICS
+  imports VFMADD132PS-XMM-XMM-XMM-SEMANTICS
+  imports PAVGB-XMM-XMM-SEMANTICS
+  imports SUBW-R16-R16-SEMANTICS
+  imports NEGB-RH-SEMANTICS
+  imports VPACKUSDW-XMM-XMM-XMM-SEMANTICS
+  imports SETAE-RH-SEMANTICS
+  imports XORW-R16-R16-SEMANTICS
+  imports VFMSUB231PD-YMM-YMM-YMM-SEMANTICS
+  imports ADDPS-XMM-XMM-SEMANTICS
+  imports VHADDPD-YMM-YMM-YMM-SEMANTICS
+  imports IMULW-R16-SEMANTICS
+  imports PADDSB-XMM-XMM-SEMANTICS
+  imports VMAXPS-YMM-YMM-YMM-SEMANTICS
+  imports MAXSS-XMM-XMM-SEMANTICS
+  imports SETNGE-RH-SEMANTICS
+  imports PSUBQ-XMM-XMM-SEMANTICS
+  imports VFMADD231PS-YMM-YMM-YMM-SEMANTICS
+  imports VPUNPCKHDQ-YMM-YMM-YMM-SEMANTICS
+  imports SARW-R16-ONE-SEMANTICS
+  imports XCHGB-RH-R8-SEMANTICS
+  imports XADDW-R16-R16-SEMANTICS
+  imports RCLB-RH-CL-SEMANTICS
+  imports DIVPS-XMM-XMM-SEMANTICS
+  imports VSUBPD-XMM-XMM-XMM-SEMANTICS
+  imports VPHSUBD-XMM-XMM-XMM-SEMANTICS
+  imports CVTTSD2SI-R64-XMM-SEMANTICS
+  imports VPSRLQ-YMM-YMM-XMM-SEMANTICS
+  imports VPADDQ-YMM-YMM-YMM-SEMANTICS
+  imports HADDPD-XMM-XMM-SEMANTICS
+  imports VPUNPCKLQDQ-YMM-YMM-YMM-SEMANTICS
+  imports VMOVDQA-YMM-YMM-SEMANTICS
+  imports VPADDSB-YMM-YMM-YMM-SEMANTICS
+  imports POPCNTW-R16-R16-SEMANTICS
+  imports VPHSUBSW-YMM-YMM-YMM-SEMANTICS
+  imports VMOVUPS-YMM-YMM-SEMANTICS
+  imports PMINSB-XMM-XMM-SEMANTICS
+  imports CMOVPOL-R32-R32-SEMANTICS
+  imports VPADDSB-XMM-XMM-XMM-SEMANTICS
+  imports MAXPS-XMM-XMM-SEMANTICS
+  imports VFMADDSUB132PS-YMM-YMM-YMM-SEMANTICS
+  imports SETNP-R8-SEMANTICS
+  imports SBBB-R8-RH-SEMANTICS
+  imports VPSHUFB-XMM-XMM-XMM-SEMANTICS
+  imports VMOVMSKPD-R32-YMM-SEMANTICS
+  imports CMOVNZW-R16-R16-SEMANTICS
+  imports VPHADDW-YMM-YMM-YMM-SEMANTICS
+  imports PACKSSWB-XMM-XMM-SEMANTICS
+  imports PMADDUBSW-XMM-XMM-SEMANTICS
+  imports TESTQ-R64-R64-SEMANTICS
+  imports PMOVMSKB-R64-XMM-SEMANTICS
+  imports VPMULLD-YMM-YMM-YMM-SEMANTICS
+  imports VFNMSUB213PS-YMM-YMM-YMM-SEMANTICS
+  imports PMINSW-XMM-XMM-SEMANTICS
+  imports CMOVNEW-R16-R16-SEMANTICS
+  imports SETNZ-RH-SEMANTICS
+  imports VMAXPD-XMM-XMM-XMM-SEMANTICS
+  imports VMAXPS-XMM-XMM-XMM-SEMANTICS
+  imports CMOVPEL-R32-R32-SEMANTICS
+  imports VMULPS-YMM-YMM-YMM-SEMANTICS
+  imports VPADDQ-XMM-XMM-XMM-SEMANTICS
+  imports SHRXL-R32-R32-R32-SEMANTICS
+  imports ADCW-R16-R16-SEMANTICS
+  imports PMINUW-XMM-XMM-SEMANTICS
+  imports VFMADDSUB231PD-XMM-XMM-XMM-SEMANTICS
+  imports SHLQ-R64-CL-SEMANTICS
+  imports POPCNTQ-R64-R64-SEMANTICS
+  imports VFNMSUB231PS-YMM-YMM-YMM-SEMANTICS
+  imports SUBPS-XMM-XMM-SEMANTICS
+  imports VFMSUBADD132PD-YMM-YMM-YMM-SEMANTICS
+  imports RCLL-R32-ONE-SEMANTICS
+  imports CMOVZQ-R64-R64-SEMANTICS
+  imports VPUNPCKHQDQ-YMM-YMM-YMM-SEMANTICS
+  imports MOVSBW-R16-RH-SEMANTICS
+  imports CMOVNZQ-R64-R64-SEMANTICS
+  imports VCVTTSD2SI-R64-XMM-SEMANTICS
+  imports VFMADD231SD-XMM-XMM-XMM-SEMANTICS
+  imports HSUBPS-XMM-XMM-SEMANTICS
+  imports SETB-RH-SEMANTICS
+  imports ADDSD-XMM-XMM-SEMANTICS
+  imports RORB-RH-ONE-SEMANTICS
+  imports CMPB-R8-R8-SEMANTICS
+  imports VPANDN-YMM-YMM-YMM-SEMANTICS
+  imports VADDSUBPS-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD213PS-XMM-XMM-XMM-SEMANTICS
+  imports MOVSHDUP-XMM-XMM-SEMANTICS
+  imports VPHSUBW-XMM-XMM-XMM-SEMANTICS
+  imports VHADDPD-XMM-XMM-XMM-SEMANTICS
+  imports VSUBPS-XMM-XMM-XMM-SEMANTICS
+  imports SHRB-RH-CL-SEMANTICS
+  imports VCVTPD2PS-XMM-YMM-SEMANTICS
+  imports SETNA-RH-SEMANTICS
+  imports VPCMPEQB-XMM-XMM-XMM-SEMANTICS
+  imports VFMSUB132SS-XMM-XMM-XMM-SEMANTICS
+  imports PUNPCKLWD-XMM-XMM-SEMANTICS
+  imports SETNS-R8-SEMANTICS
+  imports PMOVMSKB-R32-XMM-SEMANTICS
+  imports VPMINUB-XMM-XMM-XMM-SEMANTICS
+  imports VPBLENDVB-XMM-XMM-XMM-XMM-SEMANTICS
+  imports XADDB-R8-RH-SEMANTICS
+  imports VPHSUBD-YMM-YMM-YMM-SEMANTICS
+  imports MOVLHPS-XMM-XMM-SEMANTICS
+  imports UNPCKHPD-XMM-XMM-SEMANTICS
+  imports NOTW-R16-SEMANTICS
+  imports NEGW-R16-SEMANTICS
+  imports ADDL-R32-R32-SEMANTICS
+  imports PCMPGTW-XMM-XMM-SEMANTICS
+  imports XADDB-RH-R8-SEMANTICS
+  imports SBBQ-R64-R64-SEMANTICS
+  imports SETGE-RH-SEMANTICS
+  imports CMOVGL-R32-R32-SEMANTICS
+  imports SETE-R8-SEMANTICS
+  imports ADDSUBPS-XMM-XMM-SEMANTICS
+  imports CMOVOW-R16-R16-SEMANTICS
+  imports VFNMADD132SD-XMM-XMM-XMM-SEMANTICS
+  imports SETGE-R8-SEMANTICS
+  imports VPCMPEQW-XMM-XMM-XMM-SEMANTICS
+  imports VPADDB-XMM-XMM-XMM-SEMANTICS
+  imports MOVMSKPD-R64-XMM-SEMANTICS
+  imports PMOVZXBQ-XMM-XMM-SEMANTICS
+  imports VRSQRTPS-XMM-XMM-SEMANTICS
+  imports VPMOVSXBD-XMM-XMM-SEMANTICS
+  imports VPSADBW-YMM-YMM-YMM-SEMANTICS
+  imports PUNPCKHDQ-XMM-XMM-SEMANTICS
+  imports SETNG-RH-SEMANTICS
+  imports VMULPS-XMM-XMM-XMM-SEMANTICS
+  imports VPOR-YMM-YMM-YMM-SEMANTICS
+  imports VPSRLVQ-XMM-XMM-XMM-SEMANTICS
+  imports DECW-R16-SEMANTICS
+  imports PHADDSW-XMM-XMM-SEMANTICS
+  imports MOVB-R8-RH-SEMANTICS
+  imports VPMULLW-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNBL-R32-R32-SEMANTICS
+  imports VCVTTSS2SI-R32-XMM-SEMANTICS
+  imports PADDB-XMM-XMM-SEMANTICS
+  imports VMOVMSKPD-R64-XMM-SEMANTICS
+  imports PCMPEQQ-XMM-XMM-SEMANTICS
+  imports VCVTSS2SI-R64-XMM-SEMANTICS
+  imports VFMADDSUB132PS-XMM-XMM-XMM-SEMANTICS
+  imports PMULHUW-XMM-XMM-SEMANTICS
+  imports RSQRTPS-XMM-XMM-SEMANTICS
+  imports VUNPCKHPD-XMM-XMM-XMM-SEMANTICS
+  imports PHADDW-XMM-XMM-SEMANTICS
+  imports PSUBUSB-XMM-XMM-SEMANTICS
+  imports SQRTSS-XMM-XMM-SEMANTICS
+  imports ADDSUBPD-XMM-XMM-SEMANTICS
+  imports PSADBW-XMM-XMM-SEMANTICS
+  imports RCRW-R16-ONE-SEMANTICS
+  imports VUNPCKLPS-XMM-XMM-XMM-SEMANTICS
+  imports VPUNPCKHBW-YMM-YMM-YMM-SEMANTICS
+  imports VPMULHRSW-XMM-XMM-XMM-SEMANTICS
+  imports BLSIL-R32-R32-SEMANTICS
+  imports SETNA-R8-SEMANTICS
+  imports VPSUBB-XMM-XMM-XMM-SEMANTICS
+  imports ANDB-RH-RH-SEMANTICS
+  imports SARB-RH-CL-SEMANTICS
+  imports VMOVDQU-XMM-XMM-SEMANTICS
+  imports SETNE-R8-SEMANTICS
+  imports CVTDQ2PD-XMM-XMM-SEMANTICS
+  imports CMOVNSQ-R64-R64-SEMANTICS
+  imports NOPL-R32-SEMANTICS
+  imports MOVMSKPD-R32-XMM-SEMANTICS
+  imports VPMULUDQ-XMM-XMM-XMM-SEMANTICS
+  imports VPAVGB-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNAEL-R32-R32-SEMANTICS
+  imports IMULL-R32-R32-SEMANTICS
+  imports ANDB-R8-RH-SEMANTICS
+  imports SALQ-R64-CL-SEMANTICS
+  imports VFMSUBADD213PD-YMM-YMM-YMM-SEMANTICS
+  imports RCLQ-R64-CL-SEMANTICS
+  imports CVTSS2SI-R32-XMM-SEMANTICS
+  imports NEGB-R8-SEMANTICS
+  imports VCVTTPD2DQ-XMM-XMM-SEMANTICS
+  imports VFMADDSUB213PD-YMM-YMM-YMM-SEMANTICS
+  imports CVTSD2SS-XMM-XMM-SEMANTICS
+  imports CVTPS2DQ-XMM-XMM-SEMANTICS
+  imports PTEST-XMM-XMM-SEMANTICS
+  imports MULB-RH-SEMANTICS
+  imports PMAXUD-XMM-XMM-SEMANTICS
+  imports BEXTRQ-R64-R64-R64-SEMANTICS
+  imports CMOVAL-R32-R32-SEMANTICS
+  imports VORPS-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUBADD231PD-YMM-YMM-YMM-SEMANTICS
+  imports VPMOVZXBW-YMM-XMM-SEMANTICS
+  imports PADDUSB-XMM-XMM-SEMANTICS
+  imports VPMOVZXBD-XMM-XMM-SEMANTICS
+  imports PCMPEQB-XMM-XMM-SEMANTICS
+  imports VPMOVMSKB-R64-XMM-SEMANTICS
+  imports ANDNPS-XMM-XMM-SEMANTICS
+  imports PABSD-XMM-XMM-SEMANTICS
+  imports MULL-R32-SEMANTICS
+  imports SBBW-R16-R16-SEMANTICS
+  imports XCHGL-R32-R32-SEMANTICS
+  imports ADDW-R16-R16-SEMANTICS
+  imports VPERMILPS-XMM-XMM-XMM-SEMANTICS
+  imports VPACKSSDW-XMM-XMM-XMM-SEMANTICS
+  imports VPMADDWD-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD213PD-XMM-XMM-XMM-SEMANTICS
+  imports SETNC-RH-SEMANTICS
+  imports SBBB-RH-R8-SEMANTICS
+  imports BLENDVPD-XMM-XMM-XMM0-SEMANTICS
+  imports CVTDQ2PS-XMM-XMM-SEMANTICS
+  imports RCPPS-XMM-XMM-SEMANTICS
+  imports VPMAXSW-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNGEL-R32-R32-SEMANTICS
+  imports CVTTSS2SI-R64-XMM-SEMANTICS
+  imports CMOVPOQ-R64-R64-SEMANTICS
+  imports RCLW-R16-ONE-SEMANTICS
+  imports RCRQ-R64-ONE-SEMANTICS
+  imports PSUBD-XMM-XMM-SEMANTICS
+  imports VFNMADD213PS-YMM-YMM-YMM-SEMANTICS
+  imports SETZ-R8-SEMANTICS
+  imports VPSLLQ-YMM-YMM-XMM-SEMANTICS
+  imports MOVHLPS-XMM-XMM-SEMANTICS
+  imports CMOVSQ-R64-R64-SEMANTICS
+  imports VPSRLW-XMM-XMM-XMM-SEMANTICS
+  imports VFMADD231SS-XMM-XMM-XMM-SEMANTICS
+  imports VPACKUSWB-YMM-YMM-YMM-SEMANTICS
+  imports VPBROADCASTB-YMM-XMM-SEMANTICS
+  imports VMOVQ-R64-XMM-SEMANTICS
+  imports VCVTTSS2SI-R64-XMM-SEMANTICS
+  imports PXOR-XMM-XMM-SEMANTICS
+  imports VPSADBW-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNSW-R16-R16-SEMANTICS
+  imports SETL-RH-SEMANTICS
+  imports PACKSSDW-XMM-XMM-SEMANTICS
+  imports XADDQ-R64-R64-SEMANTICS
+  imports MOVSWQ-R64-R16-SEMANTICS
+  imports VPUNPCKLWD-YMM-YMM-YMM-SEMANTICS
+  imports NOPW-R16-SEMANTICS
+  imports PSLLQ-XMM-XMM-SEMANTICS
+  imports PADDQ-XMM-XMM-SEMANTICS
+  imports VCVTSI2SDL-XMM-XMM-R32-SEMANTICS
+  imports MOVQ-R64-XMM-SEMANTICS
+  imports DIVSS-XMM-XMM-SEMANTICS
+  imports DIVB-R8-SEMANTICS
+  imports SALQ-R64-ONE-SEMANTICS
+  imports BZHIQ-R64-R64-R64-SEMANTICS
+  imports MOVSBL-R32-R8-SEMANTICS
+  imports CMOVPL-R32-R32-SEMANTICS
+  imports PMAXSB-XMM-XMM-SEMANTICS
+  imports POR-XMM-XMM-SEMANTICS
+  imports VFMADDSUB231PS-YMM-YMM-YMM-SEMANTICS
+  imports VPSUBW-YMM-YMM-YMM-SEMANTICS
+  imports NOP-SEMANTICS
+  imports VPMADDUBSW-XMM-XMM-XMM-SEMANTICS
+  imports PSRLD-XMM-XMM-SEMANTICS
+  imports SQRTPS-XMM-XMM-SEMANTICS
+  imports BTCQ-R64-R64-SEMANTICS
+  imports SARW-R16-CL-SEMANTICS
+  imports VFMADD132PD-YMM-YMM-YMM-SEMANTICS
+  imports XCHGL-R32-EAX-SEMANTICS
+  imports PHSUBSW-XMM-XMM-SEMANTICS
+  imports BTRQ-R64-R64-SEMANTICS
+  imports PSRLQ-XMM-XMM-SEMANTICS
+  imports VFNMADD231PS-XMM-XMM-XMM-SEMANTICS
+  imports PMAXSW-XMM-XMM-SEMANTICS
+  imports MOVSS-XMM-XMM-SEMANTICS
+  imports PCMPGTQ-XMM-XMM-SEMANTICS
+  imports RCLB-RH-ONE-SEMANTICS
+  imports VPMOVSXWQ-XMM-XMM-SEMANTICS
+  imports SETNL-RH-SEMANTICS
+  imports SHLXQ-R64-R64-R64-SEMANTICS
+  imports VPMAXUB-YMM-YMM-YMM-SEMANTICS
+  imports VPMOVSXBQ-XMM-XMM-SEMANTICS
+  imports VFMADDSUB213PS-YMM-YMM-YMM-SEMANTICS
+  imports VDIVSD-XMM-XMM-XMM-SEMANTICS
+  imports VPSUBD-XMM-XMM-XMM-SEMANTICS
+  imports PMOVSXWD-XMM-XMM-SEMANTICS
+  imports SARB-RH-ONE-SEMANTICS
+  imports RORW-R16-ONE-SEMANTICS
+  imports CMPXCHGB-R8-R8-SEMANTICS
+  imports ANDB-R8-R8-SEMANTICS
+  imports CMOVCL-R32-R32-SEMANTICS
+  imports CMPB-RH-RH-SEMANTICS
+  imports VFMADD213SS-XMM-XMM-XMM-SEMANTICS
+  imports HSUBPD-XMM-XMM-SEMANTICS
+  imports RCRB-RH-CL-SEMANTICS
+  imports MOVQ-XMM-R64-SEMANTICS
+  imports VPMOVSXBW-YMM-XMM-SEMANTICS
+  imports CWTD-SEMANTICS
+  imports VADDPD-XMM-XMM-XMM-SEMANTICS
+  imports VPSLLVQ-XMM-XMM-XMM-SEMANTICS
+  imports SETNBE-R8-SEMANTICS
+  imports PMOVSXBD-XMM-XMM-SEMANTICS
+  imports CMOVAW-R16-R16-SEMANTICS
+  imports PSUBUSW-XMM-XMM-SEMANTICS
+  imports MOVUPS-XMM-XMM-SEMANTICS
+  imports VPSUBUSW-XMM-XMM-XMM-SEMANTICS
+  imports VPACKUSWB-XMM-XMM-XMM-SEMANTICS
+  imports SETNO-R8-SEMANTICS
+  imports VFNMADD132PS-YMM-YMM-YMM-SEMANTICS
+  imports VMAXSS-XMM-XMM-XMM-SEMANTICS
+  imports BTL-R32-R32-SEMANTICS
+  imports CVTTSS2SI-R32-XMM-SEMANTICS
+  imports MOVZBL-R32-RH-SEMANTICS
+  imports VADDPD-YMM-YMM-YMM-SEMANTICS
+  imports VPCMPEQQ-YMM-YMM-YMM-SEMANTICS
+  imports VXORPD-XMM-XMM-XMM-SEMANTICS
+  imports VCVTPS2DQ-XMM-XMM-SEMANTICS
+  imports PUNPCKHQDQ-XMM-XMM-SEMANTICS
+  imports IDIVQ-R64-SEMANTICS
+  imports VMOVDQU-YMM-YMM-SEMANTICS
+  imports DECL-R32-SEMANTICS
+  imports SUBB-R8-R8-SEMANTICS
+  imports XCHGL-EAX-R32-SEMANTICS
+  imports VPMINUB-YMM-YMM-YMM-SEMANTICS
+  imports PHSUBD-XMM-XMM-SEMANTICS
+  imports VPBROADCASTW-XMM-XMM-SEMANTICS
+  imports CLTQ-SEMANTICS
+  imports PMULHRSW-XMM-XMM-SEMANTICS
+  imports PADDW-XMM-XMM-SEMANTICS
+  imports ROLW-R16-CL-SEMANTICS
+  imports CMOVAQ-R64-R64-SEMANTICS
+  imports IDIVB-RH-SEMANTICS
+  imports PMAXUB-XMM-XMM-SEMANTICS
+  imports VUNPCKLPD-YMM-YMM-YMM-SEMANTICS
+  imports VHSUBPS-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVMSKB-R32-XMM-SEMANTICS
+  imports VRSQRTPS-YMM-YMM-SEMANTICS
+  imports VMOVD-XMM-R32-SEMANTICS
+  imports VADDSUBPD-YMM-YMM-YMM-SEMANTICS
+  imports XCHGQ-R64-R64-SEMANTICS
+  imports VPMOVZXBQ-YMM-XMM-SEMANTICS
+  imports PMINUD-XMM-XMM-SEMANTICS
+  imports VPSLLVD-XMM-XMM-XMM-SEMANTICS
+  imports SETZ-RH-SEMANTICS
+  imports PMOVSXBQ-XMM-XMM-SEMANTICS
+  imports VPMAXUW-XMM-XMM-XMM-SEMANTICS
+  imports MAXPD-XMM-XMM-SEMANTICS
+  imports PAVGW-XMM-XMM-SEMANTICS
+  imports VBLENDVPS-YMM-YMM-YMM-YMM-SEMANTICS
+  imports PMULLD-XMM-XMM-SEMANTICS
+  imports VPMOVSXWQ-YMM-XMM-SEMANTICS
+  imports SETNZ-R8-SEMANTICS
+  imports UNPCKLPD-XMM-XMM-SEMANTICS
+  imports VMOVMSKPS-R32-XMM-SEMANTICS
+  imports VCVTSD2SI-R32-XMM-SEMANTICS
+  imports VFMADD132PS-YMM-YMM-YMM-SEMANTICS
+  imports VPOR-XMM-XMM-XMM-SEMANTICS
+  imports VFNMSUB132PS-XMM-XMM-XMM-SEMANTICS
+  imports CMOVLW-R16-R16-SEMANTICS
+  imports ROLB-R8-CL-SEMANTICS
+  imports VPABSB-XMM-XMM-SEMANTICS
+  imports VFNMSUB213PS-XMM-XMM-XMM-SEMANTICS
+  imports BTSW-R16-R16-SEMANTICS
+  imports ADDB-R8-R8-SEMANTICS
+  imports ORB-R8-R8-SEMANTICS
+  imports MOVQ-R64-R64-SEMANTICS
+  imports DECB-RH-SEMANTICS
+  imports MOVSBW-R16-R8-SEMANTICS
+  imports SETE-RH-SEMANTICS
+  imports SETNL-R8-SEMANTICS
+  imports VPSRLD-XMM-XMM-XMM-SEMANTICS
+  imports LZCNTQ-R64-R64-SEMANTICS
+  imports ADDSS-XMM-XMM-SEMANTICS
+  imports CMOVNEL-R32-R32-SEMANTICS
+  imports VMOVSS-XMM-XMM-XMM-SEMANTICS
+  imports VCVTPH2PS-YMM-XMM-SEMANTICS
+  imports NEGL-R32-SEMANTICS
+  imports VPSRLW-YMM-YMM-XMM-SEMANTICS
+  imports DIVSD-XMM-XMM-SEMANTICS
+  imports MOVDQU-XMM-XMM-SEMANTICS
+  imports CVTSI2SSQ-XMM-R64-SEMANTICS
+  imports VPMAXUD-XMM-XMM-XMM-SEMANTICS
+  imports VPSRLQ-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNOL-R32-R32-SEMANTICS
+  imports VFMADD213PD-YMM-YMM-YMM-SEMANTICS
+  imports SETNC-R8-SEMANTICS
+  imports VFMADD213PD-XMM-XMM-XMM-SEMANTICS
+  imports VMOVMSKPS-R64-YMM-SEMANTICS
+  imports VPMINSD-YMM-YMM-YMM-SEMANTICS
+  imports VORPD-XMM-XMM-XMM-SEMANTICS
+  imports SALL-R32-ONE-SEMANTICS
+  imports VCVTPS2PD-YMM-XMM-SEMANTICS
+  imports RORB-RH-CL-SEMANTICS
+  imports SETP-R8-SEMANTICS
+  imports VBLENDVPD-XMM-XMM-XMM-XMM-SEMANTICS
+  imports CMOVLL-R32-R32-SEMANTICS
+  imports DIVW-R16-SEMANTICS
+  imports STC-SEMANTICS
+  imports VFMADD132SS-XMM-XMM-XMM-SEMANTICS
+  imports SHRW-R16-CL-SEMANTICS
+  imports SETO-RH-SEMANTICS
+  imports MOVSWL-R32-R16-SEMANTICS
+  imports PUNPCKLDQ-XMM-XMM-SEMANTICS
+  imports PHADDD-XMM-XMM-SEMANTICS
+  imports VPBROADCASTD-XMM-XMM-SEMANTICS
+  imports ORW-R16-R16-SEMANTICS
+  imports SALB-RH-ONE-SEMANTICS
+  imports CMOVBEW-R16-R16-SEMANTICS
+  imports VPMINSB-XMM-XMM-XMM-SEMANTICS
+  imports VPSLLVD-YMM-YMM-YMM-SEMANTICS
+  imports VDIVPS-XMM-XMM-XMM-SEMANTICS
+  imports ANDPD-XMM-XMM-SEMANTICS
+  imports VPBROADCASTQ-YMM-XMM-SEMANTICS
+  imports PACKUSDW-XMM-XMM-SEMANTICS
+  imports TESTB-RH-R8-SEMANTICS
+  imports SETNAE-RH-SEMANTICS
+  imports PABSB-XMM-XMM-SEMANTICS
+  imports HADDPS-XMM-XMM-SEMANTICS
+  imports VPMADDUBSW-YMM-YMM-YMM-SEMANTICS
+  imports SETNBE-RH-SEMANTICS
+  imports SUBQ-R64-R64-SEMANTICS
+  imports VSQRTSD-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVZXWD-XMM-XMM-SEMANTICS
+  imports VRCPPS-XMM-XMM-SEMANTICS
+  imports MULSD-XMM-XMM-SEMANTICS
+  imports CBTW-SEMANTICS
+  imports VFNMSUB231PD-YMM-YMM-YMM-SEMANTICS
+  imports CMOVPW-R16-R16-SEMANTICS
+  imports VPCMPGTW-YMM-YMM-YMM-SEMANTICS
+  imports CMPXCHGQ-R64-R64-SEMANTICS
+  imports VPSUBSB-XMM-XMM-XMM-SEMANTICS
+  imports VSQRTPD-XMM-XMM-SEMANTICS
+  imports SETNLE-RH-SEMANTICS
+  imports UNPCKHPS-XMM-XMM-SEMANTICS
+  imports CMOVNCW-R16-R16-SEMANTICS
+  imports MOVD-XMM-R32-SEMANTICS
+  imports MOVMSKPS-R32-XMM-SEMANTICS
+  imports VPAND-XMM-XMM-XMM-SEMANTICS
+  imports SHRB-R8-CL-SEMANTICS
+  imports SALB-R8-CL-SEMANTICS
+  imports MINPS-XMM-XMM-SEMANTICS
+  imports VPMULLW-XMM-XMM-XMM-SEMANTICS
+  imports VPBROADCASTQ-XMM-XMM-SEMANTICS
+  imports CMPXCHGL-R32-R32-SEMANTICS
+  imports CVTSS2SI-R64-XMM-SEMANTICS
+  imports IMULQ-R64-R64-SEMANTICS
+  imports VPMOVSXWD-XMM-XMM-SEMANTICS
+  imports BTSQ-R64-R64-SEMANTICS
+  imports PMOVSXDQ-XMM-XMM-SEMANTICS
+  imports SETNP-RH-SEMANTICS
+  imports CMOVNGL-R32-R32-SEMANTICS
+  imports VPSRAD-XMM-XMM-XMM-SEMANTICS
+  imports VSQRTPS-XMM-XMM-SEMANTICS
+  imports VPERMILPS-YMM-YMM-YMM-SEMANTICS
+  imports VPMOVZXWQ-YMM-XMM-SEMANTICS
+  imports VBROADCASTSS-YMM-XMM-SEMANTICS
+  imports PAND-XMM-XMM-SEMANTICS
+  imports IDIVL-R32-SEMANTICS
+  imports MINSS-XMM-XMM-SEMANTICS
+  imports VFMADDSUB213PD-XMM-XMM-XMM-SEMANTICS
+  imports PMOVSXWQ-XMM-XMM-SEMANTICS
+  imports UCOMISD-XMM-XMM-SEMANTICS
+  imports RCRB-R8-ONE-SEMANTICS
+  imports CMOVSW-R16-R16-SEMANTICS
+  imports VPMINUW-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNPQ-R64-R64-SEMANTICS
+  imports VFMSUBADD213PS-XMM-XMM-XMM-SEMANTICS
+  imports RSQRTSS-XMM-XMM-SEMANTICS
+  imports VPMAXUD-YMM-YMM-YMM-SEMANTICS
+  imports VPMAXSW-XMM-XMM-XMM-SEMANTICS
+  imports VMOVLHPS-XMM-XMM-XMM-SEMANTICS
+  imports CVTSI2SDL-XMM-R32-SEMANTICS
+  imports VCVTSS2SD-XMM-XMM-XMM-SEMANTICS
+  imports VFMSUB213SS-XMM-XMM-XMM-SEMANTICS
+  imports VPACKUSDW-YMM-YMM-YMM-SEMANTICS
+  imports VPMOVZXBD-YMM-XMM-SEMANTICS
+  imports VADDSUBPS-XMM-XMM-XMM-SEMANTICS
+  imports ROLB-R8-ONE-SEMANTICS
+  imports PMOVSXBW-XMM-XMM-SEMANTICS
+  imports VMINPS-XMM-XMM-XMM-SEMANTICS
+  imports ADCB-RH-R8-SEMANTICS
+  imports SUBSD-XMM-XMM-SEMANTICS
+  imports VPMOVMSKB-R32-YMM-SEMANTICS
+  imports BTCL-R32-R32-SEMANTICS
+  imports NOTL-R32-SEMANTICS
+  imports VCVTSD2SI-R64-XMM-SEMANTICS
+  imports VPABSD-YMM-YMM-SEMANTICS
+  imports PANDN-XMM-XMM-SEMANTICS
+  imports CMOVBEQ-R64-R64-SEMANTICS
+  imports ORB-RH-R8-SEMANTICS
+  imports INCL-R32-SEMANTICS
+  imports VMOVSLDUP-XMM-XMM-SEMANTICS
+  imports BEXTRL-R32-R32-R32-SEMANTICS
+  imports VPSIGNW-XMM-XMM-XMM-SEMANTICS
+  imports VCVTPS2PD-XMM-XMM-SEMANTICS
+  imports CVTSI2SDQ-XMM-R64-SEMANTICS
+  imports VADDPS-YMM-YMM-YMM-SEMANTICS
+  imports VPSRLVD-YMM-YMM-YMM-SEMANTICS
+  imports VANDPS-XMM-XMM-XMM-SEMANTICS
+  imports VPSUBW-XMM-XMM-XMM-SEMANTICS
+  imports ROLL-R32-ONE-SEMANTICS
+  imports VFMSUB132PD-XMM-XMM-XMM-SEMANTICS
+  imports ANDL-R32-R32-SEMANTICS
+  imports VPSUBQ-YMM-YMM-YMM-SEMANTICS
+  imports VPSUBD-YMM-YMM-YMM-SEMANTICS
+  imports BTCW-R16-R16-SEMANTICS
+  imports BTW-R16-R16-SEMANTICS
+  imports VMOVUPS-XMM-XMM-SEMANTICS
+  imports MOVMSKPS-R64-XMM-SEMANTICS
+  imports XCHGB-RH-RH-SEMANTICS
+  imports PSIGNB-XMM-XMM-SEMANTICS
+  imports VPMADDWD-XMM-XMM-XMM-SEMANTICS
+  imports PMULHW-XMM-XMM-SEMANTICS
+  imports VFMADD231PD-YMM-YMM-YMM-SEMANTICS
+  imports VCVTPD2DQ-XMM-XMM-SEMANTICS
+  imports VFNMADD132PD-YMM-YMM-YMM-SEMANTICS
+  imports SARL-R32-CL-SEMANTICS
+  imports SETPE-RH-SEMANTICS
+  imports VMOVSD-XMM-XMM-XMM-SEMANTICS
+  imports MOVSBL-R32-RH-SEMANTICS
+  imports RORB-R8-CL-SEMANTICS
+  imports VPSLLW-XMM-XMM-XMM-SEMANTICS
+  imports CMOVGW-R16-R16-SEMANTICS
+  imports VHADDPS-XMM-XMM-XMM-SEMANTICS
+  imports MINPD-XMM-XMM-SEMANTICS
+  imports DIVQ-R64-SEMANTICS
+  imports CMOVEW-R16-R16-SEMANTICS
+  imports VPMAXUW-YMM-YMM-YMM-SEMANTICS
+  imports DECQ-R64-SEMANTICS
+  imports CWTL-SEMANTICS
+  imports VBLENDVPD-YMM-YMM-YMM-YMM-SEMANTICS
+  imports IDIVB-R8-SEMANTICS
+  imports PMAXUW-XMM-XMM-SEMANTICS
+  imports SETNG-R8-SEMANTICS
+  imports VMOVHLPS-XMM-XMM-XMM-SEMANTICS
+  imports SUBB-R8-RH-SEMANTICS
+  imports CMOVGEL-R32-R32-SEMANTICS
+  imports VMOVSHDUP-YMM-YMM-SEMANTICS
+  imports NEGQ-R64-SEMANTICS
+  imports MAXSD-XMM-XMM-SEMANTICS
+  imports CMPB-R8-RH-SEMANTICS
+  imports VCVTPD2DQ-XMM-YMM-SEMANTICS
+  imports VPADDSW-XMM-XMM-XMM-SEMANTICS
+  imports VPTEST-XMM-XMM-SEMANTICS
+  imports VCVTTPS2DQ-YMM-YMM-SEMANTICS
+  imports XCHGB-R8-R8-SEMANTICS
+  imports VRCPSS-XMM-XMM-XMM-SEMANTICS
+  imports VPUNPCKLDQ-YMM-YMM-YMM-SEMANTICS
+  imports CVTTSD2SI-R32-XMM-SEMANTICS
+  imports MULPS-XMM-XMM-SEMANTICS
+  imports VPHSUBW-YMM-YMM-YMM-SEMANTICS
+  imports PMINSD-XMM-XMM-SEMANTICS
+  imports VFMADDSUB213PS-XMM-XMM-XMM-SEMANTICS
+  imports SHLXL-R32-R32-R32-SEMANTICS
+  imports VUNPCKHPD-YMM-YMM-YMM-SEMANTICS
+  imports SQRTPD-XMM-XMM-SEMANTICS
+  imports PCMPGTB-XMM-XMM-SEMANTICS
+  imports CMOVNAQ-R64-R64-SEMANTICS
+  imports MOVUPD-XMM-XMM-SEMANTICS
+  imports CMOVNPL-R32-R32-SEMANTICS
+  imports ANDPS-XMM-XMM-SEMANTICS
+  imports SETG-R8-SEMANTICS
+  imports SARQ-R64-CL-SEMANTICS
+  imports VFMADDSUB231PS-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVMSKB-R64-YMM-SEMANTICS
+  imports SETG-RH-SEMANTICS
+  imports VPUNPCKLBW-XMM-XMM-XMM-SEMANTICS
+  imports VPXOR-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNBEQ-R64-R64-SEMANTICS
+  imports RORQ-R64-CL-SEMANTICS
+  imports VFNMSUB213PD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNLQ-R64-R64-SEMANTICS
+  imports TZCNTW-R16-R16-SEMANTICS
+  imports VPABSD-XMM-XMM-SEMANTICS
+  imports VXORPD-YMM-YMM-YMM-SEMANTICS
+  imports VHSUBPD-XMM-XMM-XMM-SEMANTICS
+  imports VPHADDD-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD213PD-YMM-YMM-YMM-SEMANTICS
+  imports VFMADD213PS-XMM-XMM-XMM-SEMANTICS
+  imports CMOVPOW-R16-R16-SEMANTICS
+  imports CMOVLQ-R64-R64-SEMANTICS
+  imports VFMADD231PD-XMM-XMM-XMM-SEMANTICS
+  imports SETS-R8-SEMANTICS
+  imports VPBLENDVB-YMM-YMM-YMM-YMM-SEMANTICS
+  imports VPACKSSDW-YMM-YMM-YMM-SEMANTICS
+  imports VFNMSUB213PD-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD213SD-XMM-XMM-XMM-SEMANTICS
+  imports PSUBSW-XMM-XMM-SEMANTICS
+  imports VSUBPS-YMM-YMM-YMM-SEMANTICS
+  imports XORB-R8-RH-SEMANTICS
+  imports CMPW-R16-R16-SEMANTICS
+  imports XCHGW-AX-R16-SEMANTICS
+  imports MOVB-RH-RH-SEMANTICS
+  imports SETA-RH-SEMANTICS
+  imports VPMULHW-YMM-YMM-YMM-SEMANTICS
+  imports VPMULDQ-XMM-XMM-XMM-SEMANTICS
+  imports VMOVUPD-YMM-YMM-SEMANTICS
+  imports VMOVDQA-XMM-XMM-SEMANTICS
+  imports BZHIL-R32-R32-R32-SEMANTICS
+  imports VPBROADCASTB-XMM-XMM-SEMANTICS
+  imports VPCMPGTQ-XMM-XMM-XMM-SEMANTICS
+  imports VFNMSUB213SS-XMM-XMM-XMM-SEMANTICS
+  imports SETLE-R8-SEMANTICS
+  imports VMOVAPD-YMM-YMM-SEMANTICS
+  imports SUBB-RH-R8-SEMANTICS
+  imports MOVZBW-R16-RH-SEMANTICS
+  imports CMOVNGQ-R64-R64-SEMANTICS
+  imports VRCPPS-YMM-YMM-SEMANTICS
+  imports VMOVSLDUP-YMM-YMM-SEMANTICS
+  imports SETBE-R8-SEMANTICS
+  imports SARXQ-R64-R64-R64-SEMANTICS
+  imports RCPSS-XMM-XMM-SEMANTICS
+  imports VPBROADCASTD-YMM-XMM-SEMANTICS
+  imports VCVTSS2SI-R32-XMM-SEMANTICS
+  imports PUNPCKLQDQ-XMM-XMM-SEMANTICS
+  imports VFNMSUB231PS-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNBEW-R16-R16-SEMANTICS
+  imports BSWAP-R32-SEMANTICS
+  imports CMOVNLL-R32-R32-SEMANTICS
+  imports VPSHUFB-YMM-YMM-YMM-SEMANTICS
+  imports VPAND-YMM-YMM-YMM-SEMANTICS
+  imports SHLW-R16-ONE-SEMANTICS
+  imports XORPS-XMM-XMM-SEMANTICS
+  imports VPUNPCKHWD-YMM-YMM-YMM-SEMANTICS
+  imports VPABSW-XMM-XMM-SEMANTICS
+  imports ANDNL-R32-R32-R32-SEMANTICS
+  imports VPMINSW-XMM-XMM-XMM-SEMANTICS
+  imports VPSUBB-YMM-YMM-YMM-SEMANTICS
+  imports VPSRLVD-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVZXWQ-XMM-XMM-SEMANTICS
+  imports VFNMADD231PD-XMM-XMM-XMM-SEMANTICS
+  imports VPCMPEQD-XMM-XMM-XMM-SEMANTICS
+  imports VPMAXSB-YMM-YMM-YMM-SEMANTICS
+  imports CLTD-SEMANTICS
+  imports VDIVSS-XMM-XMM-XMM-SEMANTICS
+  imports PADDD-XMM-XMM-SEMANTICS
+  imports RCRL-R32-CL-SEMANTICS
+  imports PSUBSB-XMM-XMM-SEMANTICS
+  imports MULXQ-R64-R64-R64-SEMANTICS
+  imports MOVB-RH-R8-SEMANTICS
+  imports SHRQ-R64-ONE-SEMANTICS
+  imports CMOVNGEQ-R64-R64-SEMANTICS
+  imports SETBE-RH-SEMANTICS
+  imports PSUBW-XMM-XMM-SEMANTICS
+  imports MOVL-R32-R32-SEMANTICS
+  imports VPABSB-YMM-YMM-SEMANTICS
+  imports VPMOVZXDQ-XMM-XMM-SEMANTICS
+  imports VFNMADD231PS-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUBADD231PS-YMM-YMM-YMM-SEMANTICS
+  imports VSQRTPS-YMM-YMM-SEMANTICS
+  imports PHMINPOSUW-XMM-XMM-SEMANTICS
+  imports CMOVBEL-R32-R32-SEMANTICS
+  imports PMOVZXBW-XMM-XMM-SEMANTICS
+  imports VPMINUD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVAEL-R32-R32-SEMANTICS
+  imports SHRXQ-R64-R64-R64-SEMANTICS
+  imports VMULSS-XMM-XMM-XMM-SEMANTICS
+  imports VFMADDSUB132PD-YMM-YMM-YMM-SEMANTICS
+  imports CMOVCW-R16-R16-SEMANTICS
+  imports VCVTPD2PS-XMM-XMM-SEMANTICS
+  imports MULW-R16-SEMANTICS
+  imports TESTB-R8-R8-SEMANTICS
+  imports VPUNPCKHQDQ-XMM-XMM-XMM-SEMANTICS
+  imports ADCB-RH-RH-SEMANTICS
+  imports VPERMD-YMM-YMM-YMM-SEMANTICS
+  imports SALB-R8-ONE-SEMANTICS
+  imports CVTSI2SSL-XMM-R32-SEMANTICS
+  imports VPSRAW-YMM-YMM-XMM-SEMANTICS
+  imports VMOVMSKPD-R64-YMM-SEMANTICS
+  imports ROLB-RH-ONE-SEMANTICS
+  imports VMOVAPS-YMM-YMM-SEMANTICS
+  imports VPMAXSD-XMM-XMM-XMM-SEMANTICS
+  imports MOVW-R16-R16-SEMANTICS
+  imports CMPL-R32-R32-SEMANTICS
+  imports CVTPD2PS-XMM-XMM-SEMANTICS
+  imports VPADDW-XMM-XMM-XMM-SEMANTICS
+  imports VPXOR-XMM-XMM-XMM-SEMANTICS
+  imports MOVSBQ-R64-R8-SEMANTICS
+  imports VFMSUB213SD-XMM-XMM-XMM-SEMANTICS
+  imports RORW-R16-CL-SEMANTICS
+  imports VFMSUB213PS-XMM-XMM-XMM-SEMANTICS
+  imports VPABSW-YMM-YMM-SEMANTICS
+  imports PSHUFB-XMM-XMM-SEMANTICS
+  imports XCHGW-R16-AX-SEMANTICS
+  imports RCRB-R8-CL-SEMANTICS
+  imports VCVTDQ2PS-XMM-XMM-SEMANTICS
+  imports MOVAPD-XMM-XMM-SEMANTICS
+  imports VFMADD132SD-XMM-XMM-XMM-SEMANTICS
+  imports VFMSUB213PD-YMM-YMM-YMM-SEMANTICS
+  imports VFMADDSUB132PD-XMM-XMM-XMM-SEMANTICS
+  imports VPMULHW-XMM-XMM-XMM-SEMANTICS
+  imports SALB-RH-CL-SEMANTICS
+  imports SHLB-RH-CL-SEMANTICS
+  imports VPSRLVQ-YMM-YMM-YMM-SEMANTICS
+  imports VMOVDDUP-YMM-YMM-SEMANTICS
+  imports PACKUSWB-XMM-XMM-SEMANTICS
+  imports MOVSLDUP-XMM-XMM-SEMANTICS
+  imports RORB-R8-ONE-SEMANTICS
+  imports CMOVBQ-R64-R64-SEMANTICS
+  imports VORPS-XMM-XMM-XMM-SEMANTICS
+  imports VPSIGNB-XMM-XMM-XMM-SEMANTICS
+  imports MOVQ-XMM-XMM-SEMANTICS
+  imports PSIGND-XMM-XMM-SEMANTICS
+  imports MINSD-XMM-XMM-SEMANTICS
+  imports CMC-SEMANTICS
+  imports VTESTPD-XMM-XMM-SEMANTICS
+  imports SETS-RH-SEMANTICS
+  imports VBROADCASTSS-XMM-XMM-SEMANTICS
+  imports VPMINSD-XMM-XMM-XMM-SEMANTICS
+  imports VFMSUB132PD-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD132PD-XMM-XMM-XMM-SEMANTICS
+  imports VPADDD-XMM-XMM-XMM-SEMANTICS
+  imports VHSUBPD-YMM-YMM-YMM-SEMANTICS
+  imports IDIVW-R16-SEMANTICS
+  imports VPMOVSXBQ-YMM-XMM-SEMANTICS
+  imports DIVB-RH-SEMANTICS
+  imports VCVTPS2DQ-YMM-YMM-SEMANTICS
+  imports VPMAXUB-XMM-XMM-XMM-SEMANTICS
+  imports DIVL-R32-SEMANTICS
+  imports VFNMSUB231SS-XMM-XMM-XMM-SEMANTICS
+  imports SETNS-RH-SEMANTICS
+  imports VFNMSUB132SD-XMM-XMM-XMM-SEMANTICS
+  imports RCLB-R8-CL-SEMANTICS
+  imports SETNGE-R8-SEMANTICS
+  imports LZCNTW-R16-R16-SEMANTICS
+  imports VCVTSI2SSQ-XMM-XMM-R64-SEMANTICS
+  imports SALW-R16-ONE-SEMANTICS
+  imports POPCNTL-R32-R32-SEMANTICS
+  imports VPSRAD-YMM-YMM-XMM-SEMANTICS
+  imports ANDB-RH-R8-SEMANTICS
+  imports VPSUBSW-YMM-YMM-YMM-SEMANTICS
+  imports VMOVAPS-XMM-XMM-SEMANTICS
+  imports INCQ-R64-SEMANTICS
+  imports VPSLLW-YMM-YMM-XMM-SEMANTICS
+  imports SETL-R8-SEMANTICS
+  imports CMOVEL-R32-R32-SEMANTICS
+  imports VMOVUPD-XMM-XMM-SEMANTICS
+  imports PMOVZXBD-XMM-XMM-SEMANTICS
+  imports VPMULHUW-YMM-YMM-YMM-SEMANTICS
+  imports CMOVOL-R32-R32-SEMANTICS
+  imports VFMSUB231PD-XMM-XMM-XMM-SEMANTICS
+  imports VFMADD213SD-XMM-XMM-XMM-SEMANTICS
+  imports VPUNPCKHWD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVGEQ-R64-R64-SEMANTICS
+  imports VPERMILPD-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNGW-R16-R16-SEMANTICS
+  imports MOVZWQ-R64-R16-SEMANTICS
+  imports CVTSD2SI-R32-XMM-SEMANTICS
+  imports VTESTPS-YMM-YMM-SEMANTICS
+  imports BLSMSKQ-R64-R64-SEMANTICS
+  imports PHSUBW-XMM-XMM-SEMANTICS
+  imports BTRW-R16-R16-SEMANTICS
+  imports CLC-SEMANTICS
+  imports DECB-R8-SEMANTICS
+  imports VPAVGW-XMM-XMM-XMM-SEMANTICS
+  imports VANDPD-XMM-XMM-XMM-SEMANTICS
+  imports SETPE-R8-SEMANTICS
+  imports VPCMPEQD-YMM-YMM-YMM-SEMANTICS
+  imports SETAE-R8-SEMANTICS
+  imports ADCB-R8-R8-SEMANTICS
+  imports PUNPCKHWD-XMM-XMM-SEMANTICS
+  imports CMOVCQ-R64-R64-SEMANTICS
+  imports VANDNPS-YMM-YMM-YMM-SEMANTICS
+  imports VMOVQ-XMM-XMM-SEMANTICS
+  imports VMINPD-YMM-YMM-YMM-SEMANTICS
+  imports VPCMPGTQ-YMM-YMM-YMM-SEMANTICS
+  imports RCRW-R16-CL-SEMANTICS
+  imports VMINSD-XMM-XMM-XMM-SEMANTICS
+  imports SALW-R16-CL-SEMANTICS
+  imports VPCMPGTB-YMM-YMM-YMM-SEMANTICS
+  imports VPUNPCKLQDQ-XMM-XMM-XMM-SEMANTICS
+  imports PSRAW-XMM-XMM-SEMANTICS
+  imports VPADDUSB-YMM-YMM-YMM-SEMANTICS
+  imports VFNMSUB132PS-YMM-YMM-YMM-SEMANTICS
+  imports SETC-RH-SEMANTICS
+  imports VFMSUB132SD-XMM-XMM-XMM-SEMANTICS
+  imports VUNPCKLPD-XMM-XMM-XMM-SEMANTICS
+  imports CMPB-RH-R8-SEMANTICS
+  imports CMPXCHGB-RH-R8-SEMANTICS
+  imports VSUBSS-XMM-XMM-XMM-SEMANTICS
+  imports VCVTPH2PS-XMM-XMM-SEMANTICS
+  imports SHLW-R16-CL-SEMANTICS
+  imports VMINPD-XMM-XMM-XMM-SEMANTICS
+  imports BLSRL-R32-R32-SEMANTICS
+  imports VPSUBUSW-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUBADD213PS-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUB231SD-XMM-XMM-XMM-SEMANTICS
+  imports MOVB-R8-R8-SEMANTICS
+  imports PMOVZXDQ-XMM-XMM-SEMANTICS
+  imports ROLB-RH-CL-SEMANTICS
+  imports ADDB-R8-RH-SEMANTICS
+  imports RCLQ-R64-ONE-SEMANTICS
+  imports SETA-R8-SEMANTICS
+  imports PUNPCKHBW-XMM-XMM-SEMANTICS
+  imports VPSRAVD-YMM-YMM-YMM-SEMANTICS
+  imports VMOVMSKPS-R64-XMM-SEMANTICS
+  imports CMOVGQ-R64-R64-SEMANTICS
+  imports VANDPD-YMM-YMM-YMM-SEMANTICS
+  imports SHLL-R32-CL-SEMANTICS
+  imports VADDSS-XMM-XMM-XMM-SEMANTICS
+  imports PMOVZXWD-XMM-XMM-SEMANTICS
+  imports VCVTTPD2DQ-XMM-YMM-SEMANTICS
+  imports SHRB-R8-ONE-SEMANTICS
+  imports VPMOVSXWD-YMM-XMM-SEMANTICS
+  imports COMISS-XMM-XMM-SEMANTICS
+  imports VPADDUSW-YMM-YMM-YMM-SEMANTICS
+  imports VPSUBSW-XMM-XMM-XMM-SEMANTICS
+  imports CMOVAEW-R16-R16-SEMANTICS
+  imports RCRL-R32-ONE-SEMANTICS
+  imports SHRW-R16-ONE-SEMANTICS
+  imports XORQ-R64-R64-SEMANTICS
+  imports VMOVD-R32-XMM-SEMANTICS
+  imports SALL-R32-CL-SEMANTICS
+  imports MOVZBW-R16-R8-SEMANTICS
+  imports PCMPEQW-XMM-XMM-SEMANTICS
+  imports VPADDB-YMM-YMM-YMM-SEMANTICS
+  imports CVTPD2DQ-XMM-XMM-SEMANTICS
+  imports VPAVGW-YMM-YMM-YMM-SEMANTICS
+  imports VDIVPS-YMM-YMM-YMM-SEMANTICS
+  imports SHRQ-R64-CL-SEMANTICS
+  imports BLSIQ-R64-R64-SEMANTICS
+  imports VFNMADD231PD-YMM-YMM-YMM-SEMANTICS
+  imports VPERMPS-YMM-YMM-YMM-SEMANTICS
+  imports VPUNPCKLDQ-XMM-XMM-XMM-SEMANTICS
+  imports VPSUBQ-XMM-XMM-XMM-SEMANTICS
+  imports VPSRLD-YMM-YMM-XMM-SEMANTICS
+  imports VPSLLVQ-YMM-YMM-YMM-SEMANTICS
+  imports CMOVLEL-R32-R32-SEMANTICS
+  imports SHRB-RH-ONE-SEMANTICS
+  imports SETNE-RH-SEMANTICS
+  imports ADDB-RH-R8-SEMANTICS
+  imports VPMOVZXWD-YMM-XMM-SEMANTICS
+  imports PADDUSW-XMM-XMM-SEMANTICS
+  imports CMOVBW-R16-R16-SEMANTICS
+  imports SHLB-R8-CL-SEMANTICS
+  imports CMOVNCQ-R64-R64-SEMANTICS
+  imports VFNMADD231SS-XMM-XMM-XMM-SEMANTICS
+  imports VPADDD-YMM-YMM-YMM-SEMANTICS
+  imports SHLB-RH-ONE-SEMANTICS
+  imports CVTSS2SD-XMM-XMM-SEMANTICS
+  imports VCOMISD-XMM-XMM-SEMANTICS
+  imports VANDNPD-YMM-YMM-YMM-SEMANTICS
+  imports MOVSLQ-R64-R32-SEMANTICS
+  imports VCVTSD2SS-XMM-XMM-XMM-SEMANTICS
+  imports RORQ-R64-ONE-SEMANTICS
+  imports SUBSS-XMM-XMM-SEMANTICS
+  imports NOTB-RH-SEMANTICS
+  imports VFNMSUB213SD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNOW-R16-R16-SEMANTICS
+  imports UCOMISS-XMM-XMM-SEMANTICS
+  imports CQTO-SEMANTICS
+  imports VPSLLD-YMM-YMM-XMM-SEMANTICS
+  imports VPSUBSB-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUB132PS-YMM-YMM-YMM-SEMANTICS
+  imports PUNPCKLBW-XMM-XMM-SEMANTICS
+  imports PSUBB-XMM-XMM-SEMANTICS
+  imports VPMOVSXBW-XMM-XMM-SEMANTICS
+  imports VUNPCKLPS-YMM-YMM-YMM-SEMANTICS
+  imports VMOVAPD-XMM-XMM-SEMANTICS
+  imports VMOVDDUP-XMM-XMM-SEMANTICS
+  imports SARQ-R64-ONE-SEMANTICS
+  imports ADDB-RH-RH-SEMANTICS
+  imports VANDPS-YMM-YMM-YMM-SEMANTICS
+  imports CMOVZL-R32-R32-SEMANTICS
+  imports MULB-R8-SEMANTICS
+  imports CMOVNCL-R32-R32-SEMANTICS
+  imports ANDNPD-XMM-XMM-SEMANTICS
+  imports VPADDSW-YMM-YMM-YMM-SEMANTICS
+  imports VRSQRTSS-XMM-XMM-XMM-SEMANTICS
+  imports VBROADCASTSD-YMM-XMM-SEMANTICS
+  imports ADCB-R8-RH-SEMANTICS
+  imports VDIVPD-YMM-YMM-YMM-SEMANTICS
+  imports ADCQ-R64-R64-SEMANTICS
+  imports TZCNTQ-R64-R64-SEMANTICS
+  imports SETPO-R8-SEMANTICS
+  imports VPACKSSWB-XMM-XMM-XMM-SEMANTICS
+  imports PMADDWD-XMM-XMM-SEMANTICS
+  imports RCRQ-R64-CL-SEMANTICS
+  imports XORL-R32-R32-SEMANTICS
+  imports VFNMSUB231PD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVOQ-R64-R64-SEMANTICS
+  imports ORB-RH-RH-SEMANTICS
+  imports RCRB-RH-ONE-SEMANTICS
+  imports TESTL-R32-R32-SEMANTICS
+  imports PMOVZXWQ-XMM-XMM-SEMANTICS
+  imports COMISD-XMM-XMM-SEMANTICS
+  imports VPSIGND-XMM-XMM-XMM-SEMANTICS
+  imports VFMSUBADD231PD-XMM-XMM-XMM-SEMANTICS
+  imports VPCMPGTW-XMM-XMM-XMM-SEMANTICS
+  imports CMOVBL-R32-R32-SEMANTICS
+  imports CMOVPQ-R64-R64-SEMANTICS
+  imports VFMADDSUB231PD-YMM-YMM-YMM-SEMANTICS
+  imports MULXL-R32-R32-R32-SEMANTICS
+  imports ANDQ-R64-R64-SEMANTICS
+  imports VPADDUSW-XMM-XMM-XMM-SEMANTICS
+  imports VZEROUPPER-SEMANTICS
+  imports ORL-R32-R32-SEMANTICS
+  imports VFMSUB213PD-XMM-XMM-XMM-SEMANTICS
+  imports SARXL-R32-R32-R32-SEMANTICS
+  imports MOVD-R32-XMM-SEMANTICS
+  imports VPCMPEQW-YMM-YMM-YMM-SEMANTICS
+  imports SUBPD-XMM-XMM-SEMANTICS
+  imports CMOVNBEL-R32-R32-SEMANTICS
+  imports BTSL-R32-R32-SEMANTICS
+  imports VPHADDSW-YMM-YMM-YMM-SEMANTICS
+  imports CMOVLEQ-R64-R64-SEMANTICS
+  imports XORB-RH-RH-SEMANTICS
+  imports VFMSUBADD132PS-XMM-XMM-XMM-SEMANTICS
+  imports ADDPD-XMM-XMM-SEMANTICS
+  imports VPSUBUSB-YMM-YMM-YMM-SEMANTICS
+  imports VMINSS-XMM-XMM-XMM-SEMANTICS
+  imports VPMULDQ-YMM-YMM-YMM-SEMANTICS
+  imports VCVTSI2SDQ-XMM-XMM-R64-SEMANTICS
+  imports VUNPCKHPS-XMM-XMM-XMM-SEMANTICS
+  imports NOTQ-R64-SEMANTICS
+  imports XCHGW-R16-R16-SEMANTICS
+  imports VMULPD-XMM-XMM-XMM-SEMANTICS
+  imports VPACKSSWB-YMM-YMM-YMM-SEMANTICS
+  imports VPMULHUW-XMM-XMM-XMM-SEMANTICS
+  imports VPHADDW-XMM-XMM-XMM-SEMANTICS
+  imports SUBB-RH-RH-SEMANTICS
+  imports SETNAE-R8-SEMANTICS
+  imports VPANDN-XMM-XMM-XMM-SEMANTICS
+  imports VPBROADCASTW-YMM-XMM-SEMANTICS
+  imports CVTSD2SI-R64-XMM-SEMANTICS
+  imports PSRAD-XMM-XMM-SEMANTICS
+  imports VPSLLD-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVSXDQ-XMM-XMM-SEMANTICS
+  imports CMOVZW-R16-R16-SEMANTICS
+  imports VXORPS-YMM-YMM-YMM-SEMANTICS
+  imports DIVPD-XMM-XMM-SEMANTICS
+  imports CMOVGEW-R16-R16-SEMANTICS
+  imports VPHADDD-XMM-XMM-XMM-SEMANTICS
+  imports VCVTTSD2SI-R32-XMM-SEMANTICS
+  imports PMULDQ-XMM-XMM-SEMANTICS
+  imports VUCOMISS-XMM-XMM-SEMANTICS
+  imports PADDSW-XMM-XMM-SEMANTICS
+  imports VPMAXSB-XMM-XMM-XMM-SEMANTICS
+  imports CMOVSL-R32-R32-SEMANTICS
+  imports IMULQ-R64-SEMANTICS
+  imports PSLLW-XMM-XMM-SEMANTICS
+  imports VMOVQ-XMM-R64-SEMANTICS
+  imports BSWAP-R64-SEMANTICS
+  imports PSLLD-XMM-XMM-SEMANTICS
+  imports ADDQ-R64-R64-SEMANTICS
+  imports MOVSD-XMM-XMM-SEMANTICS
+  imports SETB-R8-SEMANTICS
+  imports VFMSUB132PS-XMM-XMM-XMM-SEMANTICS
+  imports VANDNPD-XMM-XMM-XMM-SEMANTICS
+  imports SUBL-R32-R32-SEMANTICS
+  imports VPHSUBSW-XMM-XMM-XMM-SEMANTICS
+  imports RORL-R32-ONE-SEMANTICS
+  imports VCVTDQ2PS-YMM-YMM-SEMANTICS
+  imports VPSLLQ-XMM-XMM-XMM-SEMANTICS
+  imports CMOVEQ-R64-R64-SEMANTICS
+  imports VPMINSB-YMM-YMM-YMM-SEMANTICS
+  imports XADDB-RH-RH-SEMANTICS
+  imports RCLW-R16-CL-SEMANTICS
+  imports VSQRTPD-YMM-YMM-SEMANTICS
+  imports IMULB-R8-SEMANTICS
+  imports CMOVNOQ-R64-R64-SEMANTICS
+  imports SETNB-R8-SEMANTICS
+  imports CMOVNBW-R16-R16-SEMANTICS
+  imports CVTTPD2DQ-XMM-XMM-SEMANTICS
+  imports VPUNPCKHBW-XMM-XMM-XMM-SEMANTICS
+  imports PCMPEQD-XMM-XMM-SEMANTICS
+  imports ROLW-R16-ONE-SEMANTICS
+  imports ORPD-XMM-XMM-SEMANTICS
+  imports VPCMPEQQ-XMM-XMM-XMM-SEMANTICS
+  imports VUNPCKHPS-YMM-YMM-YMM-SEMANTICS
+  imports SETLE-RH-SEMANTICS
+  imports CMOVNAEW-R16-R16-SEMANTICS
+  imports VFNMSUB231SD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNEQ-R64-R64-SEMANTICS
+  imports CMPXCHGW-R16-R16-SEMANTICS
+  imports VPHADDSW-XMM-XMM-XMM-SEMANTICS
+  imports VPMOVZXDQ-YMM-XMM-SEMANTICS
+  imports VMOVSHDUP-XMM-XMM-SEMANTICS
+  imports CMOVNBQ-R64-R64-SEMANTICS
+  imports VCVTDQ2PD-YMM-YMM-SEMANTICS
+  imports VPADDW-YMM-YMM-YMM-SEMANTICS
+  imports VMULSD-XMM-XMM-XMM-SEMANTICS
+  imports VPTEST-YMM-YMM-SEMANTICS
+  imports MOVAPS-XMM-XMM-SEMANTICS
+  imports PMAXSD-XMM-XMM-SEMANTICS
+  imports LZCNTL-R32-R32-SEMANTICS
+  imports VPMOVZXBW-XMM-XMM-SEMANTICS
+  imports CMOVNGEW-R16-R16-SEMANTICS
+  imports SBBB-R8-R8-SEMANTICS
+  imports CMPXCHGB-R8-RH-SEMANTICS
+  imports MOVZBL-R32-R8-SEMANTICS
+  imports INCB-RH-SEMANTICS
+  imports VPMULHRSW-YMM-YMM-YMM-SEMANTICS
+  imports MOVZWL-R32-R16-SEMANTICS
+  imports IMULB-RH-SEMANTICS
+  imports PSIGNW-XMM-XMM-SEMANTICS
+  imports RCLL-R32-CL-SEMANTICS
+  imports VPSRAW-XMM-XMM-XMM-SEMANTICS
+  imports VSQRTSS-XMM-XMM-XMM-SEMANTICS
+  imports XORB-RH-R8-SEMANTICS
+  imports MULPD-XMM-XMM-SEMANTICS
+  imports XCHGQ-R64-RAX-SEMANTICS
+  imports SETP-RH-SEMANTICS
+  imports TESTW-R16-R16-SEMANTICS
+  imports VADDPS-XMM-XMM-XMM-SEMANTICS
+  imports VPCMPEQB-YMM-YMM-YMM-SEMANTICS
+  imports SETNLE-R8-SEMANTICS
+  imports XCHGQ-RAX-R64-SEMANTICS
+  imports VFMADD132PD-XMM-XMM-XMM-SEMANTICS
+  imports INCW-R16-SEMANTICS
+  imports MULSS-XMM-XMM-SEMANTICS
+  imports VPMOVSXBD-YMM-XMM-SEMANTICS
+  imports VPMINUD-YMM-YMM-YMM-SEMANTICS
+  imports VSUBSD-XMM-XMM-XMM-SEMANTICS
+  imports VXORPS-XMM-XMM-XMM-SEMANTICS
+  imports XCHGB-R8-RH-SEMANTICS
+  imports XORB-R8-R8-SEMANTICS
+  imports VPUNPCKLBW-YMM-YMM-YMM-SEMANTICS
+  imports VPMULLD-XMM-XMM-XMM-SEMANTICS
+  imports TESTB-R8-RH-SEMANTICS
+  imports PMINUB-XMM-XMM-SEMANTICS
+  imports CMOVNSL-R32-R32-SEMANTICS
+  imports TZCNTL-R32-R32-SEMANTICS
+  imports CMOVNPW-R16-R16-SEMANTICS
+  imports SETC-R8-SEMANTICS
+  imports VCVTTPS2DQ-XMM-XMM-SEMANTICS
+  imports CMOVNLEQ-R64-R64-SEMANTICS
+  imports VFNMADD132SS-XMM-XMM-XMM-SEMANTICS
+  imports VFNMADD231SD-XMM-XMM-XMM-SEMANTICS
+  imports PCMPGTD-XMM-XMM-SEMANTICS
+  imports MOVDDUP-XMM-XMM-SEMANTICS
+  imports PMULLW-XMM-XMM-SEMANTICS
+  imports VADDSD-XMM-XMM-XMM-SEMANTICS
+  imports CMPQ-R64-R64-SEMANTICS
+  imports NOTB-R8-SEMANTICS
+  imports VPADDUSB-XMM-XMM-XMM-SEMANTICS
+  imports SETPO-RH-SEMANTICS
+  imports VPCMPGTB-XMM-XMM-XMM-SEMANTICS
+  imports VPCMPGTD-YMM-YMM-YMM-SEMANTICS
+  imports ROLQ-R64-CL-SEMANTICS
+  imports VFNMSUB132SS-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNLEL-R32-R32-SEMANTICS
+  imports VDIVPD-XMM-XMM-XMM-SEMANTICS
+  imports XADDB-R8-R8-SEMANTICS
+  imports VPUNPCKHDQ-XMM-XMM-XMM-SEMANTICS
+  imports PSRLW-XMM-XMM-SEMANTICS
+  imports VFMADD213PS-YMM-YMM-YMM-SEMANTICS
+  imports VPMOVSXDQ-YMM-XMM-SEMANTICS
+  imports VFMSUBADD231PS-XMM-XMM-XMM-SEMANTICS
+  imports VCVTDQ2PD-XMM-XMM-SEMANTICS
+  imports PMULUDQ-XMM-XMM-SEMANTICS
+  imports VADDSUBPD-XMM-XMM-XMM-SEMANTICS
+  imports INCB-R8-SEMANTICS
+  imports VMULPD-YMM-YMM-YMM-SEMANTICS
+  imports CMOVPEQ-R64-R64-SEMANTICS
+  imports ROLL-R32-CL-SEMANTICS
+  imports IMULL-R32-SEMANTICS
+  imports ORQ-R64-R64-SEMANTICS
+  imports VTESTPS-XMM-XMM-SEMANTICS
+  imports VMOVMSKPS-R32-YMM-SEMANTICS
+  imports PBLENDVB-XMM-XMM-XMM0-SEMANTICS
+  imports CMOVNZL-R32-R32-SEMANTICS
+  imports VPUNPCKLWD-XMM-XMM-XMM-SEMANTICS
+  imports SHRL-R32-CL-SEMANTICS
+  imports SARB-R8-CL-SEMANTICS
+  imports VPSUBUSB-XMM-XMM-XMM-SEMANTICS
+  imports SHRL-R32-ONE-SEMANTICS
+  imports SETO-R8-SEMANTICS
+  imports VFNMSUB132PD-YMM-YMM-YMM-SEMANTICS
+  imports BLSMSKL-R32-R32-SEMANTICS
+  imports VPMINUW-XMM-XMM-XMM-SEMANTICS
+  imports MOVZBQ-R64-R8-SEMANTICS
+  imports BLENDVPS-XMM-XMM-XMM0-SEMANTICS
+  imports MOVDQA-XMM-XMM-SEMANTICS
+  imports VMAXPD-YMM-YMM-YMM-SEMANTICS
+  imports XADDL-R32-R32-SEMANTICS
+  imports TESTB-RH-RH-SEMANTICS
+  imports VFNMSUB132PD-XMM-XMM-XMM-SEMANTICS
+  imports SHLL-R32-ONE-SEMANTICS
+  imports SHLQ-R64-ONE-SEMANTICS
+  imports IMULW-R16-R16-SEMANTICS
+  imports VCVTSI2SSL-XMM-XMM-R32-SEMANTICS
+  imports VFMSUB231PS-XMM-XMM-XMM-SEMANTICS
+  imports ROLQ-R64-ONE-SEMANTICS
+  imports ANDW-R16-R16-SEMANTICS
+  imports VHSUBPS-YMM-YMM-YMM-SEMANTICS
+  imports MULQ-R64-SEMANTICS
+  imports UNPCKLPS-XMM-XMM-SEMANTICS
+  imports VFMSUB231SS-XMM-XMM-XMM-SEMANTICS
+  imports VMINPS-YMM-YMM-YMM-SEMANTICS
+  imports VTESTPD-YMM-YMM-SEMANTICS
+  imports ANDNQ-R64-R64-R64-SEMANTICS
+  imports ORPS-XMM-XMM-SEMANTICS
+  imports SBBL-R32-R32-SEMANTICS
+  imports VFMSUBADD213PD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNLEW-R16-R16-SEMANTICS
+  imports SETNO-RH-SEMANTICS
+  imports VPSRAVD-XMM-XMM-XMM-SEMANTICS
+  imports VHADDPS-YMM-YMM-YMM-SEMANTICS
+  imports ADCL-R32-R32-SEMANTICS
+  imports BTQ-R64-R64-SEMANTICS
+  imports VZEROALL-SEMANTICS
+  imports BTRL-R32-R32-SEMANTICS
+  imports VFNMADD213SS-XMM-XMM-XMM-SEMANTICS
+  imports CVTTPS2DQ-XMM-XMM-SEMANTICS
+  imports CVTPS2PD-XMM-XMM-SEMANTICS
+  imports SQRTSD-XMM-XMM-SEMANTICS
+  imports CMOVAEQ-R64-R64-SEMANTICS
+  imports SHLB-R8-ONE-SEMANTICS
+  imports VPMOVZXBQ-XMM-XMM-SEMANTICS
+  imports VMOVMSKPD-R32-XMM-SEMANTICS
+  imports XORPD-XMM-XMM-SEMANTICS
+  imports CMOVNAEQ-R64-R64-SEMANTICS
+  imports VPERMILPD-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNAW-R16-R16-SEMANTICS
+  imports CMOVNLW-R16-R16-SEMANTICS
+  imports VBLENDVPS-XMM-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNAL-R32-R32-SEMANTICS
+  imports SETNB-RH-SEMANTICS
+  imports VPAVGB-XMM-XMM-XMM-SEMANTICS
+  imports VPCMPGTD-XMM-XMM-XMM-SEMANTICS
+  imports PABSW-XMM-XMM-SEMANTICS
+  imports SBBB-RH-RH-SEMANTICS
+  imports RCLB-R8-ONE-SEMANTICS
+  imports VPMAXSD-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUB213PS-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD132PS-XMM-XMM-XMM-SEMANTICS
+  imports RORL-R32-CL-SEMANTICS
+  imports CMOVLEW-R16-R16-SEMANTICS
+  imports SARB-R8-ONE-SEMANTICS
+  imports BLSRQ-R64-R64-SEMANTICS
+  imports VORPD-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUBADD132PD-XMM-XMM-XMM-SEMANTICS
+  imports VSUBPD-YMM-YMM-YMM-SEMANTICS
+  imports VFMADD231PS-XMM-XMM-XMM-SEMANTICS
+  imports SARL-R32-ONE-SEMANTICS
+  imports VUCOMISD-XMM-XMM-SEMANTICS
+  imports VFMSUB231PS-YMM-YMM-YMM-SEMANTICS
+  imports VPHMINPOSUW-XMM-XMM-SEMANTICS
+  imports CMOVPEW-R16-R16-SEMANTICS
+  imports ORB-R8-RH-SEMANTICS
+  imports CMPXCHGB-RH-RH-SEMANTICS
+  imports VPMULUDQ-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUBADD132PS-YMM-YMM-YMM-SEMANTICS
+  imports VANDNPS-XMM-XMM-XMM-SEMANTICS
+  imports VCOMISS-XMM-XMM-SEMANTICS
+  imports VMAXSD-XMM-XMM-XMM-SEMANTICS
+  imports VFMADD132PS-XMM-XMM-XMM-SEMANTICS
+  imports PAVGB-XMM-XMM-SEMANTICS
+  imports SUBW-R16-R16-SEMANTICS
+  imports NEGB-RH-SEMANTICS
+  imports VPACKUSDW-XMM-XMM-XMM-SEMANTICS
+  imports SETAE-RH-SEMANTICS
+  imports XORW-R16-R16-SEMANTICS
+  imports VFMSUB231PD-YMM-YMM-YMM-SEMANTICS
+  imports ADDPS-XMM-XMM-SEMANTICS
+  imports VHADDPD-YMM-YMM-YMM-SEMANTICS
+  imports IMULW-R16-SEMANTICS
+  imports PADDSB-XMM-XMM-SEMANTICS
+  imports VMAXPS-YMM-YMM-YMM-SEMANTICS
+  imports MAXSS-XMM-XMM-SEMANTICS
+  imports SETNGE-RH-SEMANTICS
+  imports PSUBQ-XMM-XMM-SEMANTICS
+  imports VFMADD231PS-YMM-YMM-YMM-SEMANTICS
+  imports VPUNPCKHDQ-YMM-YMM-YMM-SEMANTICS
+  imports SARW-R16-ONE-SEMANTICS
+  imports XCHGB-RH-R8-SEMANTICS
+  imports XADDW-R16-R16-SEMANTICS
+  imports RCLB-RH-CL-SEMANTICS
+  imports DIVPS-XMM-XMM-SEMANTICS
+  imports VSUBPD-XMM-XMM-XMM-SEMANTICS
+  imports VPHSUBD-XMM-XMM-XMM-SEMANTICS
+  imports CVTTSD2SI-R64-XMM-SEMANTICS
+  imports VPSRLQ-YMM-YMM-XMM-SEMANTICS
+  imports VPADDQ-YMM-YMM-YMM-SEMANTICS
+  imports HADDPD-XMM-XMM-SEMANTICS
+  imports VPUNPCKLQDQ-YMM-YMM-YMM-SEMANTICS
+  imports VMOVDQA-YMM-YMM-SEMANTICS
+  imports VPADDSB-YMM-YMM-YMM-SEMANTICS
+  imports POPCNTW-R16-R16-SEMANTICS
+  imports VPHSUBSW-YMM-YMM-YMM-SEMANTICS
+  imports VMOVUPS-YMM-YMM-SEMANTICS
+  imports PMINSB-XMM-XMM-SEMANTICS
+  imports CMOVPOL-R32-R32-SEMANTICS
+  imports VPADDSB-XMM-XMM-XMM-SEMANTICS
+  imports MAXPS-XMM-XMM-SEMANTICS
+  imports VFMADDSUB132PS-YMM-YMM-YMM-SEMANTICS
+  imports SETNP-R8-SEMANTICS
+  imports SBBB-R8-RH-SEMANTICS
+  imports VPSHUFB-XMM-XMM-XMM-SEMANTICS
+  imports VMOVMSKPD-R32-YMM-SEMANTICS
+  imports CMOVNZW-R16-R16-SEMANTICS
+  imports VPHADDW-YMM-YMM-YMM-SEMANTICS
+  imports PACKSSWB-XMM-XMM-SEMANTICS
+  imports PMADDUBSW-XMM-XMM-SEMANTICS
+  imports TESTQ-R64-R64-SEMANTICS
+  imports PMOVMSKB-R64-XMM-SEMANTICS
+  imports VPMULLD-YMM-YMM-YMM-SEMANTICS
+  imports VFNMSUB213PS-YMM-YMM-YMM-SEMANTICS
+  imports PMINSW-XMM-XMM-SEMANTICS
+  imports CMOVNEW-R16-R16-SEMANTICS
+  imports SETNZ-RH-SEMANTICS
+  imports VMAXPD-XMM-XMM-XMM-SEMANTICS
+  imports VMAXPS-XMM-XMM-XMM-SEMANTICS
+  imports CMOVPEL-R32-R32-SEMANTICS
+  imports VMULPS-YMM-YMM-YMM-SEMANTICS
+  imports VPADDQ-XMM-XMM-XMM-SEMANTICS
+  imports SHRXL-R32-R32-R32-SEMANTICS
+  imports ADCW-R16-R16-SEMANTICS
+  imports PMINUW-XMM-XMM-SEMANTICS
+  imports VFMADDSUB231PD-XMM-XMM-XMM-SEMANTICS
+  imports SHLQ-R64-CL-SEMANTICS
+  imports POPCNTQ-R64-R64-SEMANTICS
+  imports VFNMSUB231PS-YMM-YMM-YMM-SEMANTICS
+  imports SUBPS-XMM-XMM-SEMANTICS
+  imports VFMSUBADD132PD-YMM-YMM-YMM-SEMANTICS
+  imports RCLL-R32-ONE-SEMANTICS
+  imports CMOVZQ-R64-R64-SEMANTICS
+  imports VPUNPCKHQDQ-YMM-YMM-YMM-SEMANTICS
+  imports MOVSBW-R16-RH-SEMANTICS
+  imports CMOVNZQ-R64-R64-SEMANTICS
+  imports VCVTTSD2SI-R64-XMM-SEMANTICS
+  imports VFMADD231SD-XMM-XMM-XMM-SEMANTICS
+  imports HSUBPS-XMM-XMM-SEMANTICS
+  imports SETB-RH-SEMANTICS
+  imports ADDSD-XMM-XMM-SEMANTICS
+  imports RORB-RH-ONE-SEMANTICS
+  imports CMPB-R8-R8-SEMANTICS
+  imports VPANDN-YMM-YMM-YMM-SEMANTICS
+  imports VADDSUBPS-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD213PS-XMM-XMM-XMM-SEMANTICS
+  imports MOVSHDUP-XMM-XMM-SEMANTICS
+  imports VPHSUBW-XMM-XMM-XMM-SEMANTICS
+  imports VHADDPD-XMM-XMM-XMM-SEMANTICS
+  imports VSUBPS-XMM-XMM-XMM-SEMANTICS
+  imports SHRB-RH-CL-SEMANTICS
+  imports VCVTPD2PS-XMM-YMM-SEMANTICS
+  imports SETNA-RH-SEMANTICS
+  imports VPCMPEQB-XMM-XMM-XMM-SEMANTICS
+  imports VFMSUB132SS-XMM-XMM-XMM-SEMANTICS
+  imports PUNPCKLWD-XMM-XMM-SEMANTICS
+  imports SETNS-R8-SEMANTICS
+  imports PMOVMSKB-R32-XMM-SEMANTICS
+  imports VPMINUB-XMM-XMM-XMM-SEMANTICS
+  imports VPBLENDVB-XMM-XMM-XMM-XMM-SEMANTICS
+  imports XADDB-R8-RH-SEMANTICS
+  imports VPHSUBD-YMM-YMM-YMM-SEMANTICS
+  imports MOVLHPS-XMM-XMM-SEMANTICS
+  imports UNPCKHPD-XMM-XMM-SEMANTICS
+  imports NOTW-R16-SEMANTICS
+  imports NEGW-R16-SEMANTICS
+  imports ADDL-R32-R32-SEMANTICS
+  imports PCMPGTW-XMM-XMM-SEMANTICS
+  imports XADDB-RH-R8-SEMANTICS
+  imports SBBQ-R64-R64-SEMANTICS
+  imports SETGE-RH-SEMANTICS
+  imports CMOVGL-R32-R32-SEMANTICS
+  imports SETE-R8-SEMANTICS
+  imports ADDSUBPS-XMM-XMM-SEMANTICS
+  imports CMOVOW-R16-R16-SEMANTICS
+  imports VFNMADD132SD-XMM-XMM-XMM-SEMANTICS
+  imports SETGE-R8-SEMANTICS
+  imports VPCMPEQW-XMM-XMM-XMM-SEMANTICS
+  imports VPADDB-XMM-XMM-XMM-SEMANTICS
+  imports MOVMSKPD-R64-XMM-SEMANTICS
+  imports PMOVZXBQ-XMM-XMM-SEMANTICS
+  imports VRSQRTPS-XMM-XMM-SEMANTICS
+  imports VPMOVSXBD-XMM-XMM-SEMANTICS
+  imports VPSADBW-YMM-YMM-YMM-SEMANTICS
+  imports PUNPCKHDQ-XMM-XMM-SEMANTICS
+  imports SETNG-RH-SEMANTICS
+  imports VMULPS-XMM-XMM-XMM-SEMANTICS
+  imports VPOR-YMM-YMM-YMM-SEMANTICS
+  imports VPSRLVQ-XMM-XMM-XMM-SEMANTICS
+  imports DECW-R16-SEMANTICS
+  imports PHADDSW-XMM-XMM-SEMANTICS
+  imports MOVB-R8-RH-SEMANTICS
+  imports VPMULLW-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNBL-R32-R32-SEMANTICS
+  imports VCVTTSS2SI-R32-XMM-SEMANTICS
+  imports PADDB-XMM-XMM-SEMANTICS
+  imports VMOVMSKPD-R64-XMM-SEMANTICS
+  imports PCMPEQQ-XMM-XMM-SEMANTICS
+  imports VCVTSS2SI-R64-XMM-SEMANTICS
+  imports VFMADDSUB132PS-XMM-XMM-XMM-SEMANTICS
+  imports PMULHUW-XMM-XMM-SEMANTICS
+  imports RSQRTPS-XMM-XMM-SEMANTICS
+  imports VUNPCKHPD-XMM-XMM-XMM-SEMANTICS
+  imports PHADDW-XMM-XMM-SEMANTICS
+  imports PSUBUSB-XMM-XMM-SEMANTICS
+  imports SQRTSS-XMM-XMM-SEMANTICS
+  imports ADDSUBPD-XMM-XMM-SEMANTICS
+  imports PSADBW-XMM-XMM-SEMANTICS
+  imports RCRW-R16-ONE-SEMANTICS
+  imports VUNPCKLPS-XMM-XMM-XMM-SEMANTICS
+  imports VPUNPCKHBW-YMM-YMM-YMM-SEMANTICS
+  imports VPMULHRSW-XMM-XMM-XMM-SEMANTICS
+  imports BLSIL-R32-R32-SEMANTICS
+  imports SETNA-R8-SEMANTICS
+  imports VPSUBB-XMM-XMM-XMM-SEMANTICS
+  imports ANDB-RH-RH-SEMANTICS
+  imports SARB-RH-CL-SEMANTICS
+  imports VMOVDQU-XMM-XMM-SEMANTICS
+  imports SETNE-R8-SEMANTICS
+  imports CVTDQ2PD-XMM-XMM-SEMANTICS
+  imports CMOVNSQ-R64-R64-SEMANTICS
+  imports NOPL-R32-SEMANTICS
+  imports MOVMSKPD-R32-XMM-SEMANTICS
+  imports VPMULUDQ-XMM-XMM-XMM-SEMANTICS
+  imports VPAVGB-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNAEL-R32-R32-SEMANTICS
+  imports IMULL-R32-R32-SEMANTICS
+  imports ANDB-R8-RH-SEMANTICS
+  imports SALQ-R64-CL-SEMANTICS
+  imports VFMSUBADD213PD-YMM-YMM-YMM-SEMANTICS
+  imports RCLQ-R64-CL-SEMANTICS
+  imports CVTSS2SI-R32-XMM-SEMANTICS
+  imports NEGB-R8-SEMANTICS
+  imports VCVTTPD2DQ-XMM-XMM-SEMANTICS
+  imports VFMADDSUB213PD-YMM-YMM-YMM-SEMANTICS
+  imports CVTSD2SS-XMM-XMM-SEMANTICS
+  imports CVTPS2DQ-XMM-XMM-SEMANTICS
+  imports PTEST-XMM-XMM-SEMANTICS
+  imports MULB-RH-SEMANTICS
+  imports PMAXUD-XMM-XMM-SEMANTICS
+  imports BEXTRQ-R64-R64-R64-SEMANTICS
+  imports CMOVAL-R32-R32-SEMANTICS
+  imports VORPS-YMM-YMM-YMM-SEMANTICS
+  imports VFMSUBADD231PD-YMM-YMM-YMM-SEMANTICS
+  imports VPMOVZXBW-YMM-XMM-SEMANTICS
+  imports PADDUSB-XMM-XMM-SEMANTICS
+  imports VPMOVZXBD-XMM-XMM-SEMANTICS
+  imports PCMPEQB-XMM-XMM-SEMANTICS
+  imports VPMOVMSKB-R64-XMM-SEMANTICS
+  imports ANDNPS-XMM-XMM-SEMANTICS
+  imports PABSD-XMM-XMM-SEMANTICS
+  imports MULL-R32-SEMANTICS
+  imports SBBW-R16-R16-SEMANTICS
+  imports XCHGL-R32-R32-SEMANTICS
+  imports ADDW-R16-R16-SEMANTICS
+  imports VPERMILPS-XMM-XMM-XMM-SEMANTICS
+  imports VPACKSSDW-XMM-XMM-XMM-SEMANTICS
+  imports VPMADDWD-YMM-YMM-YMM-SEMANTICS
+  imports VFNMADD213PD-XMM-XMM-XMM-SEMANTICS
+  imports SETNC-RH-SEMANTICS
+  imports SBBB-RH-R8-SEMANTICS
+  imports BLENDVPD-XMM-XMM-XMM0-SEMANTICS
+  imports CVTDQ2PS-XMM-XMM-SEMANTICS
+  imports RCPPS-XMM-XMM-SEMANTICS
+  imports VPMAXSW-YMM-YMM-YMM-SEMANTICS
+  imports CMOVNGEL-R32-R32-SEMANTICS
+  imports CVTTSS2SI-R64-XMM-SEMANTICS
+  imports CMOVPOQ-R64-R64-SEMANTICS
+  imports RCLW-R16-ONE-SEMANTICS
+  imports RCRQ-R64-ONE-SEMANTICS
+  imports PSUBD-XMM-XMM-SEMANTICS
+  imports VFNMADD213PS-YMM-YMM-YMM-SEMANTICS
+  imports SETZ-R8-SEMANTICS
+  imports VPSLLQ-YMM-YMM-XMM-SEMANTICS
+  imports MOVHLPS-XMM-XMM-SEMANTICS
+  imports CMOVSQ-R64-R64-SEMANTICS
+  imports VPSRLW-XMM-XMM-XMM-SEMANTICS
+  imports VFMADD231SS-XMM-XMM-XMM-SEMANTICS
+  imports VPACKUSWB-YMM-YMM-YMM-SEMANTICS
+  imports VPBROADCASTB-YMM-XMM-SEMANTICS
+  imports VMOVQ-R64-XMM-SEMANTICS
+  imports VCVTTSS2SI-R64-XMM-SEMANTICS
+  imports PXOR-XMM-XMM-SEMANTICS
+  imports VPSADBW-XMM-XMM-XMM-SEMANTICS
+  imports CMOVNSW-R16-R16-SEMANTICS
+  imports SETL-RH-SEMANTICS
+  imports PACKSSDW-XMM-XMM-SEMANTICS
+  imports XADDQ-R64-R64-SEMANTICS
+  imports MOVSWQ-R64-R16-SEMANTICS
+  imports VPUNPCKLWD-YMM-YMM-YMM-SEMANTICS
+  imports NOPW-R16-SEMANTICS
+  imports PSLLQ-XMM-XMM-SEMANTICS
+  imports PADDQ-XMM-XMM-SEMANTICS
+  imports VCVTSI2SDL-XMM-XMM-R32-SEMANTICS
+  imports MOVQ-R64-XMM-SEMANTICS
+  imports DIVSS-XMM-XMM-SEMANTICS
+  imports DIVB-R8-SEMANTICS
+  imports SALQ-R64-ONE-SEMANTICS
+  imports BZHIQ-R64-R64-R64-SEMANTICS
+  imports MOVSBL-R32-R8-SEMANTICS
+  imports CMOVPL-R32-R32-SEMANTICS
+  imports PMAXSB-XMM-XMM-SEMANTICS
+  imports POR-XMM-XMM-SEMANTICS
+  imports VFMADDSUB231PS-YMM-YMM-YMM-SEMANTICS
+  imports VPSUBW-YMM-YMM-YMM-SEMANTICS
+  imports NOP-SEMANTICS
+  imports VPMADDUBSW-XMM-XMM-XMM-SEMANTICS
+  imports PSRLD-XMM-XMM-SEMANTICS
+  imports SQRTPS-XMM-XMM-SEMANTICS
+  imports BTCQ-R64-R64-SEMANTICS
+  imports SARW-R16-CL-SEMANTICS
+  imports VFMADD132PD-YMM-YMM-YMM-SEMANTICS
+  imports XCHGL-R32-EAX-SEMANTICS
+  imports PHSUBSW-XMM-XMM-SEMANTICS
+
+
 endmodule
