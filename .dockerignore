@@ -3,3 +3,4 @@ Dockerfile
 docs
 program-veriifcation
 .dockerignore
+.git
