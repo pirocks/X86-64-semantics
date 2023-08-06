@@ -1,2 +1,0 @@
-20041213-1: Try with builtins on
-mzero2: Return a value for Nan to MInt

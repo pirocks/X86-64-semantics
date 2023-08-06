@@ -1,5 +1,0 @@
-memops-asm
-memmove-chk
-memcpy-chk
-mempcpy-chk
-memset-chk

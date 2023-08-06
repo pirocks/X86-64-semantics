@@ -1,4 +1,0 @@
-grep  -A 40  "ListItem"  Output/va-arg-1-0.kstate  | sed -e '/RIP/d' 1> /tmp/tmpfileMitQN 2>&1 
-numOfInstrs: 78
-[4m[1m[34mva-arg-1-0 Compare Results :[0m
-Passed:[4m[1m[92mPassed[0m

@@ -1,5 +1,0 @@
-./and/
-./not/
-./or/
-./test/
-./xor/

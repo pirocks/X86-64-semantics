@@ -1,2 +1,0 @@
-mzero2
-fp-cmp-8l
