@@ -4,3 +4,5 @@ docs
 program-veriifcation
 .dockerignore
 .git
+log.log
+x86-semantics-kompiled
