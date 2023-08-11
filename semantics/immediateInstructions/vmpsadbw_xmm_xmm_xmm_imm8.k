@@ -1,7 +1,8 @@
 requires "x86-configuration.k"
-
+requires "x86-flag-checks.k"
 module VMPSADBW-XMM-XMM-XMM-IMM8
   imports X86-CONFIGURATION
+  imports X86-FLAG-CHECKS
 
   rule <k>
     execinstr (vmpsadbw Imm8:Imm, R2:Xmm, R3:Xmm, R4:Xmm,  .Operands) => 

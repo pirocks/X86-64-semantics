@@ -1,5 +1,5 @@
 requires "x86-configuration.k"
-
+requires "x86-flag-checks.k"
 /*
 TEMP ← SRC1;
 MASK ← SRC2;
@@ -16,7 +16,7 @@ OD
 
 module PEXTL-R32-R32-R32
   imports X86-CONFIGURATION
-
+  imports X86-FLAG-CHECKS
   rule <k>
     execinstr (pextl R1:R32, R2:R32, R3:R32, .Operands) => 
       setRegisterValue(mi(32, 0), R3) ~> parallelBitExtract32(getRegisterValue(R1,

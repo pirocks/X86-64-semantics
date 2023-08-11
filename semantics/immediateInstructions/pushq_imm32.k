@@ -1,5 +1,5 @@
 requires "x86-configuration.k"
-
+requires "x86-flag-checks.k"
 
 /*@
   Push R: 
@@ -9,6 +9,7 @@ requires "x86-configuration.k"
 */  
 module PUSHQ-IMM32
   imports X86-CONFIGURATION
+  imports X86-FLAG-CHECKS
 
   rule <k> 
     execinstr (pushq Imm32:Imm, .Operands) =>

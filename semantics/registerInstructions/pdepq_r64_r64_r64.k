@@ -1,5 +1,5 @@
 requires "x86-configuration.k"
-
+requires "x86-flag-checks.k"
 /*
 TEMP ← SRC1;
 MASK ← SRC2;
@@ -16,7 +16,7 @@ OD
 
 module PDEPQ-R64-R64-R64
   imports X86-CONFIGURATION
-
+  imports X86-FLAG-CHECKS
   rule <k>
     execinstr (pdepq R1:R64, R2:R64, R3:R64, .Operands) => 
       setRegisterValue(mi(64, 0), R3) ~> parallelBitDeposit64(getRegisterValue(R1,

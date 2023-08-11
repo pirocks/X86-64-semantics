@@ -1,5 +1,5 @@
 requires "x86-configuration.k"
-
+requires "x86-flag-checks.k"
 /*
 
 IF (Imm8[0] = 0 )
@@ -34,6 +34,7 @@ DEST[MAXVL-1:128] (Unmodified)
 
 module PCLMULQDQ-XMM-XMM-IMM8
   imports X86-CONFIGURATION
+  imports X86-FLAG-CHECKS
 
   /*
     IF (Imm8[0] = 0 )
