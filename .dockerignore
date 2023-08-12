@@ -6,3 +6,4 @@ program-veriifcation
 .git
 log.log
 x86-semantics-kompiled
+run_for_every_instruction/target
