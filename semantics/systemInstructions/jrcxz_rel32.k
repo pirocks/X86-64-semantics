@@ -3,7 +3,7 @@ requires "x86-configuration.k"
 
 module JRCXZ-REL32
   imports X86-CONFIGURATION
-  imports X86-FLAG-CHECS-SYNTAX
+  imports X86-FLAG-CHECKS-SYNTAX
 
   rule <k> 
     execinstr (jrcxz Imm32:Imm, .Operands) => .

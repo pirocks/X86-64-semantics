@@ -3,7 +3,7 @@ requires "x86-configuration.k"
 
 module LOOPE-REL8
   imports X86-CONFIGURATION
-  imports X86-FLAG-CHECS-SYNTAX
+  imports X86-FLAG-CHECKS-SYNTAX
 
   rule <k> 
     execinstr (loope Imm8:Imm, .Operands) => execinstr (loope Imm8, subMInt(getRegisterValue(%rcx, RSMap), mi(64, 1)), .Operands)

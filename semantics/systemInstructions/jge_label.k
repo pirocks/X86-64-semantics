@@ -1,7 +1,7 @@
 requires "x86-configuration.k"
 module JGE-LABEL
   imports X86-CONFIGURATION
-  imports X86-FLAG-CHECS-SYNTAX
+  imports X86-FLAG-CHECKS-SYNTAX
 
   rule <k> 
     execinstr (jge LabelId:X86Id, .Operands) => .

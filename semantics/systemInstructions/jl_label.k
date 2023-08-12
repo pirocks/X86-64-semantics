@@ -1,7 +1,7 @@
 requires "x86-configuration.k"
 module JL-LABEL
   imports X86-CONFIGURATION
-  imports X86-FLAG-CHECS-SYNTAX
+  imports X86-FLAG-CHECKS-SYNTAX
 
   rule <k> 
     execinstr (jl LabelId:X86Id, .Operands) => .

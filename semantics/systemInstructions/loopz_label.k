@@ -3,7 +3,7 @@ requires "x86-configuration.k"
 
 module LOOPE-LABEL
   imports X86-CONFIGURATION
-  imports X86-FLAG-CHECS-SYNTAX
+  imports X86-FLAG-CHECKS-SYNTAX
 
   rule <k> 
     execinstr (loopz LabelId:X86Id, .Operands) => execinstr (loopz LabelId, subMInt(getRegisterValue(%rcx, RSMap), mi(64, 1)), .Operands)

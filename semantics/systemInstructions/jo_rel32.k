@@ -3,7 +3,7 @@ requires "x86-configuration.k"
 
 module JO-REL32
   imports X86-CONFIGURATION
-  imports X86-FLAG-CHECS-SYNTAX
+  imports X86-FLAG-CHECKS-SYNTAX
 
   rule <k> 
     execinstr (jo Imm32:Imm, .Operands) => .
