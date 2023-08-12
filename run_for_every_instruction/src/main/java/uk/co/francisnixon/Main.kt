@@ -6,14 +6,12 @@ import java.util.concurrent.ForkJoinPool
 import java.util.concurrent.TimeUnit
 
 fun main() {
-    val forkJoinPool = ForkJoinPool(6);
-        (system_requires + register_requires + immediate_requires + memory_requires).zip(
-            system_imports + register_imports + immediate_imports + memory_imports
-        ).parallelStream().forEach { (require, import) ->
-            forkJoinPool.submit {
-            try {
-                println(import)
-                val semantics_file_contents = """
+    (system_requires + register_requires + immediate_requires + memory_requires).zip(
+        system_imports + register_imports + immediate_imports + memory_imports
+    ).stream().forEach { (require, import) ->
+        try {
+            println("`$import`")
+            val semantics_file_contents = """
 require "x86-loader.k"
 require "x86-env-init.k"
 require "x86-fetch-execute.k"
@@ -46,20 +44,20 @@ module X86-SEMANTICS
 
 endmodule
 """
-                val semantics_file: File = File("semantics/x86-semantics.k");
-                if (!semantics_file.exists()) {
-                    throw IllegalStateException()
-                }
-                semantics_file.writeBytes(semantics_file_contents.encodeToByteArray())
-                run_compilation(import)
-            }catch (_: Throwable) { }
-        }.get()
+            val semantics_file: File = File("semantics/x86-semantics.k");
+            if (!semantics_file.exists()) {
+                throw IllegalStateException()
+            }
+            semantics_file.writeBytes(semantics_file_contents.encodeToByteArray())
+            run_compilation(import)
+        } catch (_: Throwable) {
+        }
     }
 }
 
 fun run_compilation(import_name: String) {
     val working_dir = File("semantics")
-    if(!working_dir.exists()){
+    if (!working_dir.exists()) {
         throw IllegalStateException()
     }
     val process = ProcessBuilder(
@@ -85,7 +83,6 @@ fun run_compilation(import_name: String) {
     process.waitFor(10, TimeUnit.HOURS)
     try {
         if (process.exitValue() != 0) {
-
             throw IllegalStateException()
         }
     } catch (e: IllegalStateException) {
