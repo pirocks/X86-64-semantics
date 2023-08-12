@@ -6,7 +6,7 @@ import java.util.concurrent.ForkJoinPool
 import java.util.concurrent.TimeUnit
 
 fun main() {
-    val forkJoinPool = ForkJoinPool(8);
+    val forkJoinPool = ForkJoinPool(6);
         (system_requires + register_requires + immediate_requires + memory_requires).zip(
             system_imports + register_imports + immediate_imports + memory_imports
         ).parallelStream().forEach { (require, import) ->
