@@ -2,16 +2,22 @@ package uk.co.francisnixon
 
 import java.io.File
 import java.lang.IllegalStateException
-import java.util.concurrent.ForkJoinPool
 import java.util.concurrent.TimeUnit
 
-fun main() {
-    (system_requires + register_requires + immediate_requires + memory_requires).zip(
-        system_imports + register_imports + immediate_imports + memory_imports
-    ).stream().forEach { (require, import) ->
-        try {
-            println("`$import`")
-            val semantics_file_contents = """
+import com.xenomachina.argparser.ArgParser
+import com.xenomachina.argparser.default
+import java.util.concurrent.Executors
+import java.util.concurrent.ForkJoinPool
+
+class Args(parser: ArgParser) {
+    val num: Boolean by parser.flagging("Count number of instructions in semantics")
+    val range_start: Int? by parser.storing("Numeric start of semantics to extract") { toInt() }.default(null)
+    val range_end: Int? by parser.storing("Numeric end of semantics to extract") { toInt() }.default(null)
+    val concurrency: Int by parser.storing("Maximum allowable concurrency") { toInt() }.default(1)
+}
+
+fun semanticsFileContentsCreate(import: String, require: String): String {
+    val semanticsFileContents = """
 require "x86-loader.k"
 require "x86-env-init.k"
 require "x86-fetch-execute.k"
@@ -44,20 +50,55 @@ module X86-SEMANTICS
 
 endmodule
 """
-            val semantics_file: File = File("semantics/x86-semantics.k");
-            if (!semantics_file.exists()) {
-                throw IllegalStateException()
-            }
-            semantics_file.writeBytes(semantics_file_contents.encodeToByteArray())
-            run_compilation(import)
-        } catch (_: Throwable) {
-        }
-    }
+    return semanticsFileContents
 }
 
-fun run_compilation(import_name: String) {
-    val working_dir = File("semantics")
-    if (!working_dir.exists()) {
+
+fun setupWorkDir(require: String, import: String): File {
+    val work = File("workdir-$import")
+    work.mkdir()
+    val semanticsFile = File("$work/x86-semantics.k")
+    semanticsFile.createNewFile()
+    val semanticsFileContents = semanticsFileContentsCreate(require, import);
+    semanticsFile.writeText(semanticsFileContents)
+    return work
+}
+
+fun main(args: Array<String>) {
+    val allRequires = system_requires + register_requires + immediate_requires + memory_requires
+    val allImports = system_imports + register_imports + immediate_imports + memory_imports
+    val parsedArgs = Args(ArgParser(args))
+    assert(allRequires.size == allImports.size)
+    if (parsedArgs.num) {
+        println(allImports.size)
+        return
+    }
+
+
+    val requireImportPairs = allRequires.zip(allImports)
+    val rangeStart = parsedArgs.range_start ?: 0;
+    val rangeEnd = parsedArgs.range_end ?: requireImportPairs.size;
+
+
+    val threadPool = Executors.newFixedThreadPool(parsedArgs.concurrency)
+
+    requireImportPairs.subList(rangeStart, rangeEnd).stream().map { (require, import) ->
+        threadPool.submit {
+            try {
+                println("`$import`")
+                val workDir = setupWorkDir(require, import)
+                runCompilation(workDir, import)
+            } catch (_: Throwable) {
+
+            }
+        }
+    }
+    threadPool.awaitTermination(100L, TimeUnit.DAYS);
+}
+
+fun runCompilation(semanticsFileDir: File, importName: String) {
+    val workingDir = File("semantics")
+    if (!workingDir.exists()) {
         throw IllegalStateException()
     }
     val process = ProcessBuilder(
@@ -67,7 +108,7 @@ fun run_compilation(import_name: String) {
             "--parse-only",
             "--emit-json",
             "--emit-json-prefix",
-            import_name,
+            importName,
             "--syntax-module",
             "X86-SYNTAX",
             "--main-module",
@@ -77,9 +118,11 @@ fun run_compilation(import_name: String) {
             "-I",
             ".",
             "-I",
-            "common/x86-config/"
+            "common/x86-config/",
+            "-I",
+            semanticsFileDir.toString()
         ),
-    ).directory(working_dir).inheritIO().start()
+    ).directory(workingDir).inheritIO().start()
     process.waitFor(10, TimeUnit.HOURS)
     try {
         if (process.exitValue() != 0) {
