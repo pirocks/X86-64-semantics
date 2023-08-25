@@ -92,6 +92,7 @@ fun main(args: Array<String>) {
             }
         }
     }
+    threadPool.shutdown()
     threadPool.awaitTermination(100L, TimeUnit.DAYS);
 }
 
