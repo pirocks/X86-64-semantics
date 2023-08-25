@@ -104,7 +104,7 @@ fun runCompilation(semanticsFileDir: File, importName: String) {
     val process = ProcessBuilder(
         listOf(
             "/home/user/k/k-distribution/target/release/k/bin/kompile",
-            "x86-semantics.k",
+            "$semanticsFileDir/x86-semantics.k",
             "--parse-only",
             "--emit-json",
             "--emit-json-prefix",
