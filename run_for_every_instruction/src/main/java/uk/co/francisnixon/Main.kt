@@ -15,7 +15,7 @@ class Args(parser: ArgParser) {
     val concurrency: Int by parser.storing("Maximum allowable concurrency") { toInt() }.default(1)
 }
 
-fun semanticsFileContentsCreate(import: String, require: String): String {
+fun semanticsFileContentsCreate(require: String, import: String): String {
     val semanticsFileContents = """
 require "x86-loader.k"
 require "x86-env-init.k"
