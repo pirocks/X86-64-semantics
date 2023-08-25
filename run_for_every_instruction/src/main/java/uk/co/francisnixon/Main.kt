@@ -102,7 +102,7 @@ fun runCompilation(semanticsFileDir: File, importName: String) {
     }
     val argList = listOf(
         "/home/user/k/k-distribution/target/release/k/bin/kompile",
-        "$semanticsFileDir/x86-semantics.k",
+        "${semanticsFileDir.absolutePath}/x86-semantics.k",
         "--parse-only",
         "--emit-json",
         "--emit-json-prefix",
@@ -118,7 +118,7 @@ fun runCompilation(semanticsFileDir: File, importName: String) {
         "-I",
         "common/x86-config/",
         "-I",
-        semanticsFileDir.toString()
+        semanticsFileDir.absoluteFile.toString()
     )
     println(argList)
     val process = ProcessBuilder(
