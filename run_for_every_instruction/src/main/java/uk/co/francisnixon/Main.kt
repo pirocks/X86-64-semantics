@@ -82,7 +82,7 @@ fun main(args: Array<String>) {
 
     val threadPool = Executors.newFixedThreadPool(parsedArgs.concurrency)
 
-    requireImportPairs.subList(rangeStart, rangeEnd).stream().map { (require, import) ->
+    requireImportPairs.subList(rangeStart, rangeEnd).stream().forEach { (require, import) ->
         threadPool.submit {
             try {
                 println("`$import`")
