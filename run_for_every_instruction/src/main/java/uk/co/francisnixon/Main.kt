@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit
 import com.xenomachina.argparser.ArgParser
 import com.xenomachina.argparser.default
 import java.util.concurrent.Executors
-import java.util.concurrent.ForkJoinPool
 
 class Args(parser: ArgParser) {
     val num: Boolean by parser.flagging("Count number of instructions in semantics")
@@ -57,7 +56,7 @@ endmodule
 fun setupWorkDir(require: String, import: String): File {
     val work = File("workdir-$import")
     work.mkdir()
-    val semanticsFile = File("$work/x86-semantics.k")
+    val semanticsFile = File(work,"x86-semantics.k")
     semanticsFile.createNewFile()
     val semanticsFileContents = semanticsFileContentsCreate(require, import);
     semanticsFile.writeText(semanticsFileContents)
@@ -101,27 +100,29 @@ fun runCompilation(semanticsFileDir: File, importName: String) {
     if (!workingDir.exists()) {
         throw IllegalStateException()
     }
+    val argList = listOf(
+        "/home/user/k/k-distribution/target/release/k/bin/kompile",
+        "$semanticsFileDir/x86-semantics.k",
+        "--parse-only",
+        "--emit-json",
+        "--emit-json-prefix",
+        importName,
+        "--syntax-module",
+        "X86-SYNTAX",
+        "--main-module",
+        "X86-SEMANTICS",
+        "--backend",
+        "java",
+        "-I",
+        ".",
+        "-I",
+        "common/x86-config/",
+        "-I",
+        semanticsFileDir.toString()
+    )
+    println(argList)
     val process = ProcessBuilder(
-        listOf(
-            "/home/user/k/k-distribution/target/release/k/bin/kompile",
-            "$semanticsFileDir/x86-semantics.k",
-            "--parse-only",
-            "--emit-json",
-            "--emit-json-prefix",
-            importName,
-            "--syntax-module",
-            "X86-SYNTAX",
-            "--main-module",
-            "X86-SEMANTICS",
-            "--backend",
-            "java",
-            "-I",
-            ".",
-            "-I",
-            "common/x86-config/",
-            "-I",
-            semanticsFileDir.toString()
-        ),
+        argList,
     ).directory(workingDir).inheritIO().start()
     process.waitFor(10, TimeUnit.HOURS)
     try {
